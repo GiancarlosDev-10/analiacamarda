@@ -37,7 +37,7 @@ const sortedEntries = blogEntries.sort((a, b) => b.data.date.getTime() - a.data.
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
         {sortedEntries.map(post => (
-          <a href={`/en/blog/${post.id}`} class="group bg-background rounded-2xl border border-primary/10 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col hover:-translate-y-2">
+          <a href={`/en/blog/${post.id}`} onclick={`if(window.trackEvent)window.trackEvent('click_read_article','blog','${post.id}',1)`} class="group bg-background rounded-2xl border border-primary/10 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col hover:-translate-y-2">
             <div class="p-6 flex flex-col flex-grow">
               <div class="flex items-center gap-3 mb-4">
                 <span class="text-cta text-xs font-bold font-outfit uppercase tracking-widest">✦ {post.data.category}</span>

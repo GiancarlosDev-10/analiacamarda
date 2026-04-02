@@ -91,6 +91,7 @@ const paypalIcon = await resolveImage('paypal.svg');
         <div class="pt-0 flex flex-col gap-6">
           <button 
             id="checkout-trigger"
+            onclick={`if(window.trackEvent)window.trackEvent('click_complete_order','purchase','${book.slug}',${book.price})`}
             class="font-outfit w-full bg-cta hover:bg-cta-hover text-white shadow-xl text-center px-8 py-5 rounded-lg transition-all flex items-center justify-center gap-3 transform active:scale-95 group"
           >
              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>

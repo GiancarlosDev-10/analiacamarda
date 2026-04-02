@@ -141,6 +141,7 @@ const t = {
           <!-- Direct CTA related to Card -->
           <button 
             id={`submit-${id}`}
+            onclick={`if(window.trackEvent)window.trackEvent('click_purchase_card','purchase','${bookTitle}',${price})`}
             class="font-outfit w-full bg-cta hover:bg-cta-hover text-white py-4 rounded-xl shadow-xl transition-all hover:shadow-cta/20 transform active:scale-95 flex items-center justify-center gap-3 mt-2"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
@@ -156,7 +157,7 @@ const t = {
       </div>
 
       <!-- PayPal Fast Buy: Visually Separated -->
-      <button class="w-full bg-[#ffc439] hover:bg-[#ffb700] p-4 rounded-xl flex items-center justify-center gap-2 transition-all hover:scale-[1.01] shadow-md">
+      <button onclick={`if(window.trackEvent)window.trackEvent('click_purchase_paypal','purchase','${bookTitle}',${price})`} class="w-full bg-[#ffc439] hover:bg-[#ffb700] p-4 rounded-xl flex items-center justify-center gap-2 transition-all hover:scale-[1.01] shadow-md">
         <Image src={paypalIcon} alt="PayPal" class="h-6 w-auto" />
       </button>
 

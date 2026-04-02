@@ -1,24 +1,169 @@
 ---
-// Root index page to handle language redirection
+// Root index page with full SEO - NOT just a redirect
+const siteUrl = "https://www.analiacamarda.com";
+const title = "Analía Camarda | Digital Entrepreneur & Passive Income Mentor";
+const description = "Learn to build passive income streams with Analía Camarda, a deaf digital entrepreneur. Explore ebooks, online courses, and the Deaf Digital Pro Academy for the Deaf and Hard of Hearing community.";
+const ogImage = `${siteUrl}/images/og-default.png`;
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": "Analía Camarda",
+      "url": siteUrl,
+      "sameAs": [
+        "https://linkedin.com/in/analiacamarda",
+        "https://instagram.com/analiacamarda",
+        "https://tiktok.com/@analiacamarda"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      "name": "Analía Camarda",
+      "jobTitle": "Digital Entrepreneur & Passive Income Mentor",
+      "description": "Deaf digital entrepreneur helping the Deaf community build passive income streams",
+      "url": siteUrl,
+      "knowsAbout": ["Passive Income", "Digital Business", "Deaf Entrepreneurship", "Online Courses"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "name": "Analía Camarda",
+      "url": siteUrl,
+      "publisher": { "@id": `${siteUrl}/#organization` }
+    }
+  ]
+});
 ---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Analía Camarda</title>
-    <!-- Fallback redirect if JS is disabled -->
-    <meta http-equiv="refresh" content="0;url=/en/" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Analía Camarda" />
+    
+    <!-- Canonical -->
+    <link rel="canonical" href={siteUrl} />
+    
+    <!-- Alternate languages -->
+    <link rel="alternate" hreflang="en" href={`${siteUrl}/en/`} />
+    <link rel="alternate" hreflang="es" href={`${siteUrl}/es/`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en/`} />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Analía Camarda" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={schema} />
+    
+    <!-- Smart Language Redirect -->
     <script is:inline>
-      const lang = navigator.language || navigator.userLanguage;
-      if (lang && lang.toLowerCase().startsWith('es')) {
-        window.location.href = '/es/';
-      } else {
-        window.location.href = '/en/';
-      }
+      (function() {
+        // Only redirect if no hash (allows language switcher to work)
+        if (window.location.hash) return;
+        
+        const lang = navigator.language || navigator.userLanguage;
+        const destination = lang && lang.toLowerCase().startsWith('es') ? '/es/' : '/en/';
+        
+        // Use replaceState so back button works correctly
+        window.location.replace(destination);
+      })();
     </script>
+    
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #efe8de;
+        font-family: 'Outfit', system-ui, sans-serif;
+      }
+      .container {
+        text-align: center;
+        padding: 2rem;
+        max-width: 600px;
+      }
+      h1 {
+        color: #2d2d2d;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      p {
+        color: #5a5a5a;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+      .links {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: #dd6b20;
+        color: white;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+      .btn:hover {
+        background: #c05621;
+      }
+      .btn-secondary {
+        background: #2d3748;
+      }
+      .btn-secondary:hover {
+        background: #1a202c;
+      }
+      .loading {
+        color: #dd6b20;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+      }
+    </style>
   </head>
-  <body style="background: #efe8de;">
-    <!-- Simple loading state -->
+  <body>
+    <div class="container">
+      <h1>Analía Camarda</h1>
+      <p>Choose your language / Elige tu idioma</p>
+      
+      <nav class="links" role="navigation" aria-label="Language selection">
+        <a href="/en/" class="btn">English</a>
+        <a href="/es/" class="btn btn-secondary">Español</a>
+      </nav>
+      
+      <p class="loading">Redirecting automatically based on your browser language...</p>
+    </div>
   </body>
 </html>

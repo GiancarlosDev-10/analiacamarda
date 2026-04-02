@@ -10,6 +10,7 @@ const tooltipText = lang === 'es' ? '¡Hablemos!' : 'Chat with me!';
   href="https://wa.me/12393316702" 
   target="_blank"
   rel="noopener noreferrer"
+  onclick="if(window.trackEvent)window.trackEvent('click_whatsapp','contact','floating_button',1)"
   class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 hover:bg-[#20ba5a] transition-all duration-300 flex items-center justify-center group"
   aria-label="Contact on WhatsApp"
 >

@@ -125,7 +125,7 @@ const schema = JSON.stringify({
       <!-- CTA -->
       <div class="pt-8 border-t border-primary/20 text-center space-y-6">
         <h3 class="text-3xl font-heading font-bold text-primary">Empecemos a construir tu libertad</h3>
-        <a href="/es/libros" class="inline-block bg-cta hover:bg-dark text-white px-10 py-4 rounded-full font-outfit transition-all shadow-lg hover:shadow-xl text-md">
+        <a href="/es/libros" onclick="if(window.trackEvent)window.trackEvent('click_explore_books','cta','sobre_mi',1)" class="inline-block bg-cta hover:bg-dark text-white px-10 py-4 rounded-full font-outfit transition-all shadow-lg hover:shadow-xl text-md">
           Explorar Mis Libros
         </a>
       </div>

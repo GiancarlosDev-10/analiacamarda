@@ -1,0 +1,69 @@
+// ============================================
+// UTILIDAD DE TRACKING PARA GOOGLE ANALYTICS Y GOOGLE ADS
+// Usar en botones importantes (CTAs) para medir conversiones
+// ============================================
+
+interface TrackingEvent {
+  event_name: string;
+  category?: string;
+  label?: string;
+  value?: number;
+}
+
+/**
+ * Envía evento a Google Analytics y Google Ads
+ * Usar en onclick de botones importantes
+ * 
+ * Ejemplo de uso:
+ * onclick="trackEvent('click_academy', 'cta', 'hero_button', 1)"
+ */
+export function trackEvent(eventName: string, category?: string, label?: string, value?: number): void {
+  if (typeof window === 'undefined') return;
+
+  // Google Analytics 4
+  if ((window as any).gtag) {
+    (window as any).gtag('event', eventName, {
+      event_category: category,
+      event_label: label,
+      value: value,
+    });
+  }
+
+  // Google Ads Conversion (si está configurado)
+  if ((window as any).gtag && eventName.includes('conversion') || eventName.includes('purchase')) {
+    // Para conversiones de Google Ads, se envía con 'conversion' como evento
+    // El ID de conversión se configura en Google Ads, no aquí
+    (window as any).gtag('event', 'conversion', {
+      send_to: (window as any).GOOGLE_ADS_ID || 'AW-XXXXXXXXXX',
+    });
+  }
+
+  console.log(`[Tracking] ${eventName}`, { category, label, value });
+}
+
+/**
+ * Eventos predefinidos para botones comunes
+ */
+export const trackingEvents = {
+  // CTAs principales
+  clickAcademyHero: () => trackEvent('click_academy', 'cta', 'hero_button', 1),
+  clickAcademySection: () => trackEvent('click_academy', 'cta', 'academy_section', 1),
+  clickBooks: () => trackEvent('click_books', 'cta', 'hero_button', 1),
+  
+  // Conversiones de compra (usar cuando implementes checkout)
+  purchaseBook: (bookName: string, value: number) => 
+    trackEvent('purchase', 'ecommerce', bookName, value),
+  
+  // Lead magnet
+  downloadGuide: () => trackEvent('download_guide', 'lead_magnet', 'free_guide', 1),
+  
+  // Contacto/Redes
+  clickWhatsApp: () => trackEvent('click_whatsapp', 'contact', 'whatsapp_button', 1),
+  clickInstagram: () => trackEvent('click_instagram', 'social', 'footer_link', 1),
+};
+
+// Exponer al window para usar inline
+if (typeof window !== 'undefined') {
+  (window as any).trackEvent = trackEvent;
+  (window as any).trackingEvents = trackingEvents;
+}

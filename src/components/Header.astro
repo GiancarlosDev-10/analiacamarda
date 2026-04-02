@@ -92,25 +92,25 @@ const translations = {
         </a>
       </div>
       <nav class="font-outfit hidden md:flex space-x-8 items-center">
-        <a href={aboutHref} class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.about}</a>
-        <a href={booksHref} class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.books}</a>
-        <a href={blogHref} class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.blog}</a>
-        <a href={academiaHref} class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.skool}</a>
-        <a href={galleryHref} class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.gallery}</a>
+        <a href={aboutHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_about','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.about}</a>
+        <a href={booksHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_books','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.books}</a>
+        <a href={blogHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_blog','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.blog}</a>
+        <a href={academiaHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_academy','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.skool}</a>
+        <a href={galleryHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_gallery','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.gallery}</a>
       </nav>
       <div class="font-outfit hidden md:flex items-center gap-8">
         <!-- Social Icons -->
         <div class="flex items-center gap-6">
           <!-- LinkedIn -->
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" class="transition-transform hover:scale-110" aria-label="LinkedIn">
+          <a href="https://linkedin.com/in/yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','header',1)" class="transition-transform hover:scale-110" aria-label="LinkedIn">
             <Image src={linkedinIcon} alt="LinkedIn" class="w-8 h-8" />
           </a>
           <!-- Instagram -->
-          <a href="https://instagram.com/yourprofile" target="_blank" class="transition-transform hover:scale-110" aria-label="Instagram">
+          <a href="https://instagram.com/yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_instagram','social','header',1)" class="transition-transform hover:scale-110" aria-label="Instagram">
             <Image src={instagramIcon} alt="Instagram" class="w-8 h-8" />
           </a>
           <!-- TikTok -->
-          <a href="https://tiktok.com/@yourprofile" target="_blank" class="transition-transform hover:scale-110" aria-label="TikTok">
+          <a href="https://tiktok.com/@yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_tiktok','social','header',1)" class="transition-transform hover:scale-110" aria-label="TikTok">
             <Image src={tiktokIcon} alt="TikTok" class="h-8 w-auto" />
           </a>
         </div>

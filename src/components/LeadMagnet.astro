@@ -21,7 +21,7 @@ const { lang } = Astro.props;
 
     <!-- MailerLite Form Placeholder -->
     <div class="bg-card p-2 rounded-xl max-w-lg mx-auto flex shadow-xl border border-primary/20 focus-within:ring-4 focus-within:ring-primary/20">
-      <form class="flex w-full" onsubmit="event.preventDefault(); alert('MailerLite integration coming soon!');">
+      <form class="flex w-full" onsubmit="if(window.trackEvent)window.trackEvent('submit_lead_magnet','lead_generation','email_form',1); event.preventDefault(); alert('MailerLite integration coming soon!');">
         <label for={lang === 'en' ? 'email-en' : 'email-es'} class="sr-only">
           {lang === 'en' ? 'Email address' : 'Correo electrónico'}
         </label>
