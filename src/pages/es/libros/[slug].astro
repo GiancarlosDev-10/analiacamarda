@@ -1,0 +1,160 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CheckoutModal from '../../../components/CheckoutModal.astro';
+import booksData from '../../../data/books.json';
+import { resolveImage } from '../../../utils/images';
+
+export function getStaticPaths() {
+  const spanishBooks = booksData.filter(b => b.lang === 'es');
+  return spanishBooks.map(book => {
+    return {
+      params: { slug: book.slug },
+      props: { book, spanishBooks },
+    };
+  });
+}
+
+const { book, spanishBooks } = Astro.props;
+
+// Schema Markup (Book + FAQ)
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Book",
+      "@id": `https://www.analiacamarda.com/libros/${book.slug}#book`,
+      "name": book.title,
+      "author": { "@type": "Person", "name": "Analía Camarda" },
+      "image": book.coverImage,
+      "offers": {
+        "@type": "Offer",
+        "price": book.price,
+        "priceCurrency": book.currency,
+        "availability": "https://schema.org/InStock",
+        "acceptedPaymentMethod": ["CreditCard", "PayPal"]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `https://www.analiacamarda.com/libros/${book.slug}#faq`,
+      "mainEntity": book.faq.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    }
+  ]
+});
+
+// Encontrar libros relacionados
+const relatedBooks = spanishBooks.filter(b => book.relatedBooks.includes(b.slug));
+
+// Resolve images
+const imageAsset = await resolveImage(book.coverImage);
+const visaIcon = await resolveImage('visa.svg');
+const mastercardIcon = await resolveImage('mastercard.svg');
+const paypalIcon = await resolveImage('paypal.svg');
+---
+
+<BaseLayout 
+  title={`${book.title} | Analía Camarda`} 
+  description={book.description.substring(0, 155)} 
+  schema={schema}
+  lang="es"
+>
+  <!-- Hero Libro -->
+  <section class="bg-background pt-16 pb-10 border-b border-primary/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-start">
+      <div class="relative w-full aspect-[3/4] max-w-sm mx-auto shadow-2xl rounded-2xl border border-primary/20 overflow-hidden">
+        {imageAsset && (
+          <Image src={imageAsset} alt={`Portada de ${book.title}`} class="w-full h-full object-cover" />
+        )}
+      </div>
+
+      <div class="space-y-8 mt-10 md:mt-0">
+        <div class="flex items-center gap-2 text-cta font-outfit text-sm tracking-widest uppercase">
+          <span>✦</span> E-Book Premium
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-primary leading-tight">
+          {book.title}
+        </h1>
+        <div class="text-3xl font-outfit text-dark/90">
+          ${book.price.toFixed(2)} {book.currency}
+        </div>
+        
+        <p class="text-lg text-dark font-outfit leading-relaxed">
+          {book.description}
+        </p>
+
+        <div class="pt-0 flex flex-col gap-6">
+          <button 
+            id="checkout-trigger"
+            class="font-outfit w-full bg-cta hover:bg-cta-hover text-white shadow-xl text-center px-8 py-5 rounded-lg transition-all flex items-center justify-center gap-3 transform active:scale-95 group"
+          >
+             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+             Completar mi Pedido
+          </button>
+          
+          <!-- Trust Bar -->
+          <div class="flex flex-col items-center gap-3 opacity-60">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-dark/40">Pagos Seguros vía PayPal y Tarjeta</span>
+            <div class="flex items-center justify-center gap-6 grayscale">
+              <Image src={visaIcon} alt="Visa" class="h-6 w-auto" />
+              <Image src={mastercardIcon} alt="Mastercard" class="h-6 w-auto" />
+              <Image src={paypalIcon} alt="PayPal" class="h-6 w-auto" />
+            </div>
+            <div class="flex items-center gap-2 text-[10px] font-medium text-dark/40 italic">
+              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+              Transacción Segura Encriptada SSL
+            </div>
+          </div>
+          {book.amazonLink && book.amazonLink !== "#" && (
+            <a href={book.amazonLink} target="_blank" class="text-center text-dark/70 hover:text-dark font-bold underline underline-offset-4 w-full mt-2">
+              También disponible en Amazon Kindle
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detalles -->
+  <section class="bg-card text-primary py-24 border-b border-primary/10">
+    <div class="max-w-4xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+       <div>
+          <h2 class="text-2xl font-heading font-bold mb-6">¿Para quién es?</h2>
+          <p class="text-lg text-dark/80 font-medium whitespace-pre-line">{book.forWhom}</p>
+       </div>
+       <div>
+          <h2 class="text-2xl font-heading font-bold mb-6">Qué aprenderás</h2>
+          <ul class="space-y-4">
+            {book.whatYouLearn.map(item => (
+              <li class="flex items-start gap-3 text-dark/80 font-medium">
+                <span class="text-cta mt-1">✦</span> {item}
+              </li>
+            ))}
+          </ul>
+       </div>
+    </div>
+  </section>
+
+  <CheckoutModal 
+    id={`checkout-${book.slug}`} 
+    bookTitle={book.title} 
+    price={book.price} 
+    currency={book.currency} 
+    lang="es"
+  />
+
+  <script define:vars={{ slug: book.slug }}>
+    const btn = document.getElementById('checkout-trigger');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        document.dispatchEvent(new CustomEvent('open-checkout', { 
+          detail: { slug } 
+        }));
+      });
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import mentorImg from '../assets/images/foto-mentor.png';
+
+export interface Props {
+  lang: 'en' | 'es';
+}
+const { lang } = Astro.props;
+---
+
+<!-- MENTOR / STORY SECTION -->
+<section id="mentor" class="relative bg-card text-primary py-16 overflow-hidden border-t border-primary/10">
+  <!-- HUGE Background Typography -->
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0">
+    <p class="text-[12vw] font-heading font-black leading-none opacity-5 text-dark tracking-widest whitespace-nowrap">
+      ANALÍA
+    </p>
+    <p class="text-[12vw] font-heading font-black leading-none opacity-5 text-dark tracking-widest whitespace-nowrap -mt-10">
+      CAMARDA
+    </p>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center">
+    <!-- Label + Title ABOVE the image -->
+    <div class="text-center mb-10 w-full max-w-5xl">
+      <div class="font-outfit flex justify-center items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+        <span>✦</span>
+        {lang === 'en' ? 'Learn from an expert' : 'Aprende de una experta'}
+      </div>
+      <h2 class="text-5xl font-heading text-primary">
+        {lang === 'en' ? 'Who is your mentor?' : '¿Quién es tu mentora?'}
+      </h2>
+    </div>
+
+    <!-- Center Image -->
+    <div class="relative w-full max-w-lg mb-20 group">
+      <div class="absolute inset-0 bg-primary/10 flex rounded-full blur-[80px]"></div>
+      <Image
+        src={mentorImg}
+        class="relative z-10 rounded-full w-64 h-64 md:w-115 md:h-115 mx-auto object-cover hover:scale-105 object-[0%_5%] border-4 border-card shadow-2xl transition-all duration-700"
+        alt="Ana Camarda"
+      />
+
+      <!-- Badges -->
+      <div class="absolute top-1/4 -left-12 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-card/90 backdrop-blur-md text-xs font-bold text-primary shadow-xl z-30 opacity-90">
+        <span class="text-cta">✦</span> Miss Deaf Argentina
+      </div>
+      <div class="absolute bottom-1/4 -right-12 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-card/90 backdrop-blur-md text-xs font-bold text-primary shadow-xl z-30 opacity-90">
+        <span class="text-cta">✦</span> Tech & Data Alum
+      </div>
+    </div>
+
+    <!-- Two columns text -->
+    <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto w-full">
+      <div>
+        {lang === 'en' ? (
+          <>
+            <p class="font-outfit text-lg  text-dark/80 text-justify mb-4 leading-relaxed">
+              Analía is one of the most respected voices in the accessible digital entrepreneurship space in the USA and Latam. With years of experience as a <strong class="text-primary font-bold">Cybersecurity & Data Analytics graduate</strong>, Ana built a solid foundation marked by tech innovation and a keen eye for business that <strong class="text-primary font-bold">is already transforming</strong> the lives of thousands.
+            </p>
+            <p class="font-outfit text-lg text-dark/80 text-justify leading-relaxed">
+              She is the founder of the Deaf Digital Pro Academy, revolutionizing the market with high-quality educational materials for those seeking financial independence. Ana goes beyond just teaching; she is a true mentor committed to <strong class="text-primary font-bold">elevating the profession</strong>.
+            </p>
+          </>
+        ) : (
+          <>
+            <p class="font-outfit text-lg text-dark/80 text-justify  mb-4 leading-relaxed">
+              Analía es una de las voces más respetadas en el espacio del emprendimiento digital accesible en EE.UU. y Latam. Tras graduarse en <strong class="text-primary font-bold">Ciberseguridad y Data Analytics</strong>, construyó una sólida base tecnológica que <strong class="text-primary font-bold">ya está transformando</strong> la vida de muchísimas personas.
+            </p>
+            <p class="font-outfit text-lg text-dark/80 text-justify  mb-4  leading-relaxed">
+              Es la fundadora de Deaf Digital Pro Academy, revolucionando el mercado con materiales educativos de alta calidad para quienes buscan la independencia financiera.
+            </p>
+          </>
+        )}
+      </div>
+
+      <div class="pt-10 md:pt-0">
+        {lang === 'en' ? (
+          <>
+            <p class="font-outfit text-lg text-dark/80 text-justify mb-6 leading-relaxed">
+              Recognized by the deaf community, Ana shares stages with great names worldwide. Her authority comes not just from practice, but from her <strong class="text-primary font-bold">capacity to translate complex tech jargon</strong> into practical, applicable knowledge for everyone.
+            </p>
+            <p class="font-outfit text-lg text-dark/80 text-justify mb-6 leading-relaxed">
+              Learning with Ana is having direct access to years of research in a market that never stops growing. She understands how to connect digital tools with real-world income.
+            </p>
+            <p class="font-outfit text-lg text-primary  font-bold text-justify leading-relaxed">
+              With her, you will have the chance to learn passive income techniques clearly, safely, and practically, guided by someone who lives and breathes digital freedom.
+            </p>
+          </>
+        ) : (
+          <>
+            <p class="font-outfit text-lg text-dark/80 text-justify mb-6 leading-relaxed">
+              Reconocida por la comunidad sorda, la autoridad de Ana no sólo proviene de la práctica, sino de su <strong class="text-primary font-bold">capacidad para traducir la jerga tecnológica compleja</strong> en conocimientos prácticos aplicables para todo el mundo.
+            </p>
+            <p class="font-outfit text-lg text-primary font-bold text-justify leading-relaxed">
+              Aprender con Ana es tener acceso directo a estrategias actualizadas para conectar herramientas digitales con flujos de ingresos en el mundo real.
+            </p>
+          </>
+        )}
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <a
+        href={lang === 'en' ? '/en/aboutme' : '/es/sobre-mi'}
+        class="font-outfit text-3xl text-cta hover:text-dark underline underline-offset-8 transition-colors"
+      >
+        {lang === 'en' ? 'Read my Full Story' : 'Lee mi Historia Completa'}
+      </a>
+    </div>
+  </div>
+</section>

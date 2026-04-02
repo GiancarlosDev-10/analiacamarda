@@ -1,0 +1,44 @@
+---
+import SEO from '../components/SEO.astro';
+import Analytics from '../components/Analytics.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  schema?: string;
+  lang?: "en" | "es";
+}
+
+const { title, description, image, schema, lang = "en" } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Playfair+Display:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <SEO title={title} description={description} image={image} schema={schema} lang={lang} />
+    <Analytics />
+  </head>
+  <body class="bg-background text-dark font-body min-h-screen flex flex-col antialiased relative">
+    <Header currentPath={currentPath} />
+    <main class="flex-grow flex flex-col w-full">
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppButton lang={lang} />
+  </body>
+</html>

@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'BrittanySignature';
+  src: url('/fonts/BrittanySignature.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-background: #f2eee8;
+  --color-primary: #a35c33;
+  --color-dark: #2C1810;
+  --color-card: #FFFAF5;
+  --color-cta: #8B4513;
+  --color-cta-hover: #6B3410;
+  --color-border: #DDD0C0;
+  --color-muted: #7A6055;
+
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Roboto", sans-serif;
+  --font-brittany: "BrittanySignature", cursive;
+  --font-outfit: "Outfit", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-dark);
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Ocultar barra de scroll en toda la web */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

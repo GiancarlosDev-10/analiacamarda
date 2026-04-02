@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import AboutDigital from '../../components/AboutDigital.astro';
+import BooksSection from '../../components/BooksSection.astro';
+import MentorSection from '../../components/MentorSection.astro';
+import AcademySection from '../../components/AcademySection.astro';
+import LeadMagnet from '../../components/LeadMagnet.astro';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.analiacamarda.com/#organization",
+      "name": "Analía Camarda",
+      "url": "https://www.analiacamarda.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.analiacamarda.com/#person",
+      "name": "Analía Camarda",
+      "jobTitle": "Entrepreneur & Content Creator",
+      "url": "https://www.analiacamarda.com/"
+    }
+  ]
+});
+---
+
+<BaseLayout
+  title="Analía Camarda | Deaf Digital Pro - Passive Income Books & Academy"
+  description="Learn how to generate passive income from Analía Camarda, a deaf digital entrepreneur. Explore e-books, group classes, and the Deaf Digital Pro Academy."
+  schema={schema}
+  lang="en"
+>
+  <!-- 1. HERO -->
+  <Hero lang="en" />
+
+  <!-- 2. MENTOR / STORY -->
+  <MentorSection lang="en" />
+
+  <!-- 3. BOOKS -->
+  <BooksSection lang="en" />
+
+  <!-- 4. WHY DIGITAL BUSINESS (AboutDigital) -->
+  <AboutDigital lang="en" />
+
+  <!-- 5. ACADEMY MODULES -->
+  <AcademySection lang="en" />
+
+  <!-- 6. LEAD MAGNET -->
+  <LeadMagnet lang="en" />
+
+</BaseLayout>

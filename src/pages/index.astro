@@ -1,0 +1,24 @@
+---
+// Root index page to handle language redirection
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analía Camarda</title>
+    <!-- Fallback redirect if JS is disabled -->
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <script is:inline>
+      const lang = navigator.language || navigator.userLanguage;
+      if (lang && lang.toLowerCase().startsWith('es')) {
+        window.location.href = '/es/';
+      } else {
+        window.location.href = '/en/';
+      }
+    </script>
+  </head>
+  <body style="background: #efe8de;">
+    <!-- Simple loading state -->
+  </body>
+</html>

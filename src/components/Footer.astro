@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/images/analia-camarda.png';
+import partnerLogo from '../assets/images/WiCyS_Deaf.png';
+
+const currentYear = new Date().getFullYear();
+const pathname = Astro.url.pathname;
+const isSpanish = pathname.startsWith('/es');
+
+const dic = {
+  about: isSpanish 
+    ? "Emprendedora, experta en ingresos pasivos y creadora de la Academia Digital. Ayudando a la comunidad sorda e hispana." 
+    : "Entrepreneur, passive income expert, and creator of the Digital Academy. Empowering the deaf and hispanic community.",
+  linksTitle: isSpanish ? "Enlaces Rápidos" : "Quick Links",
+  books: isSpanish ? "Mis Libros" : "My Books",
+  booksHref: isSpanish ? "/es/libros" : "/en/books",
+  academia: isSpanish ? "Academia Digital (Skool)" : "Digital Academy (Skool)",
+  academiaHref: isSpanish ? "/es/academia" : "/en/academy",
+  story: isSpanish ? "Sobre mí" : "About Me",
+  storyHref: isSpanish ? "/es/sobre-mi" : "/en/aboutme",
+  contact: isSpanish ? "Contacto directo" : "Contact Me",
+  partnerTitle: "Partner",
+  langTitle: isSpanish ? "Idioma / Language" : "Language / Idioma",
+  langMain: isSpanish ? "Ir al Sitio en Inglés (English Site)" : "Go to Spanish Site (Sitio en Español)",
+  langOppositeHref: isSpanish ? "/en/" : "/es/",
+  rights: isSpanish ? `© ${currentYear} Analía Camarda. Todos los derechos reservados.` : `© ${currentYear} Analía Camarda. All rights reserved.`,
+}
+---
+<footer class="bg-background text-dark py-6 border-t border-primary/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
+      <div class="space-y-6">
+        <a href={isSpanish ? "/es" : "/"} class="inline-block transition-transform hover:scale-105" aria-label="Analía Camarda Home">
+          <Image src={logoImg} alt="Analía Camarda" class="w-64 h-auto object-contain scale-[1.2] origin-left" />
+        </a>
+        <p class="text-dark/80 font-medium">{dic.about}</p>
+      </div>
+      <div>
+        <h3 class="font-bold font-heading text-xl mb-6 text-primary">{dic.linksTitle}</h3>
+        <ul class="space-y-4">
+          <li><a href={dic.booksHref} class="text-dark/80 font-medium hover:text-cta transition-colors">{dic.books}</a></li>
+          <li><a href={dic.academiaHref} class="text-dark/80 font-medium hover:text-cta transition-colors">{dic.academia}</a></li>
+          <li><a href={dic.storyHref} class="text-dark/80 font-medium hover:text-cta transition-colors">{dic.story}</a></li>
+          <li><a href="https://wa.me/12393316702" target="_blank" class="text-dark/80 font-medium hover:text-cta transition-colors">{dic.contact}</a></li>
+        </ul>
+      </div>
+      <div class="space-y-10">
+        <div>
+          <h3 class="font-bold font-heading text-xl mb-6 text-primary">{dic.langTitle}</h3>
+          <ul class="space-y-4">
+            <li>
+              <a href={dic.langOppositeHref} class="text-dark/80 font-medium hover:text-cta transition-colors flex items-center gap-2">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                {dic.langMain}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold font-heading text-xl mb-6 text-primary">{dic.partnerTitle}</h3>
+          <a 
+            href="https://www.wicys.org/wicys-deaf-affiliate/" 
+            target="_blank" 
+            class="inline-block transition-transform hover:scale-105"
+            aria-label="WiCyS Deaf Affiliate"
+          >
+            <Image 
+              src={partnerLogo} 
+              alt="WiCyS Deaf Partner Logo" 
+              class="w-32 h-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-primary/10 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between text-sm font-medium text-dark/60">
+      <p>{dic.rights}</p>
+      <div class="mt-4 md:mt-0 space-x-4">
+        <a href="https://skool.com/deafdigitalpro" target="_blank" class="hover:text-cta">Skool Community</a>
+      </div>
+    </div>
+  </div>
+</footer>

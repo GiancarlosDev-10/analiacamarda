@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Thank You | Analía Camarda",
+  "description": "Thank you for your purchase. Your e-book is ready."
+});
+---
+
+<BaseLayout 
+  title="Everything is Ready! | Thank You | Analía Camarda" 
+  description="Thank you for your purchase. You will receive an email with your access shortly."
+  schema={schema}
+  lang="en"
+>
+  <main class="min-h-[80vh] flex items-center justify-center pt-12 pb-10 bg-background">
+    <div class="max-w-2xl w-full px-6 text-center space-y-10">
+      
+      <!-- Icon Success -->
+      <div class="relative inline-block">
+        <div class="absolute inset-0 bg-cta/20 blur-3xl rounded-full scale-150"></div>
+        <div class="relative w-24 h-24 bg-primary text-cta rounded-full flex items-center justify-center mx-auto shadow-2xl border border-cta/30">
+          <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-primary leading-tight">
+          Everything is Ready!
+        </h1>
+        <p class="text-xl font-outfit text-dark/70 max-w-lg mx-auto leading-relaxed">
+          Thank you for trusting my work. A confirmation email with your download link is being processed right now.
+        </p>
+      </div>
+
+      <div class="bg-card p-4 rounded-2xl border border-primary/10 shadow-sm space-y-6">
+        <p class="font-bold text-sm uppercase tracking-widest text-cta select-none">✦ What's next? ✦</p>
+        <div class="grid gap-4 text-left">
+          <div class="flex items-start gap-3">
+            <span class="w-6 h-6 bg-primary text-white text-xs flex items-center justify-center rounded-full shrink-0 mt-1">1</span>
+            <p class="font-outfit text-dark/80">Check your <b>Inbox</b> (and Spam folder, just in case).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt- flex flex-wrap justify-center gap-4">
+        <a href="/en/books" class="bg-primary text-card px-8 py-4 rounded-xl font-outfit shadow-xl transition-all hover:scale-105 active:scale-95">
+          View More Books
+        </a>
+        <a href="https://skool.com/deafdigitalpro" target="_blank" class="bg-transparent border border-primary/20 text-primary px-8 py-4 rounded-xl font-outfit hover:bg-primary/5 transition-all">
+          Join the Community
+        </a>
+      </div>
+
+      <p class="text-xs text-dark/40 font-medium italic pt-8">
+        Reference ID: #AC-{Math.floor(Math.random() * 100000)}
+      </p>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .noindex { display: none; }
+</style>
+
+<script>
+  // SEO: Tag these pages as noindex to prevent purchase confirmation showing in search
+  const meta = document.createElement('meta');
+  meta.name = "robots";
+  meta.content = "noindex, nofollow";
+  document.head.appendChild(meta);
+</script>

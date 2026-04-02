@@ -1,0 +1,38 @@
+backend:
+  name: github
+  repo: your-username/analia-camarda # EDIT THIS with your actual GitHub repo name
+  branch: main # or master
+  base_url: https://your-domain.vercel.app # Placeholder for Vercel deployment URL
+  auth_endpoint: api/auth 
+
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts (English)"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Category", name: "category", widget: "string", default: "General" }
+      - { label: "Related Book Slug", name: "relatedBookSlug", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "blog-es"
+    label: "Artículos del Blog (Español)"
+    folder: "src/content/blog-es"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Fecha de Publicación", name: "date", widget: "datetime" }
+      - { label: "Imagen Destacada", name: "image", widget: "image", required: false }
+      - { label: "Categoría", name: "category", widget: "string", default: "General" }
+      - { label: "Slug del Libro Relacionado", name: "relatedBookSlug", widget: "string", required: false }
+      - { label: "Contenido", name: "body", widget: "markdown" }

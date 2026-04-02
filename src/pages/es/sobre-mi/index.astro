@@ -1,0 +1,136 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import portraitImg from '../../../assets/images/mihistoria.png';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Analía Camarda",
+  "url": "https://www.analiacamarda.com",
+  "jobTitle": "Emprendedora Digital",
+  "alumniOf": "Ciberseguridad y Data Analytics",
+  "description": "Emprendedora digital sorda, Miss Deaf Argentina y experta en ingresos pasivos radicada en EE.UU.",
+  "sameAs": ["https://skool.com/deafdigitalpro"]
+});
+---
+
+<BaseLayout
+  title="Mi Historia | Analía Camarda"
+  description="Descubre el viaje de Analía Camarda: de Miss Deaf Argentina y graduada en Ciberseguridad a construir un negocio digital rentable de ingresos pasivos."
+  schema={schema}
+  lang="es"
+>
+
+  <!-- HERO HEADER -->
+  <section class="relative bg-background pt-16 pb-10 border-b border-primary/10 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
+      <p class="text-[14vw] font-heading font-black text-primary/5 tracking-widest whitespace-nowrap select-none">
+        MI HISTORIA
+      </p>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-4">
+      <div class="font-outfit flex justify-center items-center gap-2 text-cta text-sm tracking-widest uppercase">
+        <span>✦</span> Aprende de una Experta
+      </div>
+      <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-primary leading-tight">
+        ¡Hola, soy Analía!
+      </h1>
+      <p class="font-outfit text-xl text-dark/70 max-w-2xl mx-auto leading-relaxed">
+        Inmigrante, profesional técnica, reina de belleza y defensora de la comunidad sorda luchando por la inclusión financiera.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="bg-background py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- Portrait image -->
+      <div class="aspect-[16/9] w-full bg-card rounded-2xl border border-primary/20 shadow-2xl overflow-hidden">
+        <Image
+          src={portraitImg}
+          alt="Retrato de Analia Camarda"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <!-- Story sections -->
+      <div class="space-y-16">
+
+        <!-- Sección 1 -->
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+              <span>✦</span> Mi Viaje
+            </div>
+            <h2 class="text-3xl font-heading font-bold text-primary mb-6">Nací sorda, me construí imparable.</h2>
+          </div>
+          <div class="space-y-4 font-outfit text-lg text-dark/80 leading-relaxed text-justify">
+            <p>Nací sorda en Argentina. Durante mucho tiempo, los caminos tradicionales de educación y empleo parecían estar en mi contra. Sin embargo, mi pasión por la lógica y la resolución de problemas me llevó a graduarme en <strong class="text-primary font-bold">Ciberseguridad y Data Analytics</strong>.</p>
+            <p>Junto a mis logros académicos, tuve el honor de ser coronada <strong class="text-primary font-bold">Miss Deaf Argentina</strong> — una plataforma que me permitió generar conciencia sobre las capacidades y sueños de las personas sordas en toda Latinoamérica.</p>
+          </div>
+        </div>
+
+        <div class="border-t border-primary/10"></div>
+
+        <!-- Sección 2 -->
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+              <span>✦</span> La Realidad
+            </div>
+            <h2 class="text-3xl font-heading font-bold text-primary mb-6">El mundo corporativo no fue hecho para nosotras.</h2>
+          </div>
+          <div class="space-y-4 font-outfit text-lg text-dark/80 leading-relaxed text-justify">
+            <p>Al mudarme a los Estados Unidos como inmigrante, busqué el Sueño Americano. Pero a pesar de mi título especializado, choqué contra una pared: las empresas simplemente no tenían la infraestructura — ni la voluntad — para adaptar completamente a los profesionales sordos.</p>
+            <p>Reuniones sin subtítulos, falta de intérpretes de ASL, estigmas implícitos. Escalar ese escalón era agotador y solitario.</p>
+          </div>
+        </div>
+
+        <div class="border-t border-primary/10"></div>
+
+        <!-- Sección 3 -->
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+              <span>✦</span> El Punto de Quiebre
+            </div>
+            <h2 class="text-3xl font-heading font-bold text-primary mb-6">Construí mi propio ecosistema.</h2>
+          </div>
+          <div class="space-y-4 font-outfit text-lg text-dark/80 leading-relaxed text-justify">
+            <p>Me di cuenta de que no podía esperar a que el mundo cambiara. Tenía que construir el mío propio. Descubrí el poder de los <strong class="text-primary font-bold">productos digitales y los Ingresos Pasivos</strong>.</p>
+            <p>Aprovechando mis habilidades tecnológicas, empecé a crear blogs, e-books y sistemas automatizados que trabajan 24/7 — sin llamadas sin subtítulos. <strong class="text-primary font-bold">Autonomía total y silenciosa.</strong></p>
+          </div>
+        </div>
+
+        <div class="border-t border-primary/10"></div>
+
+        <!-- Sección 4 -->
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+              <span>✦</span> Mi Misión
+            </div>
+            <h2 class="text-3xl font-heading font-bold text-primary mb-6">Ahora, mi misión sos vos.</h2>
+          </div>
+          <div class="space-y-4 font-outfit text-lg text-dark/80 leading-relaxed text-justify">
+            <p>Los ingresos pasivos cambiaron mi vida. Ahora quiero transmitirte esas herramientas. A través de la <em class="text-cta font-bold not-italic">Deaf Digital Pro Academy</em> y mi biblioteca de e-books, equipo a las comunidades sorda e hispana con los mismos sistemas que uso yo para prosperar.</p>
+            <p class="text-primary font-bold">Porque tu voz no necesita ser escuchada para construir una vida tremenda.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="pt-8 border-t border-primary/20 text-center space-y-6">
+        <h3 class="text-3xl font-heading font-bold text-primary">Empecemos a construir tu libertad</h3>
+        <a href="/es/libros" class="inline-block bg-cta hover:bg-dark text-white px-10 py-4 rounded-full font-outfit transition-all shadow-lg hover:shadow-xl text-md">
+          Explorar Mis Libros
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

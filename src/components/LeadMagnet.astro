@@ -1,0 +1,42 @@
+---
+export interface Props {
+  lang: 'en' | 'es';
+}
+const { lang } = Astro.props;
+---
+
+<!-- LEAD MAGNET / FOOTER PRE-CTA -->
+<section id="newsletter" class="bg-background text-primary py-24 border-y border-primary/20">
+  <div class="max-w-3xl mx-auto px-4 text-center space-y-8">
+    <h2 class="text-5xl font-heading font-bold text-primary">
+      {lang === 'en'
+        ? 'Free Guide: 5 Passive Income Streams You Can Start Today'
+        : 'Guía Gratis: 5 Fuentes de Ingresos Pasivos que Podés Iniciar Hoy'}
+    </h2>
+    <p class="font-outfit text-2xl text-dark/80 leading-relaxed">
+      {lang === 'en'
+        ? 'Enter your email to instantly receive a PDF with my personal blueprint for designing an independent life.'
+        : 'Ingresá tu email y recibí al instante un PDF con mi blueprint personal para diseñar una vida independiente.'}
+    </p>
+
+    <!-- MailerLite Form Placeholder -->
+    <div class="bg-card p-2 rounded-xl max-w-lg mx-auto flex shadow-xl border border-primary/20 focus-within:ring-4 focus-within:ring-primary/20">
+      <form class="flex w-full" onsubmit="event.preventDefault(); alert('MailerLite integration coming soon!');">
+        <label for={lang === 'en' ? 'email-en' : 'email-es'} class="sr-only">
+          {lang === 'en' ? 'Email address' : 'Correo electrónico'}
+        </label>
+        <input
+          type="email"
+          id={lang === 'en' ? 'email-en' : 'email-es'}
+          aria-label={lang === 'en' ? 'Your email address' : 'Tu correo electrónico'}
+          placeholder={lang === 'en' ? 'Email access...' : 'Tu correo...'}
+          class="w-full px-4 rounded-l-lg bg-transparent text-dark font-medium outline-none"
+          required
+        />
+        <button type="submit" class="bg-primary hover:bg-dark text-white px-6 py-4 rounded-lg font-bold transition-colors whitespace-nowrap">
+          {lang === 'en' ? 'Get PDF' : 'Obtener PDF'}
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

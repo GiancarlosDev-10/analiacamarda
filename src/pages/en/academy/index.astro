@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Deaf Digital Pro Academy",
+  "description": "An interactive Skool community designed to teach passive income generation through dedicated blueprints, and weekly mentoring.",
+  "provider": {
+    "@type": "Person",
+    "name": "Analía Camarda",
+    "url": "https://www.analiacamarda.com"
+  }
+});
+---
+
+<BaseLayout 
+  title="Digital Academy | Analía Camarda" 
+  description="Join the Deaf Digital Pro Academy on Skool. Access free resources, a powerful community, or upgrade to Premium for $9/month."
+  schema={schema}
+  lang="en"
+>
+  <!-- HERO HEADER -->
+  <section class="relative bg-background pt-16 pb-10 border-b border-primary/10 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
+      <p class="text-[18vw] font-heading font-black text-primary/5 tracking-widest whitespace-nowrap select-none">
+        SKOOL
+      </p>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-4">
+      <div class="font-outfit flex justify-center items-center gap-2 text-cta text-sm tracking-widest uppercase">
+        <span>✦</span> The Community
+      </div>
+      <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-primary leading-tight">
+        Deaf Digital Pro Academy
+      </h1>
+      <p class="font-outfit text-xl text-dark/70 max-w-2xl mx-auto leading-relaxed">
+        The central hub where entrepreneurs come together to build automated financial independence.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRICING SECTION -->
+  <section class="bg-background py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 space-y-4">
+        <h2 class="text-5xl font-heading font-bold text-primary">Choose Your Path</h2>
+        <p class="font-outfit text-xl text-dark/70 max-w-xl mx-auto">Start for free or unlock the full mentorship experience to scale your business.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto items-stretch">
+        
+        <!-- FREE TIER -->
+        <div class="group bg-card rounded-2xl border border-primary/15 p-10 flex flex-col h-full shadow-md hover:shadow-2xl transition-all duration-500 hover:bg-primary">
+          <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+            <span>✦</span> Basic Access
+          </div>
+          <div class="mb-6">
+            <div class="text-5xl font-heading font-extrabold text-primary group-hover:text-white transition-colors">Free</div>
+            <div class="font-outfit text-dark/50 text-sm italic mt-1 group-hover:text-white/50 transition-colors">Forever access</div>
+          </div>
+          <p class="font-outfit text-dark/80 text-lg leading-relaxed mb-8 h-20 group-hover:text-white/80 transition-colors">Perfect for beginners looking to understand the fundamentals of passive income.</p>
+          
+          <ul class="space-y-4 mb-10 flex-grow font-outfit text-dark/90 group-hover:text-white transition-colors">
+            <li class="flex items-start gap-3">
+              <span class="text-cta mt-1 text-sm font-bold">✦</span>
+              <span>General Community Access</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cta mt-1 text-sm font-bold">✦</span>
+              <span>Beginner Digital Asset Guides</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cta mt-1 text-sm font-bold">✦</span>
+              <span>Peer-to-Peer Networking</span>
+            </li>
+          </ul>
+
+          <a href="https://skool.com/deafdigitalpro" target="_blank" class="w-full bg-transparent text-primary border-2 border-primary text-center px-6 py-4 rounded-full font-bold font-outfit transition-all group-hover:bg-cta group-hover:border-cta group-hover:text-white">
+            Join for Free
+          </a>
+        </div>
+
+        <!-- PREMIUM TIER -->
+        <div class="group bg-card rounded-2xl border border-primary/15 p-10 flex flex-col h-full shadow-md hover:shadow-2xl relative transition-all duration-500 hover:bg-primary">
+          <div class="absolute top-0 right-10 transform -translate-y-1/2 bg-cta text-white px-5 py-1.5 rounded-full text-xs font-bold font-outfit uppercase tracking-widest shadow-lg">
+            Recommended
+          </div>
+          <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+            <span>✦</span> Premium Experience
+          </div>
+          <div class="mb-6">
+            <div class="text-5xl font-heading font-extrabold text-primary group-hover:text-white transition-colors">$9</div>
+            <div class="font-outfit text-dark/50 text-sm italic mt-1 group-hover:text-white/50 transition-colors">Per month</div>
+          </div>
+          <p class="font-outfit text-dark/80 text-lg leading-relaxed mb-8 h-20 group-hover:text-white/80 transition-colors">For action-takers ready to scale their businesses with direct guidance and advanced tools.</p>
+          
+          <ul class="space-y-4 mb-10 flex-grow font-outfit text-dark/90 group-hover:text-white transition-colors">
+            <li class="flex items-start gap-3">
+              <span class="text-cta mt-1 text-sm font-bold">✦</span>
+              <span>Live Group Classes with Ana</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cta mt-1 text-sm font-bold">✦</span>
+              <span>Direct 1-on-1 Mentorship Q&A</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cta mt-1 text-sm font-bold">✦</span>
+              <span>Full Advanced Blueprint Vault</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cta mt-1 text-sm font-bold">✦</span>
+              <span>SEO & Automation Hacks</span>
+            </li>
+          </ul>
+
+          <a href="https://skool.com/deafdigitalpro" target="_blank" class="w-full bg-transparent text-primary border-2 border-primary text-center px-6 py-4 rounded-full font-bold font-outfit transition-all group-hover:bg-cta group-hover:border-cta group-hover:text-white">
+            Unlock Premium Now
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STILL HAVE QUESTIONS -->
+  <section class="bg-card border-t border-primary/20 py-24 text-center">
+    <div class="max-w-3xl mx-auto px-4 space-y-8">
+      <h2 class="text-4xl font-heading font-bold text-primary">Still have questions?</h2>
+      <p class="font-outfit text-xl text-dark/70 leading-relaxed">
+        Skool is a community learning platform that unites courses, discussions, and calendars in one single, accessible place. It's incredibly easy to use.
+      </p>
+      <div class="pt-4">
+        <a href="https://wa.me/12393316702" target="_blank" class="text-cta hover:text-dark font-bold font-outfit text-lg flex items-center justify-center gap-2 transition-colors">
+          Contact Me Directly ↗
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

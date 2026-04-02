@@ -1,0 +1,33 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  schema?: string;
+  canonical?: string;
+  lang?: "en" | "es";
+}
+
+const { 
+  title, 
+  description, 
+  image = "/images/og-default.jpg", 
+  schema, 
+  canonical = Astro.url.href,
+  lang = "es"
+} = Astro.props;
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:type" content="website" />
+
+<!-- Accesibilidad y Localización -->
+<link rel="alternate" href={canonical} hreflang={lang} />
+
+{schema && <script type="application/ld+json" is:inline set:html={schema} />}

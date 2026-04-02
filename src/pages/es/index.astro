@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import AboutDigital from '../../components/AboutDigital.astro';
+import BooksSection from '../../components/BooksSection.astro';
+import MentorSection from '../../components/MentorSection.astro';
+import AcademySection from '../../components/AcademySection.astro';
+import LeadMagnet from '../../components/LeadMagnet.astro';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.analiacamarda.com/#organization",
+      "name": "Analía Camarda",
+      "url": "https://www.analiacamarda.com/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.analiacamarda.com/#person",
+      "name": "Analía Camarda",
+      "jobTitle": "Emprendedora y Creadora de Contenido",
+      "url": "https://www.analiacamarda.com/"
+    }
+  ]
+});
+---
+
+<BaseLayout
+  title="Analía Camarda | Deaf Digital Pro - Libros de Ingresos Pasivos y Academia"
+  description="Aprende a generar ingresos pasivos con Analía Camarda, una emprendedora digital sorda. Explora sus e-books, clases grupales y la Academia Deaf Digital Pro."
+  schema={schema}
+  lang="es"
+>
+  <!-- 1. HERO -->
+  <Hero lang="es" />
+
+  <!-- 2. MENTORA / HISTORIA -->
+  <MentorSection lang="es" />
+
+  <!-- 3. LIBROS -->
+  <BooksSection lang="es" />
+
+  <!-- 4. POR QUÉ NEGOCIO DIGITAL (AboutDigital) -->
+  <AboutDigital lang="es" />
+
+  <!-- 5. MÓDULOS DE LA ACADEMIA -->
+  <AcademySection lang="es" />
+
+  <!-- 6. LEAD MAGNET -->
+  <LeadMagnet lang="es" />
+
+</BaseLayout>

@@ -1,0 +1,139 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import portraitImg from '../../../assets/images/mihistoria.png';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Analía Camarda",
+  "url": "https://www.analiacamarda.com",
+  "jobTitle": "Digital Entrepreneur",
+  "alumniOf": "Cybersecurity & Data Analytics",
+  "description": "Deaf digital entrepreneur, Miss Deaf Argentina, and passive income expert based in the US.",
+  "sameAs": ["https://skool.com/deafdigitalpro"]
+});
+---
+
+<BaseLayout
+  title="My Story | Analía Camarda"
+  description="Discover the journey of Analía Camarda: from Miss Deaf Argentina and Cybersecurity grad to building a profitable passive income digital business."
+  schema={schema}
+  lang="en"
+>
+
+  <!-- HERO HEADER -->
+  <section class="relative bg-background pt-16 pb-10 border-b border-primary/10 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
+      <p class="text-[14vw] font-heading font-black text-primary/5 tracking-widest whitespace-nowrap select-none">
+        MY STORY
+      </p>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-4">
+      <div class="font-outfit flex justify-center items-center gap-2 text-cta text-md tracking-widest uppercase">
+        <span>✦</span> Learn from an Expert
+      </div>
+      <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-primary leading-tight">
+        Hello, I'm Analía!
+      </h1>
+      <p class="font-outfit text-xl text-dark/70 max-w-2xl mx-auto leading-relaxed">
+        An immigrant, a tech graduate, a beauty queen, and an advocate for the deaf community fighting for financial inclusion.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="bg-background py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- Portrait image -->
+      <div class="aspect-[16/9] w-full bg-card rounded-2xl border border-primary/20 shadow-2xl overflow-hidden">
+        <Image
+          src={portraitImg}
+          alt="Analia Camarda"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <!-- Story sections -->
+      <div class="space-y-16">
+
+        <!-- Section 1 -->
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+              <span>✦</span> My Journey
+            </div>
+            <h2 class="text-3xl font-heading font-bold text-primary mb-6">Born deaf, built unstoppable.</h2>
+          </div>
+          <div class="space-y-4 font-outfit text-lg text-dark/80 leading-relaxed text-justify">
+            <p>I was born deaf in Argentina. For a long time, traditional education and employment paths felt stacked against me. Yet, my passion for logic and problem-solving led me to graduate in <strong class="text-primary font-bold">Cybersecurity and Data Analytics</strong>.</p>
+            <p>Alongside my academic achievements, I had the huge honor of being crowned <strong class="text-primary font-bold">Miss Deaf Argentina</strong> — a platform that let me raise awareness about the capabilities and dreams of deaf individuals across Latin America.</p>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-primary/10"></div>
+
+        <!-- Section 2 -->
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+              <span>✦</span> The Reality
+            </div>
+            <h2 class="text-3xl font-heading font-bold text-primary mb-6">The corporate world wasn't built for us.</h2>
+          </div>
+          <div class="space-y-4 font-outfit text-lg text-dark/80 leading-relaxed text-justify">
+            <p>After moving to the United States as an immigrant, I chased the American Dream. But despite my specialized degree, I hit a wall: corporate jobs simply didn't have the infrastructure — or the willingness — to fully accommodate deaf professionals.</p>
+            <p>Endless meetings without captions, no ASL interpreters, implicit biases. Climbing that ladder was exhausting and lonely.</p>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-primary/10"></div>
+
+        <!-- Section 3 -->
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+              <span>✦</span> The Turning Point
+            </div>
+            <h2 class="text-3xl font-heading font-bold text-primary mb-6">I built my own ecosystem.</h2>
+          </div>
+          <div class="space-y-4 font-outfit text-lg text-dark/80 leading-relaxed text-justify">
+            <p>I realized I couldn't wait for the world to change. I had to build my own. I discovered the power of <strong class="text-primary font-bold">digital products and Passive Income</strong>.</p>
+            <p>By leveraging my tech skills, I started creating blogs, e-books, and automated systems that work 24/7 — no uncaptioned phone calls required. <strong class="text-primary font-bold">Complete, silent autonomy.</strong></p>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-primary/10"></div>
+
+        <!-- Section 4 -->
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+              <span>✦</span> My Mission
+            </div>
+            <h2 class="text-3xl font-heading font-bold text-primary mb-6">Now, my mission is you.</h2>
+          </div>
+          <div class="space-y-4 font-outfit text-lg text-dark/80 leading-relaxed text-justify">
+            <p>Passive income changed my life. Now, I want to pass these blueprints on to you. Through the <em class="text-cta font-bold not-italic">Deaf Digital Pro Academy</em> and my e-book library, I equip the deaf and Hispanic communities with the exact systems I use to thrive.</p>
+            <p class="text-primary font-bold">Because your voice doesn't need to be heard to build a tremendous life.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="pt-8 border-t border-primary/20 text-center space-y-6">
+        <h3 class="text-3xl font-heading font-bold text-primary">Let's build your freedom</h3>
+        <a href="/en/books" class="inline-block bg-cta hover:bg-dark text-white px-10 py-4 rounded-full font-outfit transition-all shadow-lg hover:shadow-xl text-md">
+          Explore My Books
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

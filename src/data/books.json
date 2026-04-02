@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "silent-success", "lang": "en", "title": "Silent Success", "price": 9.90, "currency": "USD", "coverImage": "/images/silentsuccess.png",
+    "description": "Traditional income opportunities weren’t designed for us. This guide helps you navigate career obstacles and master the strategies needed for financial success, specifically tailored for the Deaf and Hard of Hearing community",
+    "forWhom": "Deaf & Hard of Hearing Professionals", "whatYouLearn": ["Turn obstacles into advantages", "Deaf-centric career navigation", "Digital empire blueprint"],
+    "faq": [{"q": "Need experience?", "a": "No."}], "testimonial": {"name": "A", "country": "US", "text": "Great!"},
+    "paypalLink": "#", "mercadoPagoLink": "#", "amazonLink": "#", "relatedBooks": ["ultimate-passive-income-blueprint"]
+  },
+  {
+    "slug": "ultimate-passive-income-blueprint", "lang": "en", "title": "The Ultimate Passive Income Blueprint", "price": 9.90, "currency": "USD", "coverImage": "/images/incomepassive.png",
+    "description": "Communication barriers won’t hold you back anymore. This practical roadmap shows you how to turn your visual and creative skills into a digital business—no interpreters or phone calls required. It’s the guide Ana wish she had years ago",
+    "forWhom": "Creative Deaf Beginners", "whatYouLearn": ["Monetizing creative skills", "No-call business model" , "Step-by-step roadmap"],
+    "faq": [{"q": "Need experience?", "a": "No."}], "testimonial": {"name": "B", "country": "UK", "text": "Awesome."},
+    "paypalLink": "#", "mercadoPagoLink": "#", "amazonLink": "#", "relatedBooks": ["silent-success"]
+  },
+  {
+    "slug": "exito-silencioso", "lang": "es", "title": "Éxito Silencioso", "price": 9.90, "currency": "USD", "coverImage": "/images/exitosilencioso.png",
+    "description": "Las oportunidades de ingresos tradicionales no fueron diseñadas para nosotros. Esta guía te ayuda a navegar los obstáculos profesionales y dominar las estrategias necesarias para el éxito financiero, diseñadas específicamente para la comunidad sorda e hipoacúsica.",
+    "forWhom": "Profesionales Sordos e Hipoacúsicos", "whatYouLearn": ["Convierte obstáculos en ventajas", "Navegación de carrera para sordos", "Blueprint de imperio digital"],
+    "faq": [{"q": "¿Experiencia?", "a": "No."}], "testimonial": {"name": "D", "country": "AR", "text": "Excelente."},
+    "paypalLink": "#", "mercadoPagoLink": "#", "amazonLink": "#", "relatedBooks": ["descubre-ingresos-pasivos"]
+  },
+  {
+    "slug": "descubre-ingresos-pasivos", "lang": "es", "title": "Descubre la Última Guía de Ingresos Pasivos", "price": 9.90, "currency": "USD", "coverImage": "/images/ingresospasivos.png",
+    "description": "Las barreras de comunicación ya no te detendrán. Esta hoja de ruta práctica te enseña a convertir tus habilidades visuales y creativas en un negocio digital, sin necesidad de intérpretes ni llamadas telefónicas. Es la guía que Ana desearía haber tenido hace años.",
+    "forWhom": "Principiantes Sordos Creativos", "whatYouLearn": ["Monetización de habilidades creativas", "Modelo de negocio sin llamadas", "Hoja de ruta paso a paso"],
+    "faq": [{"q": "¿Experiencia?", "a": "No."}], "testimonial": {"name": "E", "country": "MX", "text": "Muy bueno."},
+    "paypalLink": "#", "mercadoPagoLink": "#", "amazonLink": "#", "relatedBooks": ["exito-silencioso"]
+  }
+]
