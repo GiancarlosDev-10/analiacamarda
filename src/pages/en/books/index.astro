@@ -1,8 +1,22 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import booksData from '../../../data/books.json';
+import { resolveImage } from '../../../utils/images';
 
-const englishBooks = booksData.filter(b => b.lang === 'en');
+const englishBooks = await Promise.all(
+  booksData
+    .filter(b => b.lang === 'en')
+    .map(async (book) => {
+      try {
+        const imageAsset = await resolveImage(book.coverImage);
+        return { ...book, imageAsset };
+      } catch (e) {
+        console.error(e);
+        return { ...book, imageAsset: null };
+      }
+    })
+);
 ---
 
 <BaseLayout 
@@ -39,7 +53,13 @@ const englishBooks = booksData.filter(b => b.lang === 'en');
               
               <div class="w-full relative z-10">
                 <div class="w-full aspect-[3/4] mb-10 bg-card border border-primary/5 rounded-2xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-700">
-                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-full h-full object-cover" />
+                  {book.imageAsset && (
+                    <Image
+                      src={book.imageAsset}
+                      alt={`Cover of ${book.title}`}
+                      class="w-full h-full object-cover"
+                    />
+                  )}
                 </div>
                 <div class="space-y-4">
                   <div class="flex items-center gap-2 text-cta font-outfit  text-md tracking-widest uppercase opacity-70">
