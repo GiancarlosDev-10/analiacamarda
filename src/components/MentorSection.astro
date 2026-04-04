@@ -15,7 +15,7 @@ const { lang } = Astro.props;
     <p class="text-[12vw] font-heading font-black leading-none opacity-5 text-dark tracking-widest whitespace-nowrap">
       ANALÍA
     </p>
-    <p class="text-[12vw] font-heading font-black leading-none opacity-5 text-dark tracking-widest whitespace-nowrap -mt-10">
+    <p class="text-[12vw] font-heading font-black leading-none opacity-5 text-dark tracking-widest whitespace-nowrap -mt-4 md:-mt-6">
       CAMARDA
     </p>
   </div>
@@ -55,10 +55,10 @@ const { lang } = Astro.props;
       <div>
         {lang === 'en' ? (
           <>
-            <p class="font-outfit text-lg  text-dark/80 text-justify mb-4 leading-relaxed">
+            <p class="font-outfit text-base md:text-lg text-dark/80 text-justify mb-4 leading-relaxed">
               Analía is one of the most respected voices in the accessible digital entrepreneurship space in the USA and Latam. With years of experience as a <strong class="text-primary font-bold">Cybersecurity & Data Analytics graduate</strong>, Ana built a solid foundation marked by tech innovation and a keen eye for business that <strong class="text-primary font-bold">is already transforming</strong> the lives of thousands.
             </p>
-            <p class="font-outfit text-lg text-dark/80 text-justify leading-relaxed">
+            <p class="font-outfit text-base md:text-lg text-dark/80 text-justify leading-relaxed">
               She is the founder of the Deaf Digital Pro Academy, revolutionizing the market with high-quality educational materials for those seeking financial independence. Ana goes beyond just teaching; she is a true mentor committed to <strong class="text-primary font-bold">elevating the profession</strong>.
             </p>
           </>
@@ -77,19 +77,19 @@ const { lang } = Astro.props;
       <div class="pt-10 md:pt-0">
         {lang === 'en' ? (
           <>
-            <p class="font-outfit text-lg text-dark/80 text-justify mb-6 leading-relaxed">
+            <p class="font-outfit text-base md:text-lg text-dark/80 text-justify mb-6 leading-relaxed">
               Recognized by the deaf community, Ana shares stages with great names worldwide. Her authority comes not just from practice, but from her <strong class="text-primary font-bold">capacity to translate complex tech jargon</strong> into practical, applicable knowledge for everyone.
             </p>
-            <p class="font-outfit text-lg text-dark/80 text-justify mb-6 leading-relaxed">
+            <p class="font-outfit text-base md:text-lg text-dark/80 text-justify mb-6 leading-relaxed">
               Learning with Ana is having direct access to years of research in a market that never stops growing. She understands how to connect digital tools with real-world income.
             </p>
-            <p class="font-outfit text-lg text-primary  font-bold text-justify leading-relaxed">
+            <p class="font-outfit text-base md:text-lg text-primary  font-bold text-justify leading-relaxed">
               With her, you will have the chance to learn passive income techniques clearly, safely, and practically, guided by someone who lives and breathes digital freedom.
             </p>
           </>
         ) : (
           <>
-            <p class="font-outfit text-lg text-dark/80 text-justify mb-6 leading-relaxed">
+            <p class="font-outfit text-base md:text-lg text-dark/80 text-justify mb-6 leading-relaxed">
               Reconocida por la comunidad sorda, la autoridad de Ana no sólo proviene de la práctica, sino de su <strong class="text-primary font-bold">capacidad para traducir la jerga tecnológica compleja</strong> en conocimientos prácticos aplicables para todo el mundo.
             </p>
             <p class="font-outfit text-lg text-primary font-bold text-justify leading-relaxed">
@@ -104,7 +104,7 @@ const { lang } = Astro.props;
       <a
         href={lang === 'en' ? '/en/aboutme' : '/es/sobre-mi'}
         onclick="if(window.trackEvent)window.trackEvent('click_full_story','navigation','mentor_section',1)"
-        class="font-outfit text-3xl text-cta hover:text-dark underline underline-offset-8 transition-colors"
+        class="font-outfit text-xl md:text-2xl text-cta hover:text-dark underline underline-offset-8 transition-colors"
       >
         {lang === 'en' ? 'Read my Full Story' : 'Lee mi Historia Completa'}
       </a>

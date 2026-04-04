@@ -10,7 +10,7 @@ const { lang } = Astro.props;
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid md:grid-cols-12 gap-16">
       <!-- Left CTA -->
-      <div class="md:col-span-5 flex flex-col items-start sticky top-32 h-fit">
+      <div class="md:col-span-5 flex flex-col items-start">
         <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
           <span>✦</span>
           {lang === 'en' ? 'Real Practical Value' : 'Valor Práctico Real'}
@@ -18,7 +18,7 @@ const { lang } = Astro.props;
         <h2 class="text-4xl md:text-5xl font-heading font-bold leading-tight mb-8 text-primary">
           {lang === 'en' ? 'What do you find in the Academy?' : '¿Qué encontrás en la Academia?'}
         </h2>
-        <p class="font-outfit text-justify text-dark/80 text-lg leading-relaxed mb-6">
+        <p class="font-outfit text-justify text-dark/80 text-base md:text-lg leading-relaxed mb-6">
           {lang === 'en'
             ? <>Our Skool community is totally online and interactive, featuring <strong class="text-primary font-bold">complete blueprints</strong>, direct mentorship, and a huge library of digital assets.</>
             : <>Nuestra comunidad en Skool es totalmente online e interactiva, con <strong class="text-primary font-bold">blueprints completos</strong>, mentoría directa y una enorme biblioteca de recursos digitales.</>
@@ -69,7 +69,7 @@ const { lang } = Astro.props;
               <h3 class="text-2xl font-bold mb-2 text-primary">
                 {lang === 'en' ? item.en.title : item.es.title}
               </h3>
-              <p class="font-outfit text-dark/70 text-lg text-justify group-hover:text-dark transition-colors">
+              <p class="font-outfit text-dark/70 text-base md:text-lg text-justify group-hover:text-dark transition-colors">
                 {lang === 'en' ? item.en.desc : item.es.desc}
               </p>
             </div>

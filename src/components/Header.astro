@@ -88,7 +88,7 @@ const translations = {
     <div class="flex justify-between items-center h-24">
       <div class="flex-shrink-0 flex items-center">
         <a href={homeHref} class="inline-block transition-transform hover:scale-103" aria-label="Analía Camarda Home">
-          <Image src={logoImg} alt="Analía Camarda" class="h-16 md:h-20 lg:h-23 w-auto object-contain scale-[1.1] transform origin-left" loading="eager" />
+          <Image src={logoImg} alt="Analía Camarda" class="h-10 sm:h-12 md:h-20 lg:h-23 w-auto object-contain md:scale-[1.1] transform origin-left" loading="eager" />
         </a>
       </div>
       <nav class="font-outfit hidden lg:flex space-x-4 xl:space-x-8 items-center">
@@ -98,9 +98,9 @@ const translations = {
         <a href={academiaHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_academy','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.academy}</a>
         <a href={galleryHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_gallery','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.gallery}</a>
       </nav>
-      <div class="font-outfit flex items-center gap-4 md:gap-8">
+      <div class="font-outfit flex items-center gap-2 sm:gap-4 md:gap-8">
         <!-- Social Icons - Always visible but smaller on mobile -->
-        <div class="flex items-center gap-3 md:gap-6">
+        <div class="flex items-center gap-2 sm:gap-3 md:gap-6">
           <!-- LinkedIn -->
           <a href="https://linkedin.com/in/yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','header',1)" class="transition-transform hover:scale-110" aria-label="LinkedIn">
             <Image src={linkedinIcon} alt="LinkedIn" class="w-6 h-6 md:w-8 md:h-8" />

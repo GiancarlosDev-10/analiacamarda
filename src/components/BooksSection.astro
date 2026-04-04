@@ -25,7 +25,7 @@ const books = await Promise.all(
 );
 ---
 
-<section id="books" class="bg-background text-primary py-20 relative overflow-hidden">
+<section id="books" class="bg-background text-primary py-28 relative overflow-hidden">
   <!-- Big background text -->
   <div class="absolute top-0 w-full text-center mt-6 pointer-events-none z-0">
     <p class="text-[12vw] font-heading font-black text-primary/5 tracking-widest whitespace-nowrap uppercase select-none">
@@ -50,47 +50,45 @@ const books = await Promise.all(
         const isEven = i % 2 === 0;
         const detailHref = lang === 'en' ? `/en/books/${book.slug}` : `/es/libros/${book.slug}`;
         return (
-          <div class={`group flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-0 rounded-2xl border border-primary/15 overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 bg-card`}>
+          <div class={`group flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-0 rounded-2xl border border-primary/15 overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 bg-card min-h-[400px]`}>
 
             <!-- Cover image -->
-            <div class="w-full md:w-2/5 overflow-hidden relative">
+            <div class="w-full lg:w-1/2 overflow-hidden relative h-64 sm:h-72 lg:h-auto bg-primary/5 flex items-center justify-center p-4">
               {book.imageAsset && (
                 <Image
                   src={book.imageAsset}
                   alt={book.title}
-                  class="w-full h-64 md:h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  class="w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-700 drop-shadow-2xl"
                 />
               )}
               <!-- Price badge -->
-              <div class="absolute top-4 left-4 bg-primary text-card px-4 py-1.5 rounded-full font-outfit text-lg shadow-lg">
+              <div class="absolute top-4 left-4 bg-primary text-card px-4 py-1 rounded-full font-outfit text-sm lg:text-base md:text-lg font-bold shadow-lg">
                 ${book.price.toFixed(2)}
               </div>
             </div>
 
             <!-- Content -->
-            <div class="w-full md:w-3/5 p-8 md:p-10 flex flex-col justify-between">
+            <div class="w-full lg:w-1/2 p-6 sm:p-8 lg:p-12 flex flex-col justify-center">
               <div>
                 <!-- For whom tag -->
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-cta text-xs font-outfit tracking-widest uppercase mb-4">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-cta text-xs font-outfit tracking-widest uppercase mb-4">
                   <span>✦</span> {book.forWhom}
                 </div>
 
                 <!-- Title -->
-                <h3 class="text-2xl md:text-3xl font-heading font-bold text-primary mb-4 leading-tight">
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-primary mb-4 leading-tight">
                   {book.title}
                 </h3>
 
-                <!-- Description -->
-                <p class="font-outfit text-dark/75 text-lg text-justify leading-relaxed mb-6">
+                <p class="font-outfit text-dark/75 text-base lg:text-base md:text-lg text-justify leading-relaxed mb-6">
                   {book.description}
                 </p>
 
-                <!-- What you learn -->
                 {book.whatYouLearn && book.whatYouLearn.length > 0 && (
-                  <ul class="space-y-2 mb-6">
+                  <ul class="space-y-2 mb-8">
                     {book.whatYouLearn.map(item => (
-                      <li class="flex items-center gap-2 font-outfit text-lg text-dark/80">
-                        <span class="text-cta font-bold">✦</span> {item}
+                      <li class="flex items-start gap-3 font-outfit text-sm lg:text-base text-dark/80">
+                        <span class="text-cta font-bold mt-1">✦</span> {item}
                       </li>
                     ))}
                   </ul>
@@ -98,16 +96,16 @@ const books = await Promise.all(
               </div>
 
               <!-- CTA -->
-              <div class="flex items-center gap-4 mt-4 pt-6 border-t border-primary/10">
+              <div class="flex items-center gap-4 mt-auto pt-6 border-t border-primary/10">
                 <a
                   href={detailHref}
                   onclick={`if(window.trackEvent)window.trackEvent('click_view_book','book_details','${book.slug}',1)`}
-                  class="bg-primary hover:bg-dark text-card px-6 py-3 rounded-lg font-outfit transition-colors text-lg"
+                  class="bg-primary hover:bg-dark text-card px-6 py-3 lg:px-10 lg:py-4 rounded-xl font-outfit transition-all text-sm lg:text-base md:text-lg font-bold shadow-lg hover:-translate-y-1"
                 >
                   {lang === 'en' ? 'View Details →' : 'Ver Detalles →'}
                 </a>
-                <span class="font-outfit text-xs text-dark/50 uppercase tracking-widest">
-                  {lang === 'en' ? 'Digital Download' : 'Descarga Digital'}
+                <span class="font-outfit text-xs lg:text-sm text-dark/50 uppercase tracking-widest font-bold">
+                  {lang === 'en' ? 'Digital Edition' : 'Edición Digital'}
                 </span>
               </div>
             </div>
