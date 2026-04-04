@@ -64,38 +64,49 @@ const paypalIcon = await resolveImage('paypal.svg');
   lang="es"
 >
   <!-- Hero Libro -->
-  <section class="bg-background pt-16 pb-10 border-b border-primary/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-start">
-      <div class="relative w-full aspect-[3/4] max-w-sm mx-auto shadow-2xl rounded-2xl border border-primary/20 overflow-hidden">
+  <section class="bg-background pt-10 pb-6 border-b border-primary/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6 md:gap-12 items-start">
+      <div class="relative w-full aspect-[3/4] max-w-[200px] md:max-w-[400px] mx-auto shadow-2xl rounded-2xl border border-primary/20 overflow-hidden">
         {imageAsset && (
           <Image src={imageAsset} alt={`Portada de ${book.title}`} class="w-full h-full object-cover" />
         )}
       </div>
 
-      <div class="space-y-8 mt-10 md:mt-0">
-        <div class="flex items-center gap-2 text-cta font-outfit text-sm tracking-widest uppercase">
+      <div class="space-y-4 mt-10 md:mt-0">
+        <div class="font-outfit flex items-center gap-2 text-cta text-lg tracking-widest uppercase">
           <span>✦</span> E-Book Premium
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-primary leading-tight">
+        <h1 class="text-2xl md:text-5xl lg:text-6xl font-heading font-extrabold text-primary leading-tight">
           {book.title}
         </h1>
-        <div class="text-3xl font-outfit text-dark/90">
+        <div class="font-outfit text-xl md:text-3xl text-dark/90">
           ${book.price.toFixed(2)} {book.currency}
         </div>
         
-        <p class="text-lg text-dark font-outfit leading-relaxed">
+        <p class="font-outfit text-base md:text-lg text-justify leading-relaxed">
           {book.description}
         </p>
 
-        <div class="pt-0 flex flex-col gap-6">
+        <div class="pt-0 flex flex-col gap-4">
           <button 
             id="checkout-trigger"
             onclick={`if(window.trackEvent)window.trackEvent('click_complete_order','purchase','${book.slug}',${book.price})`}
-            class="font-outfit w-full bg-cta hover:bg-cta-hover text-white shadow-xl text-center px-8 py-5 rounded-lg transition-all flex items-center justify-center gap-3 transform active:scale-95 group"
+            class="font-outfit w-full bg-cta hover:bg-cta-hover text-white shadow-xl text-center px-6 py-3 rounded-lg transition-all flex items-center justify-center gap-3 transform active:scale-95 group"
           >
              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
              Completar mi Pedido
           </button>
+          
+          <!-- PayPal Direct Button -->
+          <a 
+            href={import.meta.env.PAYPAL_LINK || '#'} 
+            target="_blank"
+            onclick={`if(window.trackEvent)window.trackEvent('click_purchase_paypal','purchase','${book.slug}',${book.price})`}
+            class="w-full bg-[#ffc439] hover:bg-[#ffb700] py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:scale-[1.02] shadow-lg border-2 border-[#e6a823]"
+          >
+            <Image src={paypalIcon} alt="PayPal" class="h-6 w-auto" />
+            <span class="font-outfit font-bold text-[#003087] text-sm">Pagar con PayPal</span>
+          </a>
           
           <!-- Trust Bar -->
           <div class="flex flex-col items-center gap-3 opacity-60">
@@ -121,7 +132,7 @@ const paypalIcon = await resolveImage('paypal.svg');
   </section>
 
   <!-- Detalles -->
-  <section class="bg-card text-primary py-24 border-b border-primary/10">
+  <section class="bg-card text-primary py-10 md:py-16 border-b border-primary/10">
     <div class="max-w-4xl mx-auto px-4 grid md:grid-cols-2 gap-12">
        <div>
           <h2 class="text-2xl font-heading font-bold mb-6">¿Para quién es?</h2>
