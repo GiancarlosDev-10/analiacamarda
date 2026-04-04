@@ -103,6 +103,7 @@ const { lang } = Astro.props;
     <div class="mt-16">
       <a
         href={lang === 'en' ? '/en/aboutme' : '/es/sobre-mi'}
+        onclick="if(window.trackEvent)window.trackEvent('click_full_story','navigation','mentor_section',1)"
         class="font-outfit text-3xl text-cta hover:text-dark underline underline-offset-8 transition-colors"
       >
         {lang === 'en' ? 'Read my Full Story' : 'Lee mi Historia Completa'}

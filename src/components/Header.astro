@@ -79,7 +79,7 @@ const translations = {
   about: isSpanish ? 'Sobre mí' : 'About Me',
   books: isSpanish ? 'Libros' : 'Books',
   blog: isSpanish ? 'Blog' : 'Blog',
-  skool: 'Skool',
+  academy: isSpanish ? 'Academia' : 'Academy',
   gallery: isSpanish ? 'Galería' : 'Gallery',
 };
 ---
@@ -88,43 +88,143 @@ const translations = {
     <div class="flex justify-between items-center h-24">
       <div class="flex-shrink-0 flex items-center">
         <a href={homeHref} class="inline-block transition-transform hover:scale-103" aria-label="Analía Camarda Home">
-          <Image src={logoImg} alt="Analía Camarda" class="h-28 w-auto object-contain scale-[1.1] transform origin-left" loading="eager" />
+          <Image src={logoImg} alt="Analía Camarda" class="h-16 md:h-20 lg:h-23 w-auto object-contain scale-[1.1] transform origin-left" loading="eager" />
         </a>
       </div>
-      <nav class="font-outfit hidden md:flex space-x-8 items-center">
-        <a href={aboutHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_about','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.about}</a>
-        <a href={booksHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_books','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.books}</a>
-        <a href={blogHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_blog','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.blog}</a>
-        <a href={academiaHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_academy','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.skool}</a>
-        <a href={galleryHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_gallery','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-2xl capitalize">{translations.gallery}</a>
+      <nav class="font-outfit hidden lg:flex space-x-4 xl:space-x-8 items-center">
+        <a href={aboutHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_about','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.about}</a>
+        <a href={booksHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_books','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.books}</a>
+        <a href={blogHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_blog','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.blog}</a>
+        <a href={academiaHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_academy','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.academy}</a>
+        <a href={galleryHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_gallery','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.gallery}</a>
       </nav>
-      <div class="font-outfit hidden md:flex items-center gap-8">
-        <!-- Social Icons -->
-        <div class="flex items-center gap-6">
+      <div class="font-outfit flex items-center gap-4 md:gap-8">
+        <!-- Social Icons - Always visible but smaller on mobile -->
+        <div class="flex items-center gap-3 md:gap-6">
           <!-- LinkedIn -->
           <a href="https://linkedin.com/in/yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','header',1)" class="transition-transform hover:scale-110" aria-label="LinkedIn">
-            <Image src={linkedinIcon} alt="LinkedIn" class="w-8 h-8" />
+            <Image src={linkedinIcon} alt="LinkedIn" class="w-6 h-6 md:w-8 md:h-8" />
           </a>
           <!-- Instagram -->
           <a href="https://instagram.com/yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_instagram','social','header',1)" class="transition-transform hover:scale-110" aria-label="Instagram">
-            <Image src={instagramIcon} alt="Instagram" class="w-8 h-8" />
+            <Image src={instagramIcon} alt="Instagram" class="w-6 h-6 md:w-8 md:h-8" />
           </a>
           <!-- TikTok -->
           <a href="https://tiktok.com/@yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_tiktok','social','header',1)" class="transition-transform hover:scale-110" aria-label="TikTok">
-            <Image src={tiktokIcon} alt="TikTok" class="h-8 w-auto" />
+            <Image src={tiktokIcon} alt="TikTok" class="h-6 w-auto md:h-8" />
           </a>
         </div>
 
         <!-- Language Switcher Button -->
-        <a id="lang-toggle" href={langHref} class="bg-primary hover:bg-dark text-card px-8 py-2.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg text-lg">
+        <a id="lang-toggle" href={langHref} class="bg-primary hover:bg-dark text-card px-4 md:px-8 py-2 md:py-2.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg text-sm md:text-lg">
           {langMode}
         </a>
+
+        <!-- Mobile Menu Button (Hamburger) -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-primary hover:text-dark transition-colors" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
     </div>
   </div>
 </header>
 
+<!-- Mobile Menu Drawer with Overlay -->
+<!-- Overlay backdrop -->
+<div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+
+<!-- Drawer panel -->
+<div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-background z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out lg:hidden">
+  <div class="flex flex-col h-full">
+    <!-- Close button header -->
+    <div class="flex justify-end items-center p-4 border-b border-primary/10">
+      <button id="mobile-menu-close" class="p-2 text-primary hover:text-dark transition-colors" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Navigation links -->
+    <nav class="font-outfit flex flex-col py-4 px-4 flex-1 overflow-y-auto">
+      <a href={homeHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_home','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10">{isSpanish ? 'Inicio' : 'Home'}</a>
+      <a href={aboutHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_about','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10">{translations.about}</a>
+      <a href={booksHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_books','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10">{translations.books}</a>
+      <a href={blogHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_blog','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10">{translations.blog}</a>
+      <a href={academiaHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_academy','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10">{translations.academy}</a>
+      <a href={galleryHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_gallery','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg">{translations.gallery}</a>
+    </nav>
+    
+    <!-- Social icons at bottom -->
+    <div class="p-4 border-t border-primary/10">
+      <div class="flex items-center justify-center gap-6">
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','mobile_menu',1)" class="transition-transform hover:scale-110" aria-label="LinkedIn">
+          <Image src={linkedinIcon} alt="LinkedIn" class="w-6 h-6" />
+        </a>
+        <a href="https://instagram.com/yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_instagram','social','mobile_menu',1)" class="transition-transform hover:scale-110" aria-label="Instagram">
+          <Image src={instagramIcon} alt="Instagram" class="w-6 h-6" />
+        </a>
+        <a href="https://tiktok.com/@yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_tiktok','social','mobile_menu',1)" class="transition-transform hover:scale-110" aria-label="TikTok">
+          <Image src={tiktokIcon} alt="TikTok" class="h-6 w-auto" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+  // Mobile Menu Toggle
+  const setupMobileMenu = () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('mobile-menu-overlay');
+    
+    if (!menuBtn || !mobileMenu || !menuOverlay) return;
+
+    const openMenu = () => {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+      menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      menuOverlay.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = () => {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      menuOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+      menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    };
+
+    // Open menu on hamburger click
+    menuBtn.addEventListener('click', openMenu);
+    
+    // Close menu on X button click
+    if (menuClose) {
+      menuClose.addEventListener('click', closeMenu);
+    }
+
+    // Close menu when clicking overlay
+    menuOverlay.addEventListener('click', closeMenu);
+
+    // Close menu when clicking any link
+    const menuLinks = mobileMenu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+        closeMenu();
+      }
+    });
+  };
+
   // Script to preserve scroll position across language switches
   const setupLangToggle = () => {
     const langToggle = document.getElementById('lang-toggle');
@@ -157,6 +257,7 @@ const translations = {
 
   // Run on initial load
   setupLangToggle();
+  setupMobileMenu();
   // Support Astro View Transitions if the user decides to enable them later
   document.addEventListener('astro:after-swap', setupLangToggle);
 </script>
