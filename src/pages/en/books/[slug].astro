@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import CheckoutModal from '../../../components/CheckoutModal.astro';
 import booksData from '../../../data/books.json';
 import { resolveImage } from '../../../utils/images';
 
@@ -89,14 +88,15 @@ const paypalIcon = await resolveImage('paypal.svg');
 
         <div class="pt-0 flex flex-col gap-4">
         <div class="pt-0 flex flex-col gap-6">
-          <button 
-            id="checkout-trigger"
+          <a 
+            href={book.stripeLink}
+            target="_blank"
             onclick={`if(window.trackEvent)window.trackEvent('click_complete_order','purchase','${book.slug}',${book.price})`}
             class="font-outfit w-full bg-cta hover:bg-cta-hover text-white shadow-xl text-center px-6 py-3 rounded-lg transition-all flex items-center justify-center gap-3 transform active:scale-95 group"
           >
              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
              Complete My Order
-          </button>
+          </a>
           
           <!-- PayPal Direct Button -->
           <a 
@@ -106,7 +106,7 @@ const paypalIcon = await resolveImage('paypal.svg');
             class="w-full bg-[#ffc439] hover:bg-[#ffb700] py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:scale-[1.02] shadow-lg border-2 border-[#e6a823]"
           >
             <Image src={paypalIcon} alt="PayPal" class="h-6 w-auto" />
-            <span class="font-outfit font-bold text-[#003087] text-sm">Pay with PayPal</span>
+            <span class="font-outfit font-bold text-[#003087] text-sm"></span>
           </a>
           
           <!-- Trust Bar -->
@@ -152,22 +152,4 @@ const paypalIcon = await resolveImage('paypal.svg');
     </div>
   </section>
 
-  <CheckoutModal 
-    id={`checkout-${book.slug}`} 
-    bookTitle={book.title} 
-    price={book.price} 
-    currency={book.currency} 
-    lang="en"
-  />
-
-  <script define:vars={{ slug: book.slug }}>
-    const btn = document.getElementById('checkout-trigger');
-    if (btn) {
-      btn.addEventListener('click', () => {
-        document.dispatchEvent(new CustomEvent('open-checkout', { 
-          detail: { slug } 
-        }));
-      });
-    }
-  </script>
 </BaseLayout>
