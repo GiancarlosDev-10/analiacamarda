@@ -19,24 +19,86 @@ const { lang } = Astro.props;
         : 'Ingresá tu email y recibí al instante un PDF con mi blueprint personal para diseñar una vida independiente.'}
     </p>
 
-    <!-- MailerLite Form Placeholder -->
-    <div class="bg-card p-2 rounded-xl max-w-lg mx-auto flex shadow-xl border border-primary/20 focus-within:ring-4 focus-within:ring-primary/20">
-      <form class="flex w-full" onsubmit="if(window.trackEvent)window.trackEvent('submit_lead_magnet','lead_generation','email_form',1); event.preventDefault(); alert('MailerLite integration coming soon!');">
+    <!-- Fetch API Integration -->
+    <div class="bg-card p-2 rounded-xl max-w-lg mx-auto flex shadow-xl border border-primary/20 focus-within:ring-4 focus-within:ring-primary/20 transition-all" id="lead-container">
+      <form id="lead-form" class="flex w-full relative" data-lang={lang}>
         <label for={lang === 'en' ? 'email-en' : 'email-es'} class="sr-only">
           {lang === 'en' ? 'Email address' : 'Correo electrónico'}
         </label>
         <input
           type="email"
           id={lang === 'en' ? 'email-en' : 'email-es'}
+          name="email"
           aria-label={lang === 'en' ? 'Your email address' : 'Tu correo electrónico'}
           placeholder={lang === 'en' ? 'Email access...' : 'Tu correo...'}
           class="w-full px-4 rounded-l-lg bg-transparent text-dark font-medium outline-none"
           required
         />
-        <button type="submit" class="bg-primary hover:bg-dark text-white px-6 py-4 rounded-lg font-bold transition-colors whitespace-nowrap">
-          {lang === 'en' ? 'Get PDF' : 'Obtener PDF'}
+        <button type="submit" id="lead-submit-btn" class="bg-primary hover:bg-dark text-white px-6 py-4 rounded-lg font-bold transition-colors whitespace-nowrap">
+          <span id="btn-text">{lang === 'en' ? 'Get PDF' : 'Obtener PDF'}</span>
+          <span id="btn-loader" class="hidden">↻</span>
         </button>
       </form>
     </div>
+    
+    <!-- Mensaje de Éxito Oculto -->
+    <div id="lead-success" class="hidden flex-col items-center justify-center space-y-2 mt-4 text-primary">
+      <p class="font-bold text-xl">✅ {lang === 'en' ? 'Success! Check your Email' : '¡Éxito! Revisa tu Correo'}</p>
+      <p class="text-sm text-dark/80">{lang === 'en' ? "We've sent the PDF to your inbox." : 'Te hemos enviado el PDF a tu bandeja.'}</p>
+    </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('lead-form') as HTMLFormElement;
+  const container = document.getElementById('lead-container');
+  const successMsg = document.getElementById('lead-success');
+  const submitBtn = document.getElementById('lead-submit-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text');
+  const btnLoader = document.getElementById('btn-loader');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Mostrar estado de carga
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+      btnText?.classList.add('hidden');
+      btnLoader?.classList.remove('hidden');
+
+      const formData = new FormData(form);
+      const email = formData.get('email');
+      const lang = form.getAttribute('data-lang');
+
+      // Google Analytics Track
+      if ((window as any).trackEvent) {
+        (window as any).trackEvent('submit_lead_magnet', 'lead_generation', 'email_form', 1);
+      }
+
+      try {
+        const response = await fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, lang })
+        });
+
+        if (response.ok) {
+          // Ocultar formulario, mostrar éxito
+          if (container) container.style.display = 'none';
+          if (successMsg) successMsg.classList.remove('hidden');
+          if (successMsg) successMsg.classList.add('flex');
+        } else {
+          alert(lang === 'en' ? 'An error occurred. Try again.' : 'Hubo un error. Inténtalo de nuevo.');
+        }
+      } catch (err) {
+        alert(lang === 'en' ? 'Network error.' : 'Error de red.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+        btnText?.classList.remove('hidden');
+        btnLoader?.classList.add('hidden');
+      }
+    });
+  }
+</script>
