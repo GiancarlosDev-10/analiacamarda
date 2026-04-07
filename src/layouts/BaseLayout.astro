@@ -28,9 +28,12 @@ const currentPath = Astro.url.pathname;
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Playfair+Display:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Playfair+Display:wght@700;800&family=Roboto:wght@400;500&display=swap" 
+  rel="stylesheet" 
+  media="print" 
+  onload="this.media='all'">
     
-    <SEO title={title} description={description} image={image} schema={schema} lang={lang} />
+    <SEO title={title} description={description} image={image} schema={schema} lang={lang} canonical={Astro.url.href}/>
     <Analytics />
   </head>
   <body class="bg-background text-dark font-body min-h-screen flex flex-col antialiased relative">

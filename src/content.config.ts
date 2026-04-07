@@ -2,12 +2,14 @@ import { z, defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const blogSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  date: z.date(),
-  image: z.string().optional(),
-  category: z.string(),
+  title:           z.string(),
+  description:     z.string(),
+  date:            z.date(),
+  image:           z.string().optional(),
+  category:        z.string(),
+  author:          z.string().optional(),
   relatedBookSlug: z.string().optional(),
+  draft:           z.boolean().optional().default(false),
 });
 
 export const collections = {
