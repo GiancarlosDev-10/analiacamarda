@@ -1,34 +1,60 @@
 ---
-const MEASUREMENT_ID = import.meta.env.GA_MEASUREMENT_ID || 'G-XXXXXXXXXX';
-const PIXEL_ID = import.meta.env.META_PIXEL_ID || '000000000000000';
-const GOOGLE_ADS_ID = import.meta.env.GOOGLE_ADS_ID || 'AW-XXXXXXXXXX';
+const MEASUREMENT_ID  = import.meta.env.GA_MEASUREMENT_ID  || 'G-XXXXXXXXXX';
+const GOOGLE_ADS_ID   = import.meta.env.GOOGLE_ADS_ID      || 'AW-XXXXXXXXXX';
+
+// Descomentar cuando se activen campañas de Meta Ads:
+// const PIXEL_ID = import.meta.env.META_PIXEL_ID || '000000000000000';
 ---
+
 <!-- Google Analytics + Google Ads -->
 <script async src={`https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`}></script>
 <script define:vars={{ MEASUREMENT_ID, GOOGLE_ADS_ID }}>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', MEASUREMENT_ID);
-  
-  // Google Ads Conversion Tracking
+
+  if (MEASUREMENT_ID && !MEASUREMENT_ID.includes('XXXXXXXXXX')) {
+    gtag('config', MEASUREMENT_ID);
+  }
+
   if (GOOGLE_ADS_ID && !GOOGLE_ADS_ID.includes('XXXXXXXXXX')) {
     gtag('config', GOOGLE_ADS_ID);
   }
+
+  // Helper global para rastreo de eventos (usado en todos los componentes)
+  window.trackEvent = function(action, category, label, value) {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', action, {
+        event_category: category,
+        event_label:    label,
+        value:          value,
+      });
+    }
+  };
 </script>
 
-<!-- Meta Pixel Code -->
+<!-- =====================================================
+     Meta Pixel — Descomentar cuando se activen Meta Ads
+     =====================================================
+
 <script define:vars={{ PIXEL_ID }}>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', PIXEL_ID);
-fbq('track', 'PageView');
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  if (PIXEL_ID && !PIXEL_ID.includes('000000000000000')) {
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
+  }
 </script>
-<noscript><img height="1" width="1" style="display:none" alt="" src={`https://www.facebook.com/tr?id=${PIXEL_ID}&ev=PageView&noscript=1`} /></noscript>
-<!-- End Meta Pixel Code -->
+<noscript>
+  <img height="1" width="1" style="display:none" alt=""
+    src={`https://www.facebook.com/tr?id=${PIXEL_ID}&ev=PageView&noscript=1`} />
+</noscript>
+
+===================================================== -->

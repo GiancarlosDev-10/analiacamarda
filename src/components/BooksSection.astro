@@ -54,14 +54,18 @@ const books = await Promise.all(
 
             <!-- Cover image -->
             <div class="w-full lg:w-1/2 overflow-hidden relative h-48 sm:h-64 lg:h-auto bg-primary/5 flex items-center justify-center p-4">
-              {book.imageAsset && (
-                <Image
-                  src={book.imageAsset}
-                  alt={book.title}
-                  class="w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-700 drop-shadow-2xl"
-                />
-              )}
-              <!-- Price badge -->
+              {book.imageAsset
+                ? <Image
+                    src={book.imageAsset}
+                    alt={book.title}
+                    loading="lazy"
+                    class="w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-700 drop-shadow-2xl"
+                  />
+                : <div class="w-full h-full bg-primary/10 flex items-center justify-center rounded-xl">
+                    <span class="text-primary/30 text-4xl">📚</span>
+                  </div>
+              }
+              <!-- Badge de precio -->
               <div class="absolute top-4 left-4 bg-primary text-card px-4 py-1 rounded-full font-outfit text-sm lg:text-base md:text-lg font-bold shadow-lg">
                 ${book.price.toFixed(2)}
               </div>

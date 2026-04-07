@@ -26,7 +26,9 @@ const getLangHref = (path: string): string => {
     'academy': 'academia',
     'academia': 'academy',
     'gallery': 'galeria',
-    'galeria': 'gallery'
+    'galeria': 'gallery',
+    'thank-you': 'exito',
+    'exito': 'thank-you',
   };
 
   let newPath = '';
@@ -102,15 +104,15 @@ const translations = {
         <!-- Social Icons - Always visible but smaller on mobile -->
         <div class="flex items-center gap-2 sm:gap-3 md:gap-6">
           <!-- LinkedIn -->
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','header',1)" class="transition-transform hover:scale-110" aria-label="LinkedIn">
+          <a href="https://linkedin.com/in/analia-camarda-2b4152102/" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','header',1)" class="transition-transform hover:scale-110" aria-label="LinkedIn">
             <Image src={linkedinIcon} alt="LinkedIn" class="w-6 h-6 md:w-8 md:h-8" />
           </a>
           <!-- Instagram -->
-          <a href="https://instagram.com/yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_instagram','social','header',1)" class="transition-transform hover:scale-110" aria-label="Instagram">
+          <a href="https://instagram.com/deafdigitalpro/" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_instagram','social','header',1)" class="transition-transform hover:scale-110" aria-label="Instagram">
             <Image src={instagramIcon} alt="Instagram" class="w-6 h-6 md:w-8 md:h-8" />
           </a>
           <!-- TikTok -->
-          <a href="https://tiktok.com/@yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_tiktok','social','header',1)" class="transition-transform hover:scale-110" aria-label="TikTok">
+          <a href="https://tiktok.com/@academydigital1" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_tiktok','social','header',1)" class="transition-transform hover:scale-110" aria-label="TikTok">
             <Image src={tiktokIcon} alt="TikTok" class="h-6 w-auto md:h-8" />
           </a>
         </div>

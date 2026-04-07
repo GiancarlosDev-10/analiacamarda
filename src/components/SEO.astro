@@ -8,21 +8,29 @@ export interface Props {
   lang?: "en" | "es";
 }
 
-const { 
-  title, 
-  description, 
-  image = "/images/og-default.png", 
-  schema, 
+const {
+  title,
+  description,
+  image    = "/images/og-default.png",
+  schema,
   canonical = Astro.url.href,
-  lang = "es"
+  lang      = "es"
 } = Astro.props;
+
+// URL del idioma alternativo para hreflang
+const alternateLang = lang === "en" ? "es" : "en";
+const alternateUrl  = lang === "en"
+  ? canonical.replace("/en/", "/es/")
+  : canonical.replace("/es/", "/en/");
 ---
+
+<!-- SEO básico -->
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="author" content="Analía Camarda" />
 <link rel="canonical" href={canonical} />
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
@@ -35,7 +43,10 @@ const {
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- Accesibilidad y Localización -->
-<link rel="alternate" href={canonical} hreflang={lang} />
+<!-- Hreflang: indica a Google los idiomas disponibles -->
+<link rel="alternate" href={canonical}    hreflang={lang} />
+<link rel="alternate" href={alternateUrl} hreflang={alternateLang} />
+<link rel="alternate" href={canonical}    hreflang="x-default" />
 
+<!-- Datos estructurados JSON-LD (Schema.org) -->
 {schema && <script type="application/ld+json" is:inline set:html={schema} />}

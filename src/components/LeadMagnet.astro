@@ -5,21 +5,21 @@ export interface Props {
 const { lang } = Astro.props;
 ---
 
-<!-- LEAD MAGNET / FOOTER PRE-CTA -->
+<!-- LEAD MAGNET / PRE-FOOTER CTA -->
 <section id="newsletter" class="bg-background text-primary py-24 border-y border-primary/20">
   <div class="max-w-3xl mx-auto px-4 text-center space-y-8">
     <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold leading-tight text-primary">
       {lang === 'en'
         ? 'Free Guide: 5 Passive Income Streams You Can Start Today'
-        : 'Guía Gratis: 5 Fuentes de Ingresos Pasivos que Podés Iniciar Hoy'}
+        : 'Guía Gratis: 5 Fuentes de Ingresos Pasivos que Puedes Iniciar Hoy'}
     </h2>
     <p class="font-outfit text-base md:text-lg text-dark/80 leading-relaxed">
       {lang === 'en'
         ? 'Enter your email to instantly receive a PDF with my personal blueprint for designing an independent life.'
-        : 'Ingresá tu email y recibí al instante un PDF con mi blueprint personal para diseñar una vida independiente.'}
+        : 'Ingresa tu email y recibe al instante un PDF con mi blueprint personal para diseñar una vida independiente.'}
     </p>
 
-    <!-- Fetch API Integration -->
+    <!-- Integración con Fetch API -->
     <div class="bg-card p-2 rounded-xl max-w-lg mx-auto flex shadow-xl border border-primary/20 focus-within:ring-4 focus-within:ring-primary/20 transition-all" id="lead-container">
       <form id="lead-form" class="flex w-full relative" data-lang={lang}>
         <label for={lang === 'en' ? 'email-en' : 'email-es'} class="sr-only">
@@ -40,27 +40,43 @@ const { lang } = Astro.props;
         </button>
       </form>
     </div>
-    
-    <!-- Mensaje de Éxito Oculto -->
-    <div id="lead-success" class="hidden flex-col items-center justify-center space-y-2 mt-4 text-primary">
+
+    <!-- Mensaje de éxito (oculto por defecto) -->
+    <div id="lead-success" class="hidden items-center justify-center space-y-2 mt-4 text-primary">
       <p class="font-bold text-xl">✅ {lang === 'en' ? 'Success! Check your Email' : '¡Éxito! Revisa tu Correo'}</p>
       <p class="text-sm text-dark/80">{lang === 'en' ? "We've sent the PDF to your inbox." : 'Te hemos enviado el PDF a tu bandeja.'}</p>
+    </div>
+
+    <!-- Mensaje de error (oculto por defecto) -->
+    <div id="lead-error" class="hidden mt-4 font-outfit text-sm text-red-500">
+      <p id="lead-error-msg"></p>
     </div>
   </div>
 </section>
 
 <script>
-  const form = document.getElementById('lead-form') as HTMLFormElement;
-  const container = document.getElementById('lead-container');
+  const form       = document.getElementById('lead-form') as HTMLFormElement;
+  const container  = document.getElementById('lead-container');
   const successMsg = document.getElementById('lead-success');
-  const submitBtn = document.getElementById('lead-submit-btn') as HTMLButtonElement;
-  const btnText = document.getElementById('btn-text');
-  const btnLoader = document.getElementById('btn-loader');
+  const errorDiv   = document.getElementById('lead-error');
+  const errorMsg   = document.getElementById('lead-error-msg');
+  const submitBtn  = document.getElementById('lead-submit-btn') as HTMLButtonElement;
+  const btnText    = document.getElementById('btn-text');
+  const btnLoader  = document.getElementById('btn-loader');
+
+  // Función auxiliar para mostrar error inline
+  const showError = (msg: string) => {
+    if (errorMsg) errorMsg.textContent = msg;
+    if (errorDiv) errorDiv.classList.remove('hidden');
+  };
 
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
+      // Ocultar error previo si existe
+      if (errorDiv) errorDiv.classList.add('hidden');
+
       // Mostrar estado de carga
       submitBtn.disabled = true;
       submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
@@ -68,10 +84,10 @@ const { lang } = Astro.props;
       btnLoader?.classList.remove('hidden');
 
       const formData = new FormData(form);
-      const email = formData.get('email');
-      const lang = form.getAttribute('data-lang');
+      const email    = formData.get('email');
+      const lang     = form.getAttribute('data-lang');
 
-      // Google Analytics Track
+      // Rastreo de evento en Google Analytics
       if ((window as any).trackEvent) {
         (window as any).trackEvent('submit_lead_magnet', 'lead_generation', 'email_form', 1);
       }
@@ -80,20 +96,23 @@ const { lang } = Astro.props;
         const response = await fetch('/api/leads', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, lang })
+          body: JSON.stringify({ email, lang }),
         });
 
         if (response.ok) {
-          // Ocultar formulario, mostrar éxito
+          // Ocultar formulario y mostrar mensaje de éxito
           if (container) container.style.display = 'none';
-          if (successMsg) successMsg.classList.remove('hidden');
-          if (successMsg) successMsg.classList.add('flex');
+          if (successMsg) {
+            successMsg.classList.remove('hidden');
+            successMsg.classList.add('flex');
+          }
         } else {
-          alert(lang === 'en' ? 'An error occurred. Try again.' : 'Hubo un error. Inténtalo de nuevo.');
+          showError(lang === 'en' ? 'An error occurred. Try again.' : 'Hubo un error. Inténtalo de nuevo.');
         }
       } catch (err) {
-        alert(lang === 'en' ? 'Network error.' : 'Error de red.');
+        showError(lang === 'en' ? 'Network error. Try again.' : 'Error de red. Inténtalo de nuevo.');
       } finally {
+        // Restaurar botón siempre
         submitBtn.disabled = false;
         submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
         btnText?.classList.remove('hidden');

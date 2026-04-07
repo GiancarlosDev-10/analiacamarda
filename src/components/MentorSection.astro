@@ -39,6 +39,7 @@ const { lang } = Astro.props;
         src={mentorImg}
         class="relative z-10 rounded-full w-64 h-64 md:w-115 md:h-115 mx-auto object-cover hover:scale-105 object-[0%_5%] border-4 border-card shadow-2xl transition-all duration-700"
         alt="Ana Camarda"
+        loading="eager"
       />
 
       <!-- Badges - Responsive positioning -->
@@ -64,10 +65,10 @@ const { lang } = Astro.props;
           </>
         ) : (
           <>
-            <p class="font-outfit text-lg text-dark/80 text-justify  mb-4 leading-relaxed">
+            <p class="font-outfit text-lg text-dark/80 text-justify mb-4 leading-relaxed">
               Analía es una de las voces más respetadas en el espacio del emprendimiento digital accesible en EE.UU. y Latam. Tras graduarse en <strong class="text-primary font-bold">Ciberseguridad y Data Analytics</strong>, construyó una sólida base tecnológica que <strong class="text-primary font-bold">ya está transformando</strong> la vida de muchísimas personas.
             </p>
-            <p class="font-outfit text-lg text-dark/80 text-justify  mb-4  leading-relaxed">
+            <p class="font-outfit text-lg text-dark/80 text-justify mb-4 leading-relaxed">
               Es la fundadora de Deaf Digital Pro Academy, revolucionando el mercado con materiales educativos de alta calidad para quienes buscan la independencia financiera.
             </p>
           </>

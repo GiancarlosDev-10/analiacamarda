@@ -37,17 +37,25 @@ const schema = JSON.stringify({
         </p>
       </div>
 
-      <div class="bg-card p-4 rounded-2xl border border-primary/10 shadow-sm space-y-6">
+      <div class="bg-card p-6 rounded-2xl border border-primary/10 shadow-sm space-y-6">
         <p class="font-bold text-sm uppercase tracking-widest text-cta select-none">✦ ¿Qué sigue ahora? ✦</p>
         <div class="grid gap-4 text-left">
           <div class="flex items-start gap-3">
             <span class="w-6 h-6 bg-primary text-white text-xs flex items-center justify-center rounded-full shrink-0 mt-1">1</span>
             <p class="font-outfit text-dark/80">Revisa tu <b>Bandeja de Entrada</b> (y la carpeta de Correo No Deseado, solo por si acaso).</p>
           </div>
+          <div class="flex items-start gap-3">
+            <span class="w-6 h-6 bg-primary text-white text-xs flex items-center justify-center rounded-full shrink-0 mt-1">2</span>
+            <p class="font-outfit text-dark/80">Haz clic en el <b>botón de descarga</b> del correo y guarda el PDF en tu dispositivo.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="w-6 h-6 bg-primary text-white text-xs flex items-center justify-center rounded-full shrink-0 mt-1">3</span>
+            <p class="font-outfit text-dark/80">¡Disfruta tu lectura! 📚 ¿Algún problema? Responde al correo y te ayudo personalmente.</p>
+          </div>
         </div>
       </div>
 
-      <div class="pt-2 flex flex-wrap justify-center gap-4">
+      <div class="flex flex-wrap justify-center gap-4">
         <a href="/es/libros" class="bg-primary text-card px-8 py-4 rounded-xl font-outfit shadow-xl transition-all hover:scale-105 active:scale-95">
           Ver Más Libros
         </a>
@@ -57,15 +65,12 @@ const schema = JSON.stringify({
       </div>
 
       <p class="text-xs text-dark/40 font-medium italic pt-8">
-        Código de Referencia: #AC-{Math.floor(Math.random() * 100000)}
+        ¿Preguntas? Escríbenos a <a href="mailto:hola@analiacamarda.com" class="underline hover:text-primary transition-colors">hola@analiacamarda.com</a>
       </p>
+
     </div>
   </main>
 </BaseLayout>
-
-<style>
-  .noindex { display: none; }
-</style>
 
 <script>
   const meta = document.createElement('meta');
