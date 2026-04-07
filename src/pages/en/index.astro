@@ -14,14 +14,25 @@ const schema = JSON.stringify({
       "@type": "Organization",
       "@id": "https://www.analiacamarda.com/#organization",
       "name": "Analía Camarda",
-      "url": "https://www.analiacamarda.com/"
+      "url": "https://www.analiacamarda.com/",
+      "logo": "https://www.analiacamarda.com/images/analia-camarda.png",
+      "sameAs": [
+        "https://instagram.com/deafdigitalpro/",
+        "https://linkedin.com/in/analia-camarda-2b4152102/",
+        "https://tiktok.com/@academydigital1"
+      ]
     },
     {
       "@type": "Person",
       "@id": "https://www.analiacamarda.com/#person",
       "name": "Analía Camarda",
       "jobTitle": "Entrepreneur & Content Creator",
-      "url": "https://www.analiacamarda.com/"
+      "url": "https://www.analiacamarda.com/",
+      "sameAs": [
+        "https://instagram.com/deafdigitalpro/",
+        "https://linkedin.com/in/analia-camarda-2b4152102/",
+        "https://tiktok.com/@academydigital1"
+      ]
     }
   ]
 });
@@ -30,22 +41,23 @@ const schema = JSON.stringify({
 <BaseLayout
   title="Analía Camarda | Deaf Digital Pro - Passive Income Books & Academy"
   description="Learn how to generate passive income from Analía Camarda, a deaf digital entrepreneur. Explore e-books, group classes, and the Deaf Digital Pro Academy."
+  image="/images/og-default.png"
   schema={schema}
   lang="en"
 >
   <!-- 1. HERO -->
   <Hero lang="en" />
 
-  <!-- 2. MENTOR / STORY -->
+  <!-- 2. MENTOR / HISTORIA -->
   <MentorSection lang="en" />
 
-  <!-- 3. BOOKS -->
+  <!-- 3. LIBROS -->
   <BooksSection lang="en" />
 
-  <!-- 4. WHY DIGITAL BUSINESS (AboutDigital) -->
+  <!-- 4. POR QUÉ UN NEGOCIO DIGITAL -->
   <AboutDigital lang="en" />
 
-  <!-- 5. ACADEMY MODULES -->
+  <!-- 5. MÓDULOS DE LA ACADEMIA -->
   <AcademySection lang="en" />
 
   <!-- 6. LEAD MAGNET -->

@@ -14,14 +14,25 @@ const schema = JSON.stringify({
       "@type": "Organization",
       "@id": "https://www.analiacamarda.com/#organization",
       "name": "Analía Camarda",
-      "url": "https://www.analiacamarda.com/"
+      "url": "https://www.analiacamarda.com/",
+      "logo": "https://www.analiacamarda.com/images/analia-camarda.png",
+      "sameAs": [
+        "https://instagram.com/deafdigitalpro/",
+        "https://linkedin.com/in/analia-camarda-2b4152102/",
+        "https://tiktok.com/@academydigital1"
+      ]
     },
     {
       "@type": "Person",
       "@id": "https://www.analiacamarda.com/#person",
       "name": "Analía Camarda",
       "jobTitle": "Emprendedora y Creadora de Contenido",
-      "url": "https://www.analiacamarda.com/"
+      "url": "https://www.analiacamarda.com/",
+      "sameAs": [
+        "https://instagram.com/deafdigitalpro/",
+        "https://linkedin.com/in/analia-camarda-2b4152102/",
+        "https://tiktok.com/@academydigital1"
+      ]
     }
   ]
 });
@@ -30,6 +41,7 @@ const schema = JSON.stringify({
 <BaseLayout
   title="Analía Camarda | Deaf Digital Pro - Libros de Ingresos Pasivos y Academia"
   description="Aprende a generar ingresos pasivos con Analía Camarda, una emprendedora digital sorda. Explora sus e-books, clases grupales y la Academia Deaf Digital Pro."
+  image="/images/og-default.png"
   schema={schema}
   lang="es"
 >
@@ -42,7 +54,7 @@ const schema = JSON.stringify({
   <!-- 3. LIBROS -->
   <BooksSection lang="es" />
 
-  <!-- 4. POR QUÉ NEGOCIO DIGITAL (AboutDigital) -->
+  <!-- 4. POR QUÉ NEGOCIO DIGITAL -->
   <AboutDigital lang="es" />
 
   <!-- 5. MÓDULOS DE LA ACADEMIA -->

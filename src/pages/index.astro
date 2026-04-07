@@ -1,5 +1,5 @@
 ---
-// Root index page with full SEO - NOT just a redirect
+// Página raíz — redirige automáticamente según el idioma del navegador
 const siteUrl = "https://www.analiacamarda.com";
 const title = "Analía Camarda | Digital Entrepreneur & Passive Income Mentor";
 const description = "Learn to build passive income streams with Analía Camarda, a deaf digital entrepreneur. Explore ebooks, online courses, and the Deaf Digital Pro Academy for the Deaf and Hard of Hearing community.";
@@ -13,10 +13,11 @@ const schema = JSON.stringify({
       "@id": `${siteUrl}/#organization`,
       "name": "Analía Camarda",
       "url": siteUrl,
+      "logo": `${siteUrl}/images/analia-camarda.png`,
       "sameAs": [
-        "https://linkedin.com/in/analiacamarda",
-        "https://instagram.com/analiacamarda",
-        "https://tiktok.com/@analiacamarda"
+        "https://instagram.com/deafdigitalpro/",
+        "https://linkedin.com/in/analia-camarda-2b4152102/",
+        "https://tiktok.com/@academydigital1"
       ]
     },
     {
@@ -26,6 +27,11 @@ const schema = JSON.stringify({
       "jobTitle": "Digital Entrepreneur & Passive Income Mentor",
       "description": "Deaf digital entrepreneur helping the Deaf community build passive income streams",
       "url": siteUrl,
+      "sameAs": [
+        "https://instagram.com/deafdigitalpro/",
+        "https://linkedin.com/in/analia-camarda-2b4152102/",
+        "https://tiktok.com/@academydigital1"
+      ],
       "knowsAbout": ["Passive Income", "Digital Business", "Deaf Entrepreneurship", "Online Courses"]
     },
     {
@@ -47,52 +53,52 @@ const schema = JSON.stringify({
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Analía Camarda" />
-    
+
     <!-- Canonical -->
     <link rel="canonical" href={siteUrl} />
-    
-    <!-- Alternate languages -->
-    <link rel="alternate" hreflang="en" href={`${siteUrl}/en/`} />
-    <link rel="alternate" hreflang="es" href={`${siteUrl}/es/`} />
+
+    <!-- Hreflang bilingüe -->
+    <link rel="alternate" hreflang="en"        href={`${siteUrl}/en/`} />
+    <link rel="alternate" hreflang="es"        href={`${siteUrl}/es/`} />
     <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en/`} />
-    
+
     <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={siteUrl} />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Analía Camarda" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:title"            content={title} />
+    <meta property="og:description"      content={description} />
+    <meta property="og:image"            content={ogImage} />
+    <meta property="og:url"              content={siteUrl} />
+    <meta property="og:type"             content="website" />
+    <meta property="og:site_name"        content="Analía Camarda" />
+    <meta property="og:locale"           content="en_US" />
     <meta property="og:locale:alternate" content="es_ES" />
-    
+
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
-    
+    <meta name="twitter:image"       content={ogImage} />
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    
+    <link rel="icon" type="image/x-icon"  href="/favicon.ico" />
+
     <!-- Schema.org -->
     <script type="application/ld+json" set:html={schema} />
-    
-    <!-- Smart Language Redirect -->
+
+    <!-- Redirección automática según idioma del navegador -->
     <script is:inline>
       (function() {
-        // Only redirect if no hash (allows language switcher to work)
+        // No redirigir si hay un hash en la URL (permite que el selector de idioma funcione)
         if (window.location.hash) return;
-        
+
         const lang = navigator.language || navigator.userLanguage;
-        const destination = lang && lang.toLowerCase().startsWith('es') ? '/es/' : '/en/';
-        
-        // Use replaceState so back button works correctly
-        window.location.replace(destination);
+        const destino = lang && lang.toLowerCase().startsWith('es') ? '/es/' : '/en/';
+
+        // replaceState para que el botón "atrás" funcione correctamente
+        window.location.replace(destino);
       })();
     </script>
-    
+
     <style>
       body {
         margin: 0;
@@ -102,7 +108,7 @@ const schema = JSON.stringify({
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: #efe8de;
+        background: #f2eee8;
         font-family: 'Outfit', system-ui, sans-serif;
       }
       .container {
@@ -111,12 +117,12 @@ const schema = JSON.stringify({
         max-width: 600px;
       }
       h1 {
-        color: #2d2d2d;
+        color: #2C1810;
         font-size: 2rem;
         margin-bottom: 1rem;
       }
       p {
-        color: #5a5a5a;
+        color: #7A6055;
         font-size: 1.1rem;
         line-height: 1.6;
         margin-bottom: 2rem;
@@ -130,7 +136,7 @@ const schema = JSON.stringify({
       .btn {
         display: inline-block;
         padding: 1rem 2rem;
-        background: #dd6b20;
+        background: #a35c33;
         color: white;
         text-decoration: none;
         border-radius: 0.5rem;
@@ -138,16 +144,16 @@ const schema = JSON.stringify({
         transition: background 0.2s;
       }
       .btn:hover {
-        background: #c05621;
+        background: #8B4513;
       }
       .btn-secondary {
-        background: #2d3748;
+        background: #2C1810;
       }
       .btn-secondary:hover {
-        background: #1a202c;
+        background: #1a100a;
       }
       .loading {
-        color: #dd6b20;
+        color: #a35c33;
         font-size: 0.9rem;
         margin-top: 1rem;
       }
@@ -157,12 +163,12 @@ const schema = JSON.stringify({
     <div class="container">
       <h1>Analía Camarda</h1>
       <p>Choose your language / Elige tu idioma</p>
-      
+
       <nav class="links" role="navigation" aria-label="Language selection">
         <a href="/en/" class="btn">English</a>
         <a href="/es/" class="btn btn-secondary">Español</a>
       </nav>
-      
+
       <p class="loading">Redirecting automatically based on your browser language...</p>
     </div>
   </body>

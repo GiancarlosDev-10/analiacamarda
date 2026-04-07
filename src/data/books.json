@@ -1,30 +1,106 @@
 [
   {
-    "slug": "silent-success", "lang": "en", "title": "Silent Success", "price": 9.90, "currency": "USD", "coverImage": "/images/silentsuccess.png",
-    "description": "Traditional income opportunities weren’t designed for us. This guide helps you navigate career obstacles and master the strategies needed for financial success, specifically tailored for the Deaf and Hard of Hearing community",
-    "forWhom": "Deaf & Hard of Hearing Professionals", "whatYouLearn": ["Turn obstacles into advantages", "Deaf-centric career navigation", "Digital empire blueprint"],
-    "faq": [{"q": "Need experience?", "a": "No."}], "testimonial": {"name": "A", "country": "US", "text": "Great!"},
-    "paypalLink": "#", "mercadoPagoLink": "#", "amazonLink": "#", "stripeLink": "https://buy.stripe.com/9B6aEX2pE0H16hF7Tz3ZK03", "relatedBooks": ["ultimate-passive-income-blueprint"]
+    "slug": "silent-success",
+    "lang": "en",
+    "title": "Silent Success",
+    "price": 9.90,
+    "currency": "USD",
+    "coverImage": "/images/silentsuccess.png",
+    "description": "Traditional income opportunities weren't designed for us. This guide helps you navigate career obstacles and master the strategies needed for financial success, specifically tailored for the Deaf and Hard of Hearing community.",
+    "forWhom": "Deaf & Hard of Hearing Professionals",
+    "whatYouLearn": [
+      "Turn obstacles into advantages",
+      "Deaf-centric career navigation",
+      "Digital empire blueprint"
+    ],
+    "faq": [
+      { "q": "Do I need previous experience?", "a": "No, this guide is designed for complete beginners." }
+    ],
+    "testimonial": {
+      "name": "",
+      "country": "",
+      "text": ""
+    },
+    "stripeLink": "https://buy.stripe.com/9B6aEX2pE0H16hF7Tz3ZK03",
+    "paypalLink": "",
+    "relatedBooks": ["ultimate-passive-income-blueprint"]
   },
   {
-    "slug": "ultimate-passive-income-blueprint", "lang": "en", "title": "The Ultimate Passive Income Blueprint", "price": 9.90, "currency": "USD", "coverImage": "/images/incomepassive.png",
-    "description": "Communication barriers won’t hold you back anymore. This practical roadmap shows you how to turn your visual and creative skills into a digital business—no interpreters or phone calls required. It’s the guide Ana wish she had years ago",
-    "forWhom": "Creative Deaf Beginners", "whatYouLearn": ["Monetizing creative skills", "No-call business model" , "Step-by-step roadmap"],
-    "faq": [{"q": "Need experience?", "a": "No."}], "testimonial": {"name": "B", "country": "UK", "text": "Awesome."},
-    "paypalLink": "#", "mercadoPagoLink": "#", "amazonLink": "#", "stripeLink": "https://buy.stripe.com/3cI3cv1lA4Xh7lJ1vb3ZK02", "relatedBooks": ["silent-success"]
+    "slug": "ultimate-passive-income-blueprint",
+    "lang": "en",
+    "title": "The Ultimate Passive Income Blueprint",
+    "price": 9.90,
+    "currency": "USD",
+    "coverImage": "/images/incomepassive.png",
+    "description": "Communication barriers won't hold you back anymore. This practical roadmap shows you how to turn your visual and creative skills into a digital business — no interpreters or phone calls required. It's the guide Ana wish she had years ago.",
+    "forWhom": "Creative Deaf Beginners",
+    "whatYouLearn": [
+      "Monetizing creative skills",
+      "No-call business model",
+      "Step-by-step roadmap"
+    ],
+    "faq": [
+      { "q": "Do I need previous experience?", "a": "No, this guide is designed for complete beginners." }
+    ],
+    "testimonial": {
+      "name": "",
+      "country": "",
+      "text": ""
+    },
+    "stripeLink": "https://buy.stripe.com/3cI3cv1lA4Xh7lJ1vb3ZK02",
+    "paypalLink": "",
+    "relatedBooks": ["silent-success"]
   },
   {
-    "slug": "exito-silencioso", "lang": "es", "title": "Éxito Silencioso", "price": 9.90, "currency": "USD", "coverImage": "/images/exitosilencioso.png",
+    "slug": "exito-silencioso",
+    "lang": "es",
+    "title": "Éxito Silencioso",
+    "price": 9.90,
+    "currency": "USD",
+    "coverImage": "/images/exitosilencioso.png",
     "description": "Las oportunidades de ingresos tradicionales no fueron diseñadas para nosotros. Esta guía te ayuda a navegar los obstáculos profesionales y dominar las estrategias necesarias para el éxito financiero, diseñadas específicamente para la comunidad sorda e hipoacúsica.",
-    "forWhom": "Profesionales Sordos e Hipoacúsicos", "whatYouLearn": ["Convierte obstáculos en ventajas", "Navegación de carrera para sordos", "Blueprint de imperio digital"],
-    "faq": [{"q": "¿Experiencia?", "a": "No."}], "testimonial": {"name": "D", "country": "AR", "text": "Excelente."},
-    "paypalLink": "#", "mercadoPagoLink": "#", "amazonLink": "#", "stripeLink": "https://buy.stripe.com/6oU00je8m61l5dB5Lr3ZK01", "relatedBooks": ["descubre-ingresos-pasivos"]
+    "forWhom": "Profesionales Sordos e Hipoacúsicos",
+    "whatYouLearn": [
+      "Convierte obstáculos en ventajas",
+      "Navegación de carrera para sordos",
+      "Blueprint de imperio digital"
+    ],
+    "faq": [
+      { "q": "¿Necesito experiencia previa?", "a": "No, esta guía está diseñada para principiantes." }
+    ],
+    "testimonial": {
+      "name": "",
+      "country": "",
+      "text": ""
+    },
+    "stripeLink": "https://buy.stripe.com/6oU00je8m61l5dB5Lr3ZK01",
+    "paypalLink": "",
+    "relatedBooks": ["descubre-ingresos-pasivos"]
   },
   {
-    "slug": "descubre-ingresos-pasivos", "lang": "es", "title": "Descubre la Última Guía de Ingresos Pasivos", "price": 9.90, "currency": "USD", "coverImage": "/images/ingresospasivos.png",
+    "slug": "descubre-ingresos-pasivos",
+    "lang": "es",
+    "title": "Descubre la Última Guía de Ingresos Pasivos",
+    "price": 9.90,
+    "currency": "USD",
+    "coverImage": "/images/ingresospasivos.png",
     "description": "Las barreras de comunicación ya no te detendrán. Esta hoja de ruta práctica te enseña a convertir tus habilidades visuales y creativas en un negocio digital, sin necesidad de intérpretes ni llamadas telefónicas. Es la guía que Ana desearía haber tenido hace años.",
-    "forWhom": "Principiantes Sordos Creativos", "whatYouLearn": ["Monetización de habilidades creativas", "Modelo de negocio sin llamadas", "Hoja de ruta paso a paso"],
-    "faq": [{"q": "¿Experiencia?", "a": "No."}], "testimonial": {"name": "E", "country": "MX", "text": "Muy bueno."},
-    "paypalLink": "#", "mercadoPagoLink": "#", "amazonLink": "#", "stripeLink": "https://buy.stripe.com/5kQ00j6FU2P90Xl6Pv3ZK00", "relatedBooks": ["exito-silencioso"]
+    "forWhom": "Principiantes Sordos Creativos",
+    "whatYouLearn": [
+      "Monetización de habilidades creativas",
+      "Modelo de negocio sin llamadas",
+      "Hoja de ruta paso a paso"
+    ],
+    "faq": [
+      { "q": "¿Necesito experiencia previa?", "a": "No, esta guía está diseñada para principiantes." }
+    ],
+    "testimonial": {
+      "name": "",
+      "country": "",
+      "text": ""
+    },
+    "stripeLink": "https://buy.stripe.com/5kQ00j6FU2P90Xl6Pv3ZK00",
+    "paypalLink": "",
+    "relatedBooks": ["exito-silencioso"]
   }
 ]

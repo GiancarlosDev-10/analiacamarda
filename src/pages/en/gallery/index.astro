@@ -7,13 +7,18 @@ const imageEntries = Object.entries(imageFiles);
 
 const galleryPhotos = await Promise.all(
   imageEntries
-    .filter(([path]) => !['instagram', 'tiktok', 'linkedin', 'visa', 'mastercard', 'paypal', 'analia-camarda', 'WiCyS_Deaf', 'whatsapp'].some(exclude => path.toLowerCase().includes(exclude)))
+    .filter(([path]) => ![
+      'instagram', 'tiktok', 'linkedin',
+      'visa', 'mastercard', 'paypal',
+      'analia-camarda', 'WiCyS_Deaf', 'whatsapp',
+      // Portadas de libros — excluidas de la galería
+      'silentsuccess', 'exitosilencioso', 'incomepassive', 'ingresospasivos'
+    ].some(exclude => path.toLowerCase().includes(exclude)))
     .map(async ([path, loader]) => {
       const mod = await loader();
       const filename = path.split('/').pop()?.split('.')[0] || 'gallery-image';
-      // Format label from filename (e.g. "foto-hero" -> "Foto Hero")
+      // Formatear label desde el nombre del archivo (ej. "foto-hero" -> "Foto Hero")
       const label = filename.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-      
       return {
         src: mod.default,
         alt: `Analía Camarda - ${label}`,
@@ -26,6 +31,7 @@ const galleryPhotos = await Promise.all(
 <BaseLayout
   title="Gallery | Analía Camarda"
   description="A visual journey through Analía Camarda's world — digital entrepreneur, deaf advocate, and passive income mentor."
+  image="/images/og-default.png"
   lang="en"
 >
   <!-- HERO HEADER -->
@@ -36,7 +42,7 @@ const galleryPhotos = await Promise.all(
       </p>
     </div>
     <div class="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-4">
-      <div class="font-outfit flex justify-center items-center gap-2 text-cta text-md tracking-widest uppercase">
+      <div class="font-outfit flex justify-center items-center gap-2 text-cta text-sm tracking-widest uppercase">
         <span>✦</span> Visual Story
       </div>
       <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-primary leading-tight">
@@ -48,7 +54,7 @@ const galleryPhotos = await Promise.all(
     </div>
   </section>
 
-  <!-- PHOTO GRID -->
+  <!-- GRILLA DE FOTOS -->
   <section class="bg-background py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
@@ -60,7 +66,7 @@ const galleryPhotos = await Promise.all(
               class="w-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading={i < 3 ? 'eager' : 'lazy'}
             />
-            <!-- Overlay -->
+            <!-- Overlay con label -->
             <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
               <span class="font-outfit text-sm font-bold text-white tracking-widest uppercase">
                 {photo.label}
@@ -80,6 +86,7 @@ const galleryPhotos = await Promise.all(
       <a
         href="https://skool.com/deafdigitalpro"
         target="_blank"
+        rel="noopener noreferrer"
         class="inline-block bg-cta hover:bg-dark text-white px-10 py-4 rounded-full font-bold font-outfit transition-all shadow-lg hover:shadow-xl"
       >
         Join Premium Now ↗

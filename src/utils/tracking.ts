@@ -13,7 +13,7 @@ interface TrackingEvent {
 /**
  * Envía evento a Google Analytics y Google Ads
  * Usar en onclick de botones importantes
- * 
+ *
  * Ejemplo de uso:
  * onclick="trackEvent('click_academy', 'cta', 'hero_button', 1)"
  */
@@ -24,21 +24,22 @@ export function trackEvent(eventName: string, category?: string, label?: string,
   if ((window as any).gtag) {
     (window as any).gtag('event', eventName, {
       event_category: category,
-      event_label: label,
-      value: value,
+      event_label:    label,
+      value:          value,
     });
   }
 
-  // Google Ads Conversion (si está configurado)
-  if ((window as any).gtag && eventName.includes('conversion') || eventName.includes('purchase')) {
-    // Para conversiones de Google Ads, se envía con 'conversion' como evento
-    // El ID de conversión se configura en Google Ads, no aquí
+  // Google Ads — solo para eventos de conversión o compra
+  if ((window as any).gtag && (eventName.includes('conversion') || eventName.includes('purchase'))) {
     (window as any).gtag('event', 'conversion', {
-      send_to: (window as any).GOOGLE_ADS_ID || 'AW-XXXXXXXXXX',
+      send_to: 'AW-XXXXXXXXXX', // reemplazar con el ID de conversión de Google Ads cuando Analía tenga acceso
     });
   }
 
-  console.log(`[Tracking] ${eventName}`, { category, label, value });
+  // Solo mostrar logs en desarrollo
+  if (import.meta.env.DEV) {
+    console.log(`[Tracking] ${eventName}`, { category, label, value });
+  }
 }
 
 /**
@@ -46,24 +47,24 @@ export function trackEvent(eventName: string, category?: string, label?: string,
  */
 export const trackingEvents = {
   // CTAs principales
-  clickAcademyHero: () => trackEvent('click_academy', 'cta', 'hero_button', 1),
-  clickAcademySection: () => trackEvent('click_academy', 'cta', 'academy_section', 1),
-  clickBooks: () => trackEvent('click_books', 'cta', 'hero_button', 1),
-  
-  // Conversiones de compra (usar cuando implementes checkout)
-  purchaseBook: (bookName: string, value: number) => 
+  clickAcademyHero:    () => trackEvent('click_academy',   'cta',        'hero_button',     1),
+  clickAcademySection: () => trackEvent('click_academy',   'cta',        'academy_section', 1),
+  clickBooks:          () => trackEvent('click_books',     'cta',        'hero_button',     1),
+
+  // Conversiones de compra
+  purchaseBook: (bookName: string, value: number) =>
     trackEvent('purchase', 'ecommerce', bookName, value),
-  
+
   // Lead magnet
   downloadGuide: () => trackEvent('download_guide', 'lead_magnet', 'free_guide', 1),
-  
-  // Contacto/Redes
-  clickWhatsApp: () => trackEvent('click_whatsapp', 'contact', 'whatsapp_button', 1),
-  clickInstagram: () => trackEvent('click_instagram', 'social', 'footer_link', 1),
+
+  // Contacto / Redes sociales
+  clickWhatsApp:  () => trackEvent('click_whatsapp',  'contact', 'whatsapp_button', 1),
+  clickInstagram: () => trackEvent('click_instagram', 'social',  'footer_link',     1),
 };
 
-// Exponer al window para usar inline
+// Exponer al window para uso inline en componentes Astro
 if (typeof window !== 'undefined') {
-  (window as any).trackEvent = trackEvent;
-  (window as any).trackingEvents = trackingEvents;
+  (window as any).trackEvent      = trackEvent;
+  (window as any).trackingEvents  = trackingEvents;
 }

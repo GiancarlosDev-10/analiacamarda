@@ -5,7 +5,7 @@ import type { ImageMetadata } from 'astro';
  * Used for dynamic data like books.json or blog posts.
  */
 export async function resolveImage(path: string): Promise<ImageMetadata> {
-  const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,webp}');
+  const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,webp,avif}');
   
   // Normalize path: if it's '/images/foo.png', change to '/src/assets/images/foo.png'
   let normalizedPath = path;
@@ -16,7 +16,7 @@ export async function resolveImage(path: string): Promise<ImageMetadata> {
   }
 
   if (!images[normalizedPath]) {
-    throw new Error(`Image "${normalizedPath}" not found in /src/assets/images/`);
+    throw new Error(`Image "${normalizedPath}". Verify the filename in books.json or blog frontmatter matches exactly (case-sensitive)`);
   }
   
   const mod = await images[normalizedPath]();
