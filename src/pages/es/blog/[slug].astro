@@ -6,7 +6,7 @@ import booksData from '../../../data/books.json';
 import { resolveImage } from '../../../utils/images';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog-es');
+  const blogEntries = await getCollection('blog-es', ({ data }) => !data.draft);
   return blogEntries.map(entry => ({
     // ✅ FIX 1: En Astro 5, entry.id incluye la extensión ("mi-post.md")
     // Hay que limpiarla para que la URL quede bien: /es/blog/mi-post
@@ -47,7 +47,7 @@ const imageAsset = relatedBook ? await resolveImage(relatedBook.coverImage) : nu
 <BaseLayout
   title={`${entry.data.title} | Blog | Analía Camarda`}
   description={entry.data.description}
-  image={entry.data.image}
+  image={entry.data.image ?? "/images/og-default.png"}
   schema={schema}
   lang="es"
 >
@@ -100,6 +100,7 @@ const imageAsset = relatedBook ? await resolveImage(relatedBook.coverImage) : nu
             <a 
               href={`https://wa.me/?text=${encodeURIComponent(entry.data.title + ' - https://analiacamarda.com/es/blog/' + slug)}`} 
               target="_blank" 
+              rel="noopener noreferrer"
               class="w-10 h-10 flex items-center justify-center bg-[#25D366] text-white rounded-full hover:scale-110 transition-transform shadow-lg"
               title="Compartir en WhatsApp"
             >
@@ -108,6 +109,7 @@ const imageAsset = relatedBook ? await resolveImage(relatedBook.coverImage) : nu
             <a
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(entry.data.title)}&url=${encodeURIComponent('https://analiacamarda.com/es/blog/' + slug)}`}
               target="_blank"
+              rel="noopener noreferrer"
               class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full hover:scale-110 transition-transform shadow-lg"
               title="Compartir en X"
             >
@@ -116,6 +118,7 @@ const imageAsset = relatedBook ? await resolveImage(relatedBook.coverImage) : nu
             <a
               href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent('https://analiacamarda.com/es/blog/' + slug)}`}
               target="_blank"
+              rel="noopener noreferrer"
               class="w-10 h-10 flex items-center justify-center bg-[#0077b5] text-white rounded-full hover:scale-110 transition-transform shadow-lg"
               title="Compartir en LinkedIn"
             >
@@ -156,7 +159,7 @@ const imageAsset = relatedBook ? await resolveImage(relatedBook.coverImage) : nu
       <div class="bg-card border border-primary/20 rounded-2xl p-8 shadow-xl flex flex-col md:flex-row items-center gap-8">
         {relatedBook && imageAsset && (
           <div class="flex-shrink-0">
-            <Image src={imageAsset} alt={relatedBook.title} class="w-32 shadow-md rounded-md border border-primary/10" />
+            <Image src={imageAsset} alt={relatedBook.title} class="w-32 shadow-md rounded-md border border-primary/10" loading="lazy" />
           </div>
         )}
         <div class="space-y-4">
@@ -165,7 +168,7 @@ const imageAsset = relatedBook ? await resolveImage(relatedBook.coverImage) : nu
             Si este artículo te fue útil, te encantará la profundidad de mis guías completas y el soporte de la comunidad en Skool.
           </p>
           <div class="flex flex-wrap gap-4 pt-4">
-            <a href="https://skool.com/deafdigitalpro" target="_blank" class="bg-cta hover:bg-cta-hover text-white px-6 py-3 rounded-lg font-bold shadow-lg transition-colors">
+            <a href="https://skool.com/deafdigitalpro" target="_blank" rel="noopener noreferrer" class="bg-cta hover:bg-cta-hover text-white px-6 py-3 rounded-lg font-bold shadow-lg transition-colors">
               Únete gratis a la Academia
             </a>
             {relatedBook && (

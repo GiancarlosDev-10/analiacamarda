@@ -22,6 +22,7 @@ const spanishBooks = await Promise.all(
 <BaseLayout 
   title="Librería Digital | Analía Camarda" 
   description="Explora la colección completa de e-books de Analía Camarda para aprender sobre ingresos pasivos y libertad financiera."
+  image="/images/og-default.png"
   lang="es"
 >
   <!-- HERO HEADER -->
@@ -53,13 +54,17 @@ const spanishBooks = await Promise.all(
               
               <div class="w-full relative z-10">
                 <div class="w-full aspect-[3/4] md:aspect-[3/4] mb-6 md:mb-10 bg-card/50 border border-primary/5 rounded-2xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-700 max-h-[280px] md:max-h-none flex items-center justify-center p-4">
-                  {book.imageAsset && (
-                    <Image
-                      src={book.imageAsset}
-                      alt={`Portada de ${book.title}`}
-                      class="w-full h-full object-contain drop-shadow-xl"
-                    />
-                  )}
+                  {book.imageAsset
+                    ? <Image
+                        src={book.imageAsset}
+                        alt={`Portada de ${book.title}`}
+                        loading="lazy"
+                        class="w-full h-full object-contain drop-shadow-xl"
+                      />
+                    : <div class="w-full h-full bg-primary/10 flex items-center justify-center rounded-xl">
+                        <span class="text-primary/30 text-4xl">📚</span>
+                      </div>
+                  }
                 </div>
                 <div class="space-y-3 md:space-y-4">
                   <div class="flex items-center gap-2 text-cta font-outfit text-xs md:text-md tracking-widest uppercase opacity-70">

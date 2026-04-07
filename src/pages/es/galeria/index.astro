@@ -7,7 +7,13 @@ const imageEntries = Object.entries(imageFiles);
 
 const galleryPhotos = await Promise.all(
   imageEntries
-    .filter(([path]) => !['instagram', 'tiktok', 'linkedin', 'visa', 'mastercard', 'paypal', 'analia-camarda', 'WiCyS_Deaf', 'whatsapp'].some(exclude => path.toLowerCase().includes(exclude)))
+    .filter(([path]) => ![
+      'instagram', 'tiktok', 'linkedin',
+      'visa', 'mastercard', 'paypal',
+      'analia-camarda', 'WiCyS_Deaf', 'whatsapp',
+      // Portadas de libros — excluidas de la galería
+      'silentsuccess', 'exitosilencioso', 'incomepassive', 'ingresospasivos'
+    ].some(exclude => path.toLowerCase().includes(exclude)))
     .map(async ([path, loader]) => {
       const mod = await loader();
       const filename = path.split('/').pop()?.split('.')[0] || 'imagen-galeria';
@@ -25,6 +31,7 @@ const galleryPhotos = await Promise.all(
 <BaseLayout
   title="Galería | Analía Camarda"
   description="Un viaje visual por el mundo de Analía Camarda — emprendedora digital, defensora de la comunidad sorda y mentora de ingresos pasivos."
+  image="/images/og-default.png"
   lang="es"
 >
   <!-- HERO HEADER -->
@@ -74,11 +81,12 @@ const galleryPhotos = await Promise.all(
   <!-- CTA -->
   <section class="bg-card border-t border-primary/20 py-20 text-center">
     <div class="max-w-2xl mx-auto px-4 space-y-6">
-      <h2 class="text-3xl font-heading font-bold text-primary">¿Querés trabajar juntos?</h2>
-      <p class="font-outfit text-dark/70 text-lg">Únete a la Deaf Digital Pro Academy y empezá a construir tu camino hacia los ingresos pasivos.</p>
+      <h2 class="text-3xl font-heading font-bold text-primary">¿Quieres trabajar juntos?</h2>
+      <p class="font-outfit text-dark/70 text-lg">Únete a la Deaf Digital Pro Academy y empieza a construir tu camino hacia los ingresos pasivos.</p>
       <a
         href="https://skool.com/deafdigitalpro"
         target="_blank"
+        rel="noopener noreferrer"
         class="inline-block bg-cta hover:bg-dark text-white px-10 py-4 rounded-full font-bold font-outfit transition-all shadow-lg hover:shadow-xl"
       >
         Unirse a Premium ↗

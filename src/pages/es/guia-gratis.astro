@@ -1,27 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LeadMagnet from '../../components/LeadMagnet.astro';
 ---
-<BaseLayout title="Guía Gratis | Analía Camarda" description="Descarga la guía gratuita de Ana sobre Ingresos Pasivos. 5 fuentes que puedes iniciar hoy mismo." lang="es">
-  <section class="bg-background pt-32 pb-24 min-h-screen border-b border-primary/20">
-    <div class="max-w-3xl mx-auto px-4 text-center space-y-8">
-      <div class="flex items-center justify-center gap-2 text-primary font-bold tracking-widest uppercase mb-4">
-        <span>✦</span> Guía PDF Gratuita
-      </div>
-      <h1 class="text-4xl md:text-5xl font-heading font-bold text-primary">5 Fuentes de Ingresos Pasivos Que Puedes Iniciar Hoy</h1>
-      <p class="text-xl font-medium text-dark/80">Ingresa tu correo para recibir al instante un PDF con mi sistema personal para diseñar una vida independiente.</p>
-      
-      <div class="bg-card p-10 rounded-2xl max-w-xl mx-auto flex flex-col items-center gap-6 shadow-2xl border border-primary/20">
-        <svg class="w-16 h-16 text-primary mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-        <p class="font-bold text-dark text-lg">El enlace de descarga se enviará instantáneamente</p>
-        
-        <form class="flex flex-col w-full gap-4" onsubmit="event.preventDefault(); alert('Integración de MailerLite pendiente.');">
-          <input type="email" id="email" aria-label="Tu correo electrónico" placeholder="Ingresa tu mejor correo..." class="w-full px-4 py-4 rounded-lg bg-background text-dark font-medium border border-primary/20 outline-none focus:ring-2 focus:ring-primary focus:border-primary/50 transition-all" required />
-          <button type="submit" class="bg-gradient-to-r from-cta to-cta-hover text-white px-6 py-4 rounded-lg font-bold shadow-xl transition-transform hover:scale-105">
-            Enviar mi Guía Gratis
-          </button>
-        </form>
-        <p class="text-xs text-dark/50 font-medium">Nunca hacemos spam. Puedes desuscribirte cuando quieras.</p>
-      </div>
-    </div>
-  </section>
+
+<BaseLayout
+  title="Guía Gratis | Analía Camarda"
+  description="Descarga la guía gratuita de Ana sobre Ingresos Pasivos. 5 fuentes que puedes iniciar hoy mismo."
+  image="/images/og-default.png"
+  lang="es"
+>
+  <LeadMagnet lang="es" />
 </BaseLayout>

@@ -22,7 +22,7 @@ const schema = JSON.stringify({
   "@graph": [
     {
       "@type": "Book",
-      "@id": `https://www.analiacamarda.com/libros/${book.slug}#book`,
+      "@id": `https://www.analiacamarda.com/es/libros/${book.slug}#book`,
       "name": book.title,
       "author": { "@type": "Person", "name": "Analía Camarda" },
       "image": book.coverImage,
@@ -36,7 +36,7 @@ const schema = JSON.stringify({
     },
     {
       "@type": "FAQPage",
-      "@id": `https://www.analiacamarda.com/libros/${book.slug}#faq`,
+      "@id": `https://www.analiacamarda.com/es/libros/${book.slug}#faq`,
       "mainEntity": book.faq.map(f => ({
         "@type": "Question",
         "name": f.q,
@@ -59,6 +59,7 @@ const paypalIcon = await resolveImage('paypal.svg');
 <BaseLayout 
   title={`${book.title} | Analía Camarda`} 
   description={book.description.substring(0, 155)} 
+  image={book.coverImage ?? "/images/og-default.png"}
   schema={schema}
   lang="es"
 >
@@ -66,9 +67,12 @@ const paypalIcon = await resolveImage('paypal.svg');
   <section class="bg-background pt-10 pb-6 border-b border-primary/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6 md:gap-12 items-start">
       <div class="relative w-full aspect-[3/4] max-w-[200px] md:max-w-[400px] mx-auto shadow-2xl rounded-2xl border border-primary/20 overflow-hidden">
-        {imageAsset && (
-          <Image src={imageAsset} alt={`Portada de ${book.title}`} class="w-full h-full object-cover" />
-        )}
+        {imageAsset
+          ? <Image src={imageAsset} alt={`Portada de ${book.title}`} loading="eager" class="w-full h-full object-cover" />
+          : <div class="w-full h-full bg-primary/10 flex items-center justify-center">
+              <span class="text-primary/30 text-4xl">📚</span>
+            </div>
+        }
       </div>
 
       <div class="space-y-4 mt-10 md:mt-0">
@@ -98,15 +102,15 @@ const paypalIcon = await resolveImage('paypal.svg');
              Completar mi Pedido
           </a>
           
-          <!-- PayPal Direct Button -->
+          <!-- Botón PayPal -->
           <a 
-            href={import.meta.env.PAYPAL_LINK || '#'} 
+            href={book.paypalLink || '#'} 
             target="_blank"
+            rel="noopener noreferrer"
             onclick={`if(window.trackEvent)window.trackEvent('click_purchase_paypal','purchase','${book.slug}',${book.price})`}
             class="w-full bg-[#ffc439] hover:bg-[#ffb700] py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:scale-[1.02] shadow-lg border-2 border-[#e6a823]"
           >
             <Image src={paypalIcon} alt="PayPal" class="h-6 w-auto" />
-            <span class="font-outfit font-bold text-[#003087] text-sm"></span>
           </a>
           
           <!-- Trust Bar -->
@@ -122,11 +126,6 @@ const paypalIcon = await resolveImage('paypal.svg');
               Transacción Segura Encriptada SSL
             </div>
           </div>
-          {book.amazonLink && book.amazonLink !== "#" && (
-            <a href={book.amazonLink} target="_blank" class="text-center text-dark/70 hover:text-dark font-bold underline underline-offset-4 w-full mt-2">
-              También disponible en Amazon Kindle
-            </a>
-          )}
         </div>
       </div>
     </div>

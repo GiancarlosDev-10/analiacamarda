@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
-const blogEntries = await getCollection('blog-es');
+const blogEntries = await getCollection('blog-es', ({ data }) => !data.draft);
 // Ordenar por fecha (desc)
 const sortedEntries = blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
@@ -11,6 +11,7 @@ const sortedEntries = blogEntries.sort((a, b) => b.data.date.getTime() - a.data.
   title="Blog | Ideas & Estrategias | Analía Camarda"
   description="Explora las últimas ideas sobre negocios digitales, ingresos pasivos y crecimiento profesional para la comunidad sorda e hispana."
   lang="es"
+  image="/images/og-default.png"
 >
   <!-- HERO HEADER -->
   <section class="relative bg-background pt-16 pb-10 border-b border-primary/10 overflow-hidden">
