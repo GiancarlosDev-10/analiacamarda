@@ -39,19 +39,19 @@ const schema = JSON.stringify({
       </h1>
       
       <p class="font-outfit text-base md:text-lg text-dark/70 max-w-2xl mx-auto leading-relaxed">
-        
-The central hub where entrepreneurs come together to achieve automated financial independence. Start for free or access the full mentorship experience to scale your business.
+        The central hub where entrepreneurs come together to achieve automated financial independence. Start for free or access the full mentorship experience to scale your business.
       </p>
     </div>
   </section>
 
-  <!-- PRICING SECTION (Esta es la parte que faltaba) -->
+  <!-- PRICING SECTION -->
   <section class="bg-background pt-12 pb-10"> 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 gap-3 md:gap-12 max-w-5xl mx-auto items-stretch">
+    <div class="max-w-6xl mx-auto">
+      <!-- Mobile: horizontal scroll snap | Desktop: grid -->
+      <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-6 md:pb-0 md:grid md:grid-cols-2 md:gap-12 md:max-w-5xl md:mx-auto md:px-6 lg:px-8 md:items-stretch">
         
         <!-- FREE TIER -->
-        <div class="group bg-card rounded-2xl border border-primary/15 p-10 flex flex-col h-full shadow-md hover:scale-103 transition-all duration-500 hover:bg-primary">
+        <div class="group snap-center shrink-0 w-[80%] md:w-auto bg-card rounded-2xl border border-primary/15 p-8 md:p-10 flex flex-col shadow-md hover:scale-103 transition-all duration-500 hover:bg-primary">
           <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
             <span>✦</span> Basic Access
           </div>
@@ -78,14 +78,14 @@ The central hub where entrepreneurs come together to achieve automated financial
             </li>
           </ul>
 
-          <a href="https://skool.com/deafdigitalpro" target="_blank" class="w-full bg-transparent text-primary border-2 border-primary text-center px-6 py-4 rounded-full font-bold font-outfit transition-all group-hover:bg-cta group-hover:border-cta group-hover:text-white">
+          <a href="https://skool.com/deafdigitalpro" target="_blank" rel="noopener noreferrer" class="w-full bg-transparent text-primary border-2 border-primary text-center px-6 py-4 rounded-full font-bold font-outfit transition-all group-hover:bg-cta group-hover:border-cta group-hover:text-white">
             Join for Free
           </a>
         </div>
 
         <!-- PREMIUM TIER -->
-        <div class="group bg-card rounded-2xl border border-primary/15 p-10 flex flex-col h-full shadow-md hover:scale-103 relative transition-all duration-500 hover:bg-primary">
-          <div class="absolute top-0 right-10 transform -translate-y-1/2 bg-cta text-white px-5 py-1.5 rounded-full text-xs font-bold font-outfit uppercase tracking-widest shadow-lg">
+        <div class="group snap-center shrink-0 w-[80%] md:w-auto bg-card rounded-2xl border border-primary/15 p-8 md:p-10 flex flex-col shadow-md hover:scale-103 relative transition-all duration-500 hover:bg-primary">
+          <div class="absolute top-0 right-8 transform -translate-y-1/2 bg-cta text-white px-5 py-1.5 rounded-full text-xs font-bold font-outfit uppercase tracking-widest shadow-lg">
             Recommended
           </div>
 
@@ -121,11 +121,15 @@ The central hub where entrepreneurs come together to achieve automated financial
             </li>
           </ul>
 
-          <a href="https://skool.com/deafdigitalpro" target="_blank" class="w-full bg-transparent text-primary border-2 border-primary text-center px-6 py-4 rounded-full font-bold font-outfit transition-all group-hover:bg-cta group-hover:border-cta group-hover:text-white">
+          <a href="https://skool.com/deafdigitalpro" target="_blank" rel="noopener noreferrer" class="w-full bg-transparent text-primary border-2 border-primary text-center px-6 py-4 rounded-full font-bold font-outfit transition-all group-hover:bg-cta group-hover:border-cta group-hover:text-white">
             Unlock Premium Now
           </a>
         </div>
+
       </div>
+
+      <!-- Scroll hint — solo mobile -->
+      <p class="md:hidden text-center text-xs text-dark/40 font-outfit mt-2">← swipe to see more →</p>
     </div>
   </section>
 

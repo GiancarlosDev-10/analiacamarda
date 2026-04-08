@@ -44,11 +44,12 @@ const schema = JSON.stringify({
 
   <!-- PRICING SECTION -->
   <section class="bg-background pt-12 pb-10"> 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 gap-3 md:gap-12 max-w-5xl mx-auto items-stretch">
+    <div class="max-w-6xl mx-auto">
+      <!-- Mobile: horizontal scroll snap | Desktop: grid -->
+      <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-6 md:pb-0 md:grid md:grid-cols-2 md:gap-12 md:max-w-5xl md:mx-auto md:px-6 lg:px-8 md:items-stretch">
         
         <!-- FREE TIER -->
-        <div class="group bg-card rounded-2xl border border-primary/15 p-10 flex flex-col h-full shadow-md hover:scale-103 transition-all duration-500 hover:bg-primary">
+        <div class="group snap-center shrink-0 w-[80%] md:w-auto bg-card rounded-2xl border border-primary/15 p-8 md:p-10 flex flex-col shadow-md hover:scale-103 transition-all duration-500 hover:bg-primary">
           <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
             <span>✦</span> Acceso Básico
           </div>
@@ -81,8 +82,8 @@ const schema = JSON.stringify({
         </div>
 
         <!-- PREMIUM TIER -->
-        <div class="group bg-card rounded-2xl border border-primary/15 p-10 flex flex-col h-full shadow-md hover:scale-103 relative transition-all duration-500 hover:bg-primary">
-          <div class="absolute top-0 right-10 transform -translate-y-1/2 bg-cta text-white px-5 py-1.5 rounded-full text-xs font-bold font-outfit uppercase tracking-widest shadow-lg">
+        <div class="group snap-center shrink-0 w-[80%] md:w-auto bg-card rounded-2xl border border-primary/15 p-8 md:p-10 flex flex-col shadow-md hover:scale-103 relative transition-all duration-500 hover:bg-primary">
+          <div class="absolute top-0 right-8 transform -translate-y-1/2 bg-cta text-white px-5 py-1.5 rounded-full text-xs font-bold font-outfit uppercase tracking-widest shadow-lg">
             Recomendado
           </div>
           <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
@@ -121,6 +122,9 @@ const schema = JSON.stringify({
         </div>
 
       </div>
+
+      <!-- Scroll hint — solo mobile -->
+      <p class="md:hidden text-center text-xs text-dark/40 font-outfit mt-2">← desliza para ver más →</p>
     </div>
   </section>
 
