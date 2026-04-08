@@ -2,6 +2,12 @@
   "redirects": [
     {
       "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "analiacamarda.com"
+        }
+      ],
       "destination": "https://www.analiacamarda.com/$1",
       "permanent": true
     }
