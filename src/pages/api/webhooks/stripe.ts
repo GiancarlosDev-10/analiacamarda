@@ -10,32 +10,28 @@ const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY as string, {
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY as string);
 
-// Mapeo: Stripe Payment Link ID → PDF en Vercel Blob + info del libro
+// Mapeo: Payment Link ID → clave del archivo + info del libro
 const PRODUCT_MAP: Record<
   string,
-  { blobUrl: string; title: string; lang: "en" | "es" }
+  { fileKey: string; title: string; lang: "en" | "es" }
 > = {
-  // Silent Success (EN)
   plink_1TIeJ7Ey1gF0PaKE5WNOuuYp: {
-    blobUrl: import.meta.env.BLOB_URL_SILENT_SUCCESS as string,
+    fileKey: "silent-success",
     title: "Silent Success",
     lang: "en",
   },
-  // The Ultimate Passive Income Blueprint (EN)
   plink_1TTeTIEy1gF0PaKE8HNADkYN: {
-    blobUrl: import.meta.env.BLOB_URL_PLAN_30_DAYS_EN as string,
+    fileKey: "plan-30-en",
     title: "The Ultimate Passive Income Blueprint",
     lang: "en",
   },
-  // Éxito Silencioso (ES)
   plink_1TIeHuEy1gF0PaKEQhgGw010: {
-    blobUrl: import.meta.env.BLOB_URL_EXITO_SILENCIOSO as string,
+    fileKey: "exito",
     title: "Éxito Silencioso",
     lang: "es",
   },
-  // La Última Guía de Ingresos Pasivos (ES)
   plink_1TIdkjEy1gF0PaKEGwGNJsq6: {
-    blobUrl: import.meta.env.BLOB_URL_PLAN_30_DIAS_ES as string,
+    fileKey: "plan-30-es",
     title: "Descubre la Última Guía de Ingresos Pasivos",
     lang: "es",
   },
@@ -78,13 +74,12 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response("Unknown product", { status: 200 });
     }
 
-    const { blobUrl, title, lang } = product;
+    const { fileKey, title, lang } = product;
     const firstName =
       customerName.split(" ")[0] || (lang === "en" ? "friend" : "amigo/a");
 
-    // Generar URL con token codificado para acceso al blob privado
-    const token = import.meta.env.BLOB_READ_WRITE_TOKEN as string;
-    const downloadUrl = `${blobUrl}?token=${encodeURIComponent(token)}`;
+    // URL del endpoint proxy de descarga
+    const downloadUrl = `https://www.analiacamarda.com/api/download?file=${fileKey}&secret=${import.meta.env.DOWNLOAD_SECRET}`;
 
     // Textos según idioma
     const subject =

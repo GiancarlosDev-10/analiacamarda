@@ -1,6 +1,5 @@
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
-import { head } from "@vercel/blob";
 
 export const prerender = false;
 
@@ -17,25 +16,14 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Identificar qué PDF enviar según el idioma
-    const pdfUrl =
-      lang === "en"
-        ? (import.meta.env.BLOB_URL_LEADM_EN as string)
-        : (import.meta.env.BLOB_URL_LEADM_ES as string);
-
     const subject =
       lang === "en"
         ? "Here is your Free Guide 🎁"
         : "Aquí tienes tu Guía Gratuita 🎁";
 
-    // Verificar que el blob existe
-    await head(pdfUrl, {
-      token: import.meta.env.BLOB_READ_WRITE_TOKEN as string,
-    });
-
-    // Generar URL con token para acceso temporal al blob privado
-    const token = import.meta.env.BLOB_READ_WRITE_TOKEN as string;
-    const downloadUrl = `${pdfUrl}?token=${encodeURIComponent(token)}`;
+    // Generar URL del endpoint proxy de descarga
+    const fileKey = lang === "en" ? "leadm-en" : "leadm-es";
+    const downloadUrl = `https://www.analiacamarda.com/api/download?file=${fileKey}&secret=${import.meta.env.DOWNLOAD_SECRET}`;
 
     // Enviar el correo usando Resend
     await resend.emails.send({
