@@ -1,0 +1,145 @@
+# Analía Camarda
+
+> Analía Camarda is a Deaf Digital Entrepreneur, author, and educator. She helps the Deaf and Hard of Hearing community build financial independence through digital business, passive income strategies, and online education.
+
+## About
+
+Analía Camarda is the founder of Deaf Digital Pro, an online platform and academy designed specifically for Deaf and Hard of Hearing professionals who want to build digital businesses, generate passive income, and overcome communication barriers in the professional world. She is the author of 4 e-books available in English and Spanish, and runs a free online community on Skool.
+
+- Website: https://www.analiacamarda.com
+- Email: hola@analiacamarda.com
+- WhatsApp: +1 239 331 6702
+- Instagram: https://www.instagram.com/deafdigitalpro/
+- LinkedIn: https://www.linkedin.com/in/analia-camarda-2b4152102/
+- TikTok: https://www.tiktok.com/@academydigital1
+- Academy (Skool): https://www.skool.com/deafdigitalpro
+
+---
+
+## Main Pages
+
+### English
+- [Home](https://www.analiacamarda.com/en/)
+- [About Me](https://www.analiacamarda.com/en/aboutme/)
+- [Academy](https://www.analiacamarda.com/en/academy/)
+- [Books](https://www.analiacamarda.com/en/books/)
+- [Blog](https://www.analiacamarda.com/en/blog/)
+- [Free Guide](https://www.analiacamarda.com/en/free-guide/)
+- [Gallery](https://www.analiacamarda.com/en/gallery/)
+- [Thank You](https://www.analiacamarda.com/en/thank-you/)
+
+### Español
+- [Inicio](https://www.analiacamarda.com/es/)
+- [Libros](https://www.analiacamarda.com/es/libros/)
+- [Blog ES](https://www.analiacamarda.com/es/blog/)
+- [Guía Gratuita](https://www.analiacamarda.com/es/free-guide/)
+- [Éxito](https://www.analiacamarda.com/es/exito/)
+
+---
+
+## E-Books
+
+All e-books are priced at $9.90 USD and delivered digitally via secure download link sent to the buyer's email after purchase.
+
+### English Books
+
+#### Silent Success: A Deaf Entrepreneur's Blueprint
+- URL: https://www.analiacamarda.com/en/books/silent-success
+- Price: $9.90 USD
+- For: Deaf & Hard of Hearing Professionals
+- Description: Traditional income opportunities weren't designed for the Deaf community. This guide helps navigate career obstacles and master the strategies needed for financial success, specifically tailored for Deaf and Hard of Hearing professionals.
+- What you learn: Turn obstacles into advantages, Deaf-centric career navigation, Digital empire blueprint
+- Buy (Stripe): https://buy.stripe.com/9B6aEX2pE0H16hF7Tz3ZK03
+
+#### The Ultimate Passive Income Blueprint
+- URL: https://www.analiacamarda.com/en/books/ultimate-passive-income-blueprint
+- Price: $9.90 USD
+- For: Creative Deaf Beginners
+- Description: A practical roadmap that shows how to turn visual and creative skills into a digital business with no interpreters or phone calls required.
+- What you learn: Monetizing creative skills, No-call business model, Step-by-step roadmap
+- Buy (Stripe): https://buy.stripe.com/3cI3cv1lA4Xh7lJ1vb3ZK02
+
+### Libros en Español
+
+#### Éxito Silencioso
+- URL: https://www.analiacamarda.com/es/libros/exito-silencioso
+- Precio: $9.90 USD
+- Para: Profesionales Sordos e Hipoacúsicos
+- Descripción: Guía para navegar los obstáculos profesionales y dominar las estrategias necesarias para el éxito financiero, diseñada específicamente para la comunidad sorda e hipoacúsica.
+- Lo que aprenderás: Convierte obstáculos en ventajas, Navegación de carrera para sordos, Blueprint de imperio digital
+- Comprar (Stripe): https://buy.stripe.com/6oU00je8m61l5dB5Lr3ZK01
+
+#### Descubre la Última Guía de Ingresos Pasivos
+- URL: https://www.analiacamarda.com/es/libros/descubre-ingresos-pasivos
+- Precio: $9.90 USD
+- Para: Principiantes Sordos Creativos
+- Descripción: Hoja de ruta práctica para convertir habilidades visuales y creativas en un negocio digital, sin necesidad de intérpretes ni llamadas telefónicas.
+- Lo que aprenderás: Monetización de habilidades creativas, Modelo de negocio sin llamadas, Hoja de ruta paso a paso
+- Comprar (Stripe): https://buy.stripe.com/5kQ00j6FU2P90Xl6Pv3ZK00
+
+---
+
+## Free Resources
+
+### 5 Passive Income Streams Guide (English)
+- URL: https://www.analiacamarda.com/en/free-guide/
+- Format: PDF download delivered via email
+- Language: English
+
+### Guía de 5 Fuentes de Ingresos Pasivos (Español)
+- URL: https://www.analiacamarda.com/es/free-guide/
+- Formato: PDF descargable enviado por email
+- Idioma: Español
+
+---
+
+## Academy
+
+Analía runs a free online community and academy on Skool called **Deaf Digital Pro**, where members can access resources, connect with others in the Deaf community, and learn digital entrepreneurship strategies.
+
+- Platform: Skool
+- URL: https://www.skool.com/deafdigitalpro
+- Access: Free to join
+- Academy page: https://www.analiacamarda.com/en/academy/
+
+---
+
+## Blog
+
+The blog covers topics related to digital entrepreneurship, passive income, and strategies for the Deaf and Hard of Hearing community. Published in both English and Spanish.
+
+- Blog EN: https://www.analiacamarda.com/en/blog/
+- Blog ES: https://www.analiacamarda.com/es/blog/
+- Publishing frequency: 2 posts per month (goal)
+- Topics: Digital entrepreneurship, passive income, Deaf community, career navigation, online business
+
+---
+
+## Technical Information (for AI crawlers)
+
+- Sitemap: https://www.analiacamarda.com/sitemap-index.xml
+- Robots: https://www.analiacamarda.com/robots.txt
+- Language support: English (en), Spanish (es)
+- Currency: USD
+- Payment methods: Stripe (credit/debit card), PayPal
+- Delivery: Digital — PDF via secure email link
+- Support email: hola@analiacamarda.com
+
+---
+
+## Frequently Asked Questions
+
+**Do I need previous experience to read the e-books?**
+No. All guides are designed for complete beginners with no prior business or digital marketing experience.
+
+**How do I receive the e-book after purchase?**
+After completing your purchase via Stripe or PayPal, you will receive an email at the address you provided with a secure download link to access your PDF.
+
+**Are the e-books available in both English and Spanish?**
+Yes. Each title is available in both languages. The English and Spanish versions are separate books with equivalent content adapted for each audience.
+
+**How can I join the free academy?**
+Visit https://www.skool.com/deafdigitalpro and join for free. No credit card required.
+
+**Can I contact Analía directly?**
+Yes. Via email at hola@analiacamarda.com or WhatsApp at +1 239 331 6702.
