@@ -34,7 +34,7 @@ const schema = JSON.stringify({
         <span>✦</span> La Comunidad
       </div>
       <h1 class="text-4xl md:text-6xl font-heading font-extrabold text-primary leading-tight">
-        Academia Deaf Digital Pro 
+        Academia Digital 
       </h1>
       <p class="font-outfit text-base md:text-lg text-dark/70 max-w-2xl mx-auto leading-relaxed">
         El centro de reunión donde los emprendedores se encuentran para lograr la independencia financiera automatizada. Empieza gratis o accede a la experiencia completa de mentoría para escalar tu negocio.
@@ -51,73 +51,68 @@ const schema = JSON.stringify({
         <!-- FREE TIER -->
         <div class="group snap-center shrink-0 w-[80%] md:w-auto bg-card rounded-2xl border border-primary/15 p-8 md:p-10 flex flex-col shadow-md hover:scale-103 transition-all duration-500 hover:bg-primary">
           <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
-            <span>✦</span> Acceso Básico
+            <span>✦</span> Standard
           </div>
           <div class="mb-6">
-            <div class="text-4xl md:text-5xl font-heading font-extrabold text-primary group-hover:text-white transition-colors">Gratis</div>
-            <div class="font-outfit text-dark/50 text-sm italic mt-1 group-hover:text-white/50 transition-colors">Acceso para siempre</div>
+            <div class="text-4xl md:text-5xl font-heading font-extrabold text-primary group-hover:text-white transition-colors">$0<span class="text-2xl md:text-3xl font-normal">/mes</span></div>
           </div>
-          <p class="font-outfit text-dark/80 text-base md:text-lg leading-relaxed mb-8 group-hover:text-white/80 transition-colors">
-            Perfecto para principiantes que buscan entender los fundamentos de los ingresos pasivos.
-          </p>
           
-          <ul class="space-y-4 mb-10 flex-grow font-outfit text-dark/90 group-hover:text-white transition-colors">
+          <ul class="space-y-3 mb-10 flex-grow font-outfit text-dark/90 group-hover:text-white transition-colors">
             <li class="flex items-start gap-3">
-              <span class="text-cta mt-1 text-sm md:text-base">✦</span>
-              <span class="text-sm md:text-base">Acceso a la comunidad general</span>
+              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
+              <span class="text-sm md:text-base">Bienvenido/a a la comunidad</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-cta mt-1 text-sm md:text-base">✦</span>
-              <span class="text-sm md:text-base">Guías básicas de activos digitales</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-cta mt-1 text-sm md:text-base">✦</span>
-              <span class="text-sm md:text-base">Networking con otros emprendedores</span>
+              <span class="text-cta mt-1 text-sm md:text-base">🔒</span>
+              <span class="text-sm md:text-base">Actualiza para desbloquear todas las clases y libros electrónicos.</span>
             </li>
           </ul>
 
-          <a href="https://skool.com/deafdigitalpro" target="_blank" rel="noopener noreferrer" class="w-full bg-transparent text-primary border-2 border-primary text-center px-6 py-4 rounded-full font-bold font-outfit transition-all group-hover:bg-cta group-hover:border-cta group-hover:text-white">
-            Unirse Gratis
-          </a>
+          <button disabled class="w-full bg-primary/20 text-primary/50 border-2 border-primary/20 text-center px-6 py-4 rounded-lg font-bold font-outfit cursor-default">
+            PLAN ACTUAL
+          </button>
         </div>
 
         <!-- PREMIUM TIER -->
-        <div class="group snap-center shrink-0 w-[80%] md:w-auto bg-card rounded-2xl border border-primary/15 p-8 md:p-10 flex flex-col shadow-md hover:scale-103 relative transition-all duration-500 hover:bg-primary">
-          <div class="absolute top-0 right-8 transform -translate-y-1/2 bg-cta text-white px-5 py-1.5 rounded-full text-xs font-bold font-outfit uppercase tracking-widest shadow-lg">
+        <div class="group relative snap-center shrink-0 w-[80%] md:w-auto bg-card rounded-2xl border border-primary/15 p-8 md:p-10 flex flex-col shadow-md hover:scale-103 transition-all duration-500 hover:bg-primary">
+          <!-- Badge esquina superior derecha -->
+          <div class="absolute top-3 right-6 bg-cta text-white px-5 py-1.5 rounded-full text-xs font-bold font-outfit uppercase tracking-widest shadow-lg group-hover:bg-white group-hover:text-cta transition-colors">
             Recomendado
           </div>
+
           <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
-            <span>✦</span> Experiencia Premium
+            <span>✦</span> Premium
           </div>
+
           <div class="mb-6">
-            <div class="text-4xl md:text-5xl font-heading font-extrabold text-primary group-hover:text-white transition-colors">$9</div>
-            <div class="font-outfit text-dark/50 text-sm italic mt-1 group-hover:text-white/50 transition-colors">Por mes</div>
+            <div class="text-4xl md:text-5xl font-heading font-extrabold text-primary group-hover:text-white transition-colors">$9<span class="text-2xl md:text-3xl font-normal">/mes</span></div>
           </div>
-          <p class="font-outfit text-dark/80 text-base md:text-lg leading-relaxed mb-8 group-hover:text-white/80 transition-colors">
-            Para quienes listos para tomar acción y escalar con guía directa y herramientas avanzadas.
-          </p>
           
-          <ul class="space-y-4 mb-10 flex-grow font-outfit text-dark/90 group-hover:text-white transition-colors">
+          <ul class="space-y-3 mb-10 flex-grow font-outfit text-dark/90 group-hover:text-white transition-colors">
             <li class="flex items-start gap-3">
-              <span class="text-cta mt-1 text-sm md:text-base">✦</span>
-              <span class="text-sm md:text-base">Clases grupales en vivo con Ana</span>
+              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
+              <span class="text-sm md:text-base">Clases ilimitadas</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-cta mt-1 text-sm md:text-base">✦</span>
-              <span class="text-sm md:text-base">Mentoría directa y Q&A personalizado</span>
+              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
+              <span class="text-sm md:text-base">Todas las clases grabadas</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-cta mt-1 text-sm md:text-base">✦</span>
-              <span class="text-sm md:text-base">Acceso total a la bóveda de programas</span>
+              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
+              <span class="text-sm md:text-base">Libros ilimitados</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-cta mt-1 text-sm md:text-base">✦</span>
-              <span class="text-sm md:text-base">Estrategias de SEO y Automatización</span>
+              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
+              <span class="text-sm md:text-base">Mentoría 1:1</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
+              <span class="text-sm md:text-base">Sesiones en vivo</span>
             </li>
           </ul>
 
-          <a href="https://skool.com/deafdigitalpro" target="_blank" rel="noopener noreferrer" class="w-full bg-transparent text-primary border-2 border-primary text-center px-6 py-4 rounded-full font-bold font-outfit transition-all group-hover:bg-cta group-hover:border-cta group-hover:text-white">
-            Desbloquear Premium Ahora
+          <a href="https://skool.com/deafdigitalpro" target="_blank" rel="noopener noreferrer" class="w-full bg-cta hover:bg-cta-hover text-white border-2 border-cta text-center px-6 py-4 rounded-lg font-bold font-outfit transition-all shadow-lg hover:shadow-xl transform active:scale-95">
+            UNIRSE A PREMIUM
           </a>
         </div>
 
@@ -133,7 +128,7 @@ const schema = JSON.stringify({
     <div class="max-w-3xl mx-auto px-4 space-y-8">
       <h2 class="text-4xl font-heading font-bold text-primary">¿Dudas sobre la plataforma?</h2>
       <p class="font-outfit text-xl text-dark/70 leading-relaxed">
-        Skool es una plataforma de aprendizaje comunitario que une cursos, debates y calendarios en un solo lugar accesible. Es increíblemente fácil de usar.
+        Nuestra academia es una plataforma de aprendizaje comunitario que une cursos, debates y calendarios en un solo lugar accesible. Es increíblemente fácil de usar.
       </p>
       <div class="pt-4">
         <a href="https://wa.me/12393316702" target="_blank" rel="noopener noreferrer" class="text-cta hover:text-dark font-bold font-outfit text-lg flex items-center justify-center gap-2 transition-colors">
