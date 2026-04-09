@@ -3,10 +3,10 @@
     "slug": "silent-success",
     "lang": "en",
     "title": "Silent Success",
-    "price": 9.90,
+    "price": 9.9,
     "currency": "USD",
     "coverImage": "/images/silentsuccess.png",
-    "description": "Traditional income opportunities weren't designed for us. This guide helps you navigate career obstacles and master the strategies needed for financial success, specifically tailored for the Deaf and Hard of Hearing community.",
+    "description": "A step-by-step blueprint for Deaf professionals to navigate career obstacles and build financial success in the digital economy.",
     "forWhom": "Deaf & Hard of Hearing Professionals",
     "whatYouLearn": [
       "Turn obstacles into advantages",
@@ -14,7 +14,10 @@
       "Digital empire blueprint"
     ],
     "faq": [
-      { "q": "Do I need previous experience?", "a": "No, this guide is designed for complete beginners." }
+      {
+        "q": "Do I need previous experience?",
+        "a": "No, this guide is designed for complete beginners."
+      }
     ],
     "testimonial": {
       "name": "",
@@ -29,10 +32,10 @@
     "slug": "ultimate-passive-income-blueprint",
     "lang": "en",
     "title": "The Ultimate Passive Income Blueprint",
-    "price": 9.90,
+    "price": 9.9,
     "currency": "USD",
     "coverImage": "/images/incomepassive.png",
-    "description": "Communication barriers won't hold you back anymore. This practical roadmap shows you how to turn your visual and creative skills into a digital business — no interpreters or phone calls required. It's the guide Ana wish she had years ago.",
+    "description": "Turn your visual and creative skills into a digital business with no phone calls required. A practical roadmap for Deaf beginners.",
     "forWhom": "Creative Deaf Beginners",
     "whatYouLearn": [
       "Monetizing creative skills",
@@ -40,7 +43,10 @@
       "Step-by-step roadmap"
     ],
     "faq": [
-      { "q": "Do I need previous experience?", "a": "No, this guide is designed for complete beginners." }
+      {
+        "q": "Do I need previous experience?",
+        "a": "No, this guide is designed for complete beginners."
+      }
     ],
     "testimonial": {
       "name": "",
@@ -55,10 +61,10 @@
     "slug": "exito-silencioso",
     "lang": "es",
     "title": "Éxito Silencioso",
-    "price": 9.90,
+    "price": 9.9,
     "currency": "USD",
     "coverImage": "/images/exitosilencioso.png",
-    "description": "Las oportunidades de ingresos tradicionales no fueron diseñadas para nosotros. Esta guía te ayuda a navegar los obstáculos profesionales y dominar las estrategias necesarias para el éxito financiero, diseñadas específicamente para la comunidad sorda e hipoacúsica.",
+    "description": "Guía para profesionales sordos que quieren dominar las estrategias del éxito financiero en la economía digital actual.",
     "forWhom": "Profesionales Sordos e Hipoacúsicos",
     "whatYouLearn": [
       "Convierte obstáculos en ventajas",
@@ -66,7 +72,10 @@
       "Blueprint de imperio digital"
     ],
     "faq": [
-      { "q": "¿Necesito experiencia previa?", "a": "No, esta guía está diseñada para principiantes." }
+      {
+        "q": "¿Necesito experiencia previa?",
+        "a": "No, esta guía está diseñada para principiantes."
+      }
     ],
     "testimonial": {
       "name": "",
@@ -81,10 +90,10 @@
     "slug": "descubre-ingresos-pasivos",
     "lang": "es",
     "title": "Descubre la Última Guía de Ingresos Pasivos",
-    "price": 9.90,
+    "price": 9.9,
     "currency": "USD",
     "coverImage": "/images/ingresospasivos.png",
-    "description": "Las barreras de comunicación ya no te detendrán. Esta hoja de ruta práctica te enseña a convertir tus habilidades visuales y creativas en un negocio digital, sin necesidad de intérpretes ni llamadas telefónicas. Es la guía que Ana desearía haber tenido hace años.",
+    "description": "Convierte tus habilidades visuales en un negocio digital sin llamadas ni intérpretes. La hoja de ruta para emprendedores sordos.",
     "forWhom": "Principiantes Sordos Creativos",
     "whatYouLearn": [
       "Monetización de habilidades creativas",
@@ -92,7 +101,10 @@
       "Hoja de ruta paso a paso"
     ],
     "faq": [
-      { "q": "¿Necesito experiencia previa?", "a": "No, esta guía está diseñada para principiantes." }
+      {
+        "q": "¿Necesito experiencia previa?",
+        "a": "No, esta guía está diseñada para principiantes."
+      }
     ],
     "testimonial": {
       "name": "",

@@ -11,31 +11,56 @@ export interface Props {
 const {
   title,
   description,
-  image    = "/images/og-default.png",
+  image     = "/images/og-default.png",
   schema,
   canonical = Astro.url.href,
   lang      = "es"
 } = Astro.props;
 
-// URL del idioma alternativo para hreflang
+// Normalizar canonical con trailing slash
+const normalizedCanonical = canonical.endsWith('/') ? canonical : canonical + '/';
+
+// Mapa de rutas EN ↔ ES con slugs diferentes
+const routeMap: Record<string, string> = {
+  '/en/academy/':   '/es/academia/',
+  '/en/books/':     '/es/libros/',
+  '/en/gallery/':   '/es/galeria/',
+  '/en/aboutme/':   '/es/sobre-mi/',
+  '/es/academia/':  '/en/academy/',
+  '/es/libros/':    '/en/books/',
+  '/es/galeria/':   '/en/gallery/',
+  '/es/sobre-mi/':  '/en/aboutme/',
+};
+
+// Función para obtener la URL alternativa correcta
+const getAlternateUrl = (url: string, currentLang: string): string => {
+  for (const [from, to] of Object.entries(routeMap)) {
+    if (url.includes(from)) {
+      return url.replace(from, to);
+    }
+  }
+  // Fallback para rutas con mismo slug (blog posts, home, etc.)
+  return currentLang === 'en'
+    ? url.replace('/en/', '/es/')
+    : url.replace('/es/', '/en/');
+};
+
 const alternateLang = lang === "en" ? "es" : "en";
-const alternateUrl  = lang === "en"
-  ? canonical.replace("/en/", "/es/")
-  : canonical.replace("/es/", "/en/");
+const alternateUrl  = getAlternateUrl(normalizedCanonical, lang);
 ---
 
 <!-- SEO básico -->
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="author" content="Analía Camarda" />
-<link rel="canonical" href={canonical} />
+<link rel="canonical" href={normalizedCanonical} />
 
 <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
 <meta property="og:type" content="website" />
-<meta property="og:url" content={canonical} />
+<meta property="og:url" content={normalizedCanonical} />
 
 <!-- Twitter / X Cards -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -44,9 +69,9 @@ const alternateUrl  = lang === "en"
 <meta name="twitter:image" content={new URL(image, Astro.url)} />
 
 <!-- Hreflang: indica a Google los idiomas disponibles -->
-<link rel="alternate" href={canonical}    hreflang={lang} />
-<link rel="alternate" href={alternateUrl} hreflang={alternateLang} />
-<link rel="alternate" href={canonical}    hreflang="x-default" />
+<link rel="alternate" href={normalizedCanonical} hreflang={lang} />
+<link rel="alternate" href={alternateUrl}         hreflang={alternateLang} />
+<link rel="alternate" href={normalizedCanonical} hreflang="x-default" />
 
 <!-- Datos estructurados JSON-LD (Schema.org) -->
 {schema && <script type="application/ld+json" is:inline set:html={schema} />}
