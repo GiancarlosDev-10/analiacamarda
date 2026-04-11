@@ -43,8 +43,7 @@ const { lang } = Astro.props;
 
     <!-- Mensaje de éxito (oculto por defecto) -->
     <div id="lead-success" class="hidden items-center justify-center space-y-2 mt-4 text-primary">
-      <p class="font-bold text-xl">✅ {lang === 'en' ? 'Success! Check your Email' : '¡Éxito! Revisa tu Correo'}</p>
-      <p class="text-sm text-dark/80">{lang === 'en' ? "We've sent the PDF to your inbox." : 'Te hemos enviado el PDF a tu bandeja.'}</p>
+      <p class="font-outfit text-lg font-bold">✅ {lang === 'en' ? 'Success! Check your Email. We sent you the PDF.' : '¡Éxito! Revisa tu Correo. Te hemos enviado el PDF.'}</p>
     </div>
 
     <!-- Mensaje de error (oculto por defecto) -->
