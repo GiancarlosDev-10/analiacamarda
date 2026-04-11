@@ -10,11 +10,10 @@ const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY as string, {
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY as string);
 
-// Mapeo: Payment Link ID → clave del archivo + info del libro
-const PRODUCT_MAP: Record<
-  string,
-  { fileKey: string; title: string; lang: "en" | "es" }
-> = {
+// Mapeo libros individuales
+const PRODUCT_MAP: {
+  [key: string]: { fileKey: string; title: string; lang: "en" | "es" };
+} = {
   plink_1TIeJ7Ey1gF0PaKE5WNOuuYp: {
     fileKey: "silent-success",
     title: "Silent Success",
@@ -37,6 +36,207 @@ const PRODUCT_MAP: Record<
   },
 };
 
+// Mapeo suscripciones Premium
+const SUBSCRIPTION_MAP: {
+  [key: string]: { lang: "en" | "es"; fileKeys: string[]; titles: string[] };
+} = {
+  plink_1TLA3sEy1gF0PaKEGn5EV85: {
+    lang: "en",
+    fileKeys: ["silent-success", "plan-30-en"],
+    titles: ["Silent Success", "The Ultimate Passive Income Blueprint"],
+  },
+  plink_1TLA6cEy1gF0PaKEZX7d6ziH: {
+    lang: "es",
+    fileKeys: ["exito", "plan-30-es"],
+    titles: ["Éxito Silencioso", "Descubre la Última Guía de Ingresos Pasivos"],
+  },
+};
+
+// Email libro individual
+async function sendBookEmail(
+  customerEmail: string,
+  customerName: string,
+  fileKey: string,
+  title: string,
+  lang: "en" | "es",
+  downloadSecret: string,
+) {
+  const firstName =
+    customerName.split(" ")[0] || (lang === "en" ? "friend" : "amigo/a");
+  const downloadUrl = `https://www.analiacamarda.com/api/download?file=${fileKey}&secret=${downloadSecret}`;
+
+  const subject =
+    lang === "en"
+      ? `Your E-Book "${title}" is ready! 📚`
+      : `¡Tu E-Book "${title}" está listo! 📚`;
+  const heading =
+    lang === "en"
+      ? `Your purchase was successful! 🎉`
+      : `¡Tu compra fue exitosa! 🎉`;
+  const bodyText =
+    lang === "en"
+      ? `Thank you for your trust, <strong>${firstName}</strong>! Your e-book <strong>"${title}"</strong> is ready to read.`
+      : `Gracias por tu confianza, <strong>${firstName}</strong>. Tu e-book <strong>"${title}"</strong> ya está listo para leer.`;
+  const urgencyText =
+    lang === "en"
+      ? "Click the button below to download your PDF. <strong>The link is valid for 1 hour</strong>, so please save it to your device right away."
+      : "Haz clic en el botón a continuación para descargar tu PDF. <strong>El enlace es válido por 1 hora</strong>, así que guárdalo en tu dispositivo de inmediato.";
+  const btnText =
+    lang === "en" ? "📥 Download my E-Book" : "📥 Descargar mi E-Book";
+  const helpText =
+    lang === "en"
+      ? "Having trouble downloading? Reply to this email and I'll help you personally."
+      : "¿Problemas con la descarga? Responde a este correo y te ayudo personalmente.";
+
+  await resend.emails.send({
+    from: "Analía Camarda <hola@analiacamarda.com>",
+    to: [customerEmail],
+    subject,
+    html: `
+      <!DOCTYPE html>
+      <html lang="${lang}">
+      <head><meta charset="UTF-8"></head>
+      <body style="margin:0;padding:0;background:#f2eee8;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#f2eee8;padding:40px 0;">
+          <tr><td align="center">
+            <table width="600" cellpadding="0" cellspacing="0" style="background:#FFFAF5;border-radius:16px;overflow:hidden;box-shadow:0 4px 30px rgba(0,0,0,0.08);">
+              <tr>
+                <td style="background:#a35c33;padding:32px 40px;text-align:center;">
+                  <p style="color:#FFFAF5;font-size:13px;letter-spacing:3px;text-transform:uppercase;margin:0 0 8px 0;font-weight:600;">ANALÍA CAMARDA</p>
+                  <h1 style="color:#FFFAF5;font-size:26px;margin:0;font-weight:800;">${heading}</h1>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:40px;">
+                  <p style="color:#2C1810;font-size:16px;line-height:1.7;margin:0 0 20px 0;">${bodyText}</p>
+                  <p style="color:#7A6055;font-size:14px;line-height:1.7;margin:0 0 32px 0;">${urgencyText}</p>
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr><td align="center">
+                      <a href="${downloadUrl}" style="display:inline-block;background:#a35c33;color:#ffffff;text-decoration:none;padding:16px 40px;border-radius:10px;font-size:16px;font-weight:700;">${btnText}</a>
+                    </td></tr>
+                  </table>
+                  <p style="color:#7A6055;font-size:13px;text-align:center;margin:24px 0 0 0;">${helpText}</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="background:#f2eee8;padding:20px 40px;text-align:center;border-top:1px solid #DDD0C0;">
+                  <p style="color:#7A6055;font-size:11px;margin:0;">© ${new Date().getFullYear()} Analía Camarda · <a href="https://www.analiacamarda.com" style="color:#a35c33;">analiacamarda.com</a></p>
+                </td>
+              </tr>
+            </table>
+          </td></tr>
+        </table>
+      </body>
+      </html>
+    `,
+  });
+}
+
+// Email bienvenida Premium
+async function sendPremiumWelcomeEmail(
+  customerEmail: string,
+  customerName: string,
+  lang: "en" | "es",
+  fileKeys: string[],
+  titles: string[],
+  downloadSecret: string,
+) {
+  const firstName =
+    customerName.split(" ")[0] || (lang === "en" ? "friend" : "amigo/a");
+
+  const downloadLinks = fileKeys.map((key, i) => ({
+    url: `https://www.analiacamarda.com/api/download?file=${key}&secret=${downloadSecret}`,
+    title: titles[i],
+  }));
+
+  const subject =
+    lang === "en"
+      ? "Welcome to Deaf Digital Pro Premium! 🎉 Your E-Books are ready"
+      : "¡Bienvenido/a a Deaf Digital Pro Premium! 🎉 Tus E-Books están listos";
+  const heading =
+    lang === "en"
+      ? "Welcome to the Premium Academy! 🎉"
+      : "¡Bienvenido/a a la Academia Premium! 🎉";
+  const bodyText =
+    lang === "en"
+      ? `Thank you, <strong>${firstName}</strong>! Your subscription to <strong>Deaf Digital Pro Premium</strong> is now active. Here are your e-books:`
+      : `¡Gracias, <strong>${firstName}</strong>! Tu suscripción a <strong>Deaf Digital Pro Premium</strong> ya está activa. Aquí están tus e-books:`;
+  const urgencyText =
+    lang === "en"
+      ? "<strong>Download links are valid for 1 hour.</strong> Save your files right away."
+      : "<strong>Los enlaces de descarga son válidos por 1 hora.</strong> Guarda tus archivos de inmediato.";
+  const skoolText =
+    lang === "en"
+      ? "You also have full access to the Deaf Digital Pro Academy on Skool — join the community now:"
+      : "También tienes acceso completo a la Academia Deaf Digital Pro en Skool — únete a la comunidad ahora:";
+  const skoolBtn =
+    lang === "en" ? "🎓 Join the Academy" : "🎓 Unirme a la Academia";
+  const helpText =
+    lang === "en"
+      ? "Questions? Reply to this email and I'll help you personally."
+      : "¿Preguntas? Responde a este correo y te ayudo personalmente.";
+
+  const bookButtons = downloadLinks
+    .map(
+      (link) => `
+    <tr><td align="center" style="padding:8px 0;">
+      <a href="${link.url}" style="display:inline-block;background:#a35c33;color:#ffffff;text-decoration:none;padding:14px 36px;border-radius:10px;font-size:15px;font-weight:700;width:80%;text-align:center;">
+        📥 ${link.title}
+      </a>
+    </td></tr>
+  `,
+    )
+    .join("");
+
+  await resend.emails.send({
+    from: "Analía Camarda <hola@analiacamarda.com>",
+    to: [customerEmail],
+    subject,
+    html: `
+      <!DOCTYPE html>
+      <html lang="${lang}">
+      <head><meta charset="UTF-8"></head>
+      <body style="margin:0;padding:0;background:#f2eee8;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#f2eee8;padding:40px 0;">
+          <tr><td align="center">
+            <table width="600" cellpadding="0" cellspacing="0" style="background:#FFFAF5;border-radius:16px;overflow:hidden;box-shadow:0 4px 30px rgba(0,0,0,0.08);">
+              <tr>
+                <td style="background:#a35c33;padding:32px 40px;text-align:center;">
+                  <p style="color:#FFFAF5;font-size:13px;letter-spacing:3px;text-transform:uppercase;margin:0 0 8px 0;font-weight:600;">ANALÍA CAMARDA</p>
+                  <h1 style="color:#FFFAF5;font-size:26px;margin:0;font-weight:800;">${heading}</h1>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:40px;">
+                  <p style="color:#2C1810;font-size:16px;line-height:1.7;margin:0 0 20px 0;">${bodyText}</p>
+                  <p style="color:#7A6055;font-size:13px;line-height:1.7;margin:0 0 24px 0;">${urgencyText}</p>
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    ${bookButtons}
+                  </table>
+                  <hr style="border:none;border-top:1px solid #DDD0C0;margin:32px 0;" />
+                  <p style="color:#2C1810;font-size:15px;line-height:1.7;margin:0 0 20px 0;">${skoolText}</p>
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr><td align="center">
+                      <a href="https://skool.com/deafdigitalpro" style="display:inline-block;background:#2C1810;color:#ffffff;text-decoration:none;padding:14px 36px;border-radius:10px;font-size:15px;font-weight:700;">${skoolBtn}</a>
+                    </td></tr>
+                  </table>
+                  <p style="color:#7A6055;font-size:13px;text-align:center;margin:24px 0 0 0;">${helpText}</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="background:#f2eee8;padding:20px 40px;text-align:center;border-top:1px solid #DDD0C0;">
+                  <p style="color:#7A6055;font-size:11px;margin:0;">© ${new Date().getFullYear()} Analía Camarda · <a href="https://www.analiacamarda.com" style="color:#a35c33;">analiacamarda.com</a></p>
+                </td>
+              </tr>
+            </table>
+          </td></tr>
+        </table>
+      </body>
+      </html>
+    `,
+  });
+}
+
 export const POST: APIRoute = async ({ request }) => {
   const signature = request.headers.get("stripe-signature");
 
@@ -47,136 +247,62 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const rawBody = await request.text();
 
-    // Verificar autenticidad del webhook
     const event = stripe.webhooks.constructEvent(
       rawBody,
       signature,
       import.meta.env.STRIPE_WEBHOOK_SECRET as string,
     );
 
-    if (event.type !== "checkout.session.completed") {
-      return new Response(JSON.stringify({ received: true }), { status: 200 });
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object as Stripe.Checkout.Session;
+      const customerEmail = session.customer_details?.email;
+      const customerName = session.customer_details?.name || "";
+      const paymentLinkId = session.payment_link as string | null;
+
+      if (!customerEmail)
+        return new Response("No customer email", { status: 400 });
+
+      // ── Suscripción Premium ──
+      if (session.mode === "subscription") {
+        const premiumProduct = paymentLinkId
+          ? SUBSCRIPTION_MAP[paymentLinkId]
+          : null;
+        if (!premiumProduct) {
+          console.warn(`Unknown subscription payment_link: ${paymentLinkId}`);
+          return new Response("Unknown subscription", { status: 200 });
+        }
+        await sendPremiumWelcomeEmail(
+          customerEmail,
+          customerName,
+          premiumProduct.lang,
+          premiumProduct.fileKeys,
+          premiumProduct.titles,
+          import.meta.env.DOWNLOAD_SECRET as string,
+        );
+        console.log(`✅ Email Premium enviado a ${customerEmail}`);
+
+        // ── Pago único (libros individuales) ──
+      } else {
+        const product = paymentLinkId ? PRODUCT_MAP[paymentLinkId] : null;
+        if (!product) {
+          console.warn(`Unknown payment_link: ${paymentLinkId}`);
+          return new Response("Unknown product", { status: 200 });
+        }
+        await sendBookEmail(
+          customerEmail,
+          customerName,
+          product.fileKey,
+          product.title,
+          product.lang,
+          import.meta.env.DOWNLOAD_SECRET as string,
+        );
+        console.log(
+          `✅ Email libro enviado a ${customerEmail}: ${product.title}`,
+        );
+      }
     }
 
-    const session = event.data.object as Stripe.Checkout.Session;
-    const customerEmail = session.customer_details?.email;
-    const customerName = session.customer_details?.name || "";
-    const paymentLinkId = session.payment_link as string | null;
-
-    if (!customerEmail) {
-      return new Response("No customer email", { status: 400 });
-    }
-
-    const product = paymentLinkId ? PRODUCT_MAP[paymentLinkId] : null;
-
-    if (!product) {
-      console.warn(`Unknown payment_link: ${paymentLinkId}`);
-      return new Response("Unknown product", { status: 200 });
-    }
-
-    const { fileKey, title, lang } = product;
-    const firstName =
-      customerName.split(" ")[0] || (lang === "en" ? "friend" : "amigo/a");
-
-    // URL del endpoint proxy de descarga
-    const downloadUrl = `https://www.analiacamarda.com/api/download?file=${fileKey}&secret=${import.meta.env.DOWNLOAD_SECRET}`;
-
-    // Textos según idioma
-    const subject =
-      lang === "en"
-        ? `Your E-Book "${title}" is ready! 📚`
-        : `¡Tu E-Book "${title}" está listo! 📚`;
-
-    const heading =
-      lang === "en"
-        ? `Your purchase was successful! 🎉`
-        : `¡Tu compra fue exitosa! 🎉`;
-
-    const bodyText =
-      lang === "en"
-        ? `Thank you for your trust, <strong>${firstName}</strong>! Your e-book <strong>"${title}"</strong> is ready to read.`
-        : `Gracias por tu confianza, <strong>${firstName}</strong>. Tu e-book <strong>"${title}"</strong> ya está listo para leer.`;
-
-    const urgencyText =
-      lang === "en"
-        ? "Click the button below to download your PDF. <strong>The link is valid for 1 hour</strong>, so please save it to your device right away."
-        : "Haz clic en el botón a continuación para descargar tu PDF. <strong>El enlace es válido por 1 hora</strong>, así que guárdalo en tu dispositivo de inmediato.";
-
-    const btnText =
-      lang === "en" ? "📥 Download my E-Book" : "📥 Descargar mi E-Book";
-    const helpText =
-      lang === "en"
-        ? "Having trouble downloading? Reply to this email and I'll help you personally."
-        : "¿Problemas con la descarga? Responde a este correo y te ayudo personalmente.";
-
-    await resend.emails.send({
-      from: "Analía Camarda <hola@analiacamarda.com>",
-      to: [customerEmail],
-      subject,
-      html: `
-        <!DOCTYPE html>
-        <html lang="${lang}">
-        <head><meta charset="UTF-8"></head>
-        <body style="margin:0;padding:0;background:#f2eee8;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
-          <table width="100%" cellpadding="0" cellspacing="0" style="background:#f2eee8;padding:40px 0;">
-            <tr>
-              <td align="center">
-                <table width="600" cellpadding="0" cellspacing="0" style="background:#FFFAF5;border-radius:16px;overflow:hidden;box-shadow:0 4px 30px rgba(0,0,0,0.08);">
-
-                  <tr>
-                    <td style="background:#a35c33;padding:32px 40px;text-align:center;">
-                      <p style="color:#FFFAF5;font-size:13px;letter-spacing:3px;text-transform:uppercase;margin:0 0 8px 0;font-weight:600;">ANALÍA CAMARDA</p>
-                      <h1 style="color:#FFFAF5;font-size:26px;margin:0;font-weight:800;">${heading}</h1>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td style="padding:40px;">
-                      <p style="color:#2C1810;font-size:16px;line-height:1.7;margin:0 0 20px 0;">
-                        ${bodyText}
-                      </p>
-                      <p style="color:#7A6055;font-size:14px;line-height:1.7;margin:0 0 32px 0;">
-                        ${urgencyText}
-                      </p>
-
-                      <table width="100%" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td align="center">
-                            <a href="${downloadUrl}"
-                               style="display:inline-block;background:#a35c33;color:#ffffff;text-decoration:none;padding:16px 40px;border-radius:10px;font-size:16px;font-weight:700;letter-spacing:0.5px;">
-                              ${btnText}
-                            </a>
-                          </td>
-                        </tr>
-                      </table>
-
-                      <p style="color:#7A6055;font-size:13px;text-align:center;margin:24px 0 0 0;">
-                        ${helpText}
-                      </p>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td style="background:#f2eee8;padding:20px 40px;text-align:center;border-top:1px solid #DDD0C0;">
-                      <p style="color:#7A6055;font-size:11px;margin:0;">
-                        © ${new Date().getFullYear()} Analía Camarda · <a href="https://www.analiacamarda.com" style="color:#a35c33;">analiacamarda.com</a>
-                      </p>
-                    </td>
-                  </tr>
-
-                </table>
-              </td>
-            </tr>
-          </table>
-        </body>
-        </html>
-      `,
-    });
-
-    console.log(`✅ Email enviado a ${customerEmail} para: ${title}`);
-    return new Response(JSON.stringify({ received: true, email_sent: true }), {
-      status: 200,
-    });
+    return new Response(JSON.stringify({ received: true }), { status: 200 });
   } catch (err: any) {
     console.error("Webhook Error:", err.message);
     return new Response(`Webhook Error: ${err.message}`, { status: 400 });

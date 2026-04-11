@@ -16,7 +16,7 @@ const schema = JSON.stringify({
 
 <BaseLayout 
   title="Digital Academy | Analía Camarda" 
-  description="Join the Deaf Digital Pro Academy on Skool. Access free resources, a powerful community, or upgrade to Premium for $9/month."
+  description="Join the Deaf Digital Pro Academy on Skool. Access unlimited classes, e-books, live sessions and personalized mentorship for $9/month."
   schema={schema}
   lang="en"
   image="/images/og-default.png"
@@ -25,7 +25,7 @@ const schema = JSON.stringify({
   <section class="relative bg-background pt-16 pb-10 border-b border-primary/10 overflow-hidden">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
       <p class="text-[16vw] font-heading font-black text-primary/5 tracking-widest whitespace-nowrap select-none">
-        ACADEMY 
+        ACADEMY
       </p>
     </div>
     
@@ -33,95 +33,76 @@ const schema = JSON.stringify({
       <div class="font-outfit flex justify-center items-center gap-2 text-cta text-md tracking-widest uppercase">
         <span>✦</span> The Community
       </div>
-      
       <h1 class="text-4xl md:text-6xl font-heading font-extrabold text-primary leading-tight">
-        Digital Academy 
+        Digital Academy
       </h1>
-      
       <p class="font-outfit text-base md:text-lg text-dark/70 max-w-2xl mx-auto leading-relaxed">
-        The central hub where entrepreneurs come together to achieve automated financial independence. Start for free or access the full mentorship experience to scale your business.
+        Where entrepreneurs come together to achieve automated financial independence. Get full access to all classes, e-books, live sessions and personalized mentorship.
       </p>
     </div>
   </section>
 
   <!-- PRICING SECTION -->
-  <section class="bg-background pt-12 pb-10"> 
-    <div class="max-w-6xl mx-auto">
-      <!-- Mobile: horizontal scroll snap | Desktop: grid -->
-      <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-6 md:pb-0 md:grid md:grid-cols-2 md:gap-12 md:max-w-5xl md:mx-auto md:px-6 lg:px-8 md:items-stretch">
+  <section class="bg-background py-16">
+    <div class="max-w-lg mx-auto px-4">
+
+      <!-- PREMIUM CARD -->
+      <div class="group relative bg-card rounded-2xl border border-primary/15 p-8 md:p-12 flex flex-col shadow-xl hover:scale-103 transition-all duration-500 hover:bg-primary">
+
+        <!-- Badge -->
+        <div class="absolute top-4 right-6 bg-cta text-white px-5 py-1.5 rounded-full text-xs font-bold font-outfit uppercase tracking-widest shadow-lg">
+          Most Popular
+        </div>
+
+        <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4 group-hover:text-white transition-colors">
+          <span>✦</span> Premium
+        </div>
+
+        <div class="mb-8">
+          <div class="text-5xl md:text-6xl font-heading font-extrabold text-primary group-hover:text-white transition-colors">
+            $9<span class="text-2xl md:text-3xl font-normal text-dark/60 group-hover:text-white/80 transition-colors">/month</span>
+          </div>
+          <p class="font-outfit text-sm text-dark/50 mt-2 group-hover:text-white/70 transition-colors">Cancel anytime</p>
+        </div>
+
+        <ul class="space-y-4 mb-10 font-outfit text-dark/90 group-hover:text-white transition-colors">
+          <li class="flex items-start gap-3">
+            <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+            <span class="text-base">Unlimited classes</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+            <span class="text-base">All recorded classes</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+            <span class="text-base">Unlimited e-Books</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+            <span class="text-base">Personalized 1:1 mentorship</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+            <span class="text-base">Monthly live sessions</span>
+          </li>
+        </ul>
+
         
-        <!-- FREE TIER -->
-        <div class="group snap-center shrink-0 w-[80%] md:w-auto bg-card rounded-2xl border border-primary/15 p-8 md:p-10 flex flex-col shadow-md hover:scale-103 transition-all duration-500 hover:bg-primary">
-          <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
-            <span>✦</span> Standard
-          </div>
-          <div class="mb-6">
-            <div class="text-4xl md:text-5xl font-heading font-extrabold text-primary group-hover:text-white transition-colors">$0<span class="text-2xl md:text-3xl font-normal">/month</span></div>
-          </div>
-          
-          <ul class="space-y-3 mb-10 flex-grow font-outfit text-dark/90 group-hover:text-white transition-colors">
-            <li class="flex items-start gap-3">
-              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
-              <span class="text-sm md:text-base">Welcome to the community</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-cta mt-1 text-sm md:text-base">🔒</span>
-              <span class="text-sm md:text-base">Upgrade to unlock all classes & eBooks</span>
-            </li>
-          </ul>
+        <a
+          href="https://buy.stripe.com/aFafZhd4i0H10Xlfm13ZK05"
+          target="_blank"
+          rel="noopener noreferrer"
+          onclick={`if(window.trackEvent)window.trackEvent('click_academy_premium','purchase','academy-en',9)`}
+          class="w-full bg-cta hover:bg-cta-hover text-white text-center px-6 py-4 rounded-xl font-bold font-outfit text-lg transition-all shadow-lg hover:shadow-xl transform active:scale-95"
+        >
+          Pay $9 USD / month
+        </a>
 
-          <button disabled class="w-full bg-primary/20 text-primary/50 border-2 border-primary/20 text-center px-6 py-4 rounded-lg font-bold font-outfit cursor-default">
-            CURRENT PLAN
-          </button>
-        </div>
-
-        <!-- PREMIUM TIER -->
-        <div class="group relative snap-center shrink-0 w-[80%] md:w-auto bg-card rounded-2xl border border-primary/15 p-8 md:p-10 flex flex-col shadow-md hover:scale-103 transition-all duration-500 hover:bg-primary">
-          <!-- Badge esquina superior derecha -->
-          <div class="absolute top-3 right-6 bg-cta text-white px-5 py-1.5 rounded-full text-xs font-bold font-outfit uppercase tracking-widest shadow-lg group-hover:bg-white group-hover:text-cta transition-colors">
-            Recommended
-          </div>
-
-          <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
-            <span>✦</span> Premium
-          </div>
-
-          <div class="mb-6">
-            <div class="text-4xl md:text-5xl font-heading font-extrabold text-primary group-hover:text-white transition-colors">$9<span class="text-2xl md:text-3xl font-normal">/month</span></div>
-          </div>
-          
-          <ul class="space-y-3 mb-10 flex-grow font-outfit text-dark/90 group-hover:text-white transition-colors">
-            <li class="flex items-start gap-3">
-              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
-              <span class="text-sm md:text-base">Unlimited classes</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
-              <span class="text-sm md:text-base">All recorded classes</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
-              <span class="text-sm md:text-base">Unlimited eBooks</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
-              <span class="text-sm md:text-base">Personalized mentorship</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-green-500 mt-1 text-sm md:text-base">✓</span>
-              <span class="text-sm md:text-base">Monthly live sessions</span>
-            </li>
-          </ul>
-
-          <a href="https://skool.com/deafdigitalpro" target="_blank" rel="noopener noreferrer" class="w-full bg-cta hover:bg-cta-hover text-white border-2 border-cta text-center px-6 py-4 rounded-lg font-bold font-outfit transition-all shadow-lg hover:shadow-xl transform active:scale-95">
-            JOIN PREMIUM
-          </a>
-        </div>
-
+        <p class="font-outfit text-xs text-dark/40 text-center mt-4 group-hover:text-white/60 transition-colors">
+          Secure payment via Stripe · SSL Encrypted
+        </p>
       </div>
-
-      <!-- Scroll hint — solo mobile -->
-      <p class="md:hidden text-center text-xs text-dark/40 font-outfit mt-2">← swipe to see more →</p>
     </div>
   </section>
 
