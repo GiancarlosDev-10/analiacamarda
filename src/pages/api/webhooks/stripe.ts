@@ -34,6 +34,12 @@ const PRODUCT_MAP: {
     title: "Descubre la Última Guía de Ingresos Pasivos",
     lang: "es",
   },
+  // TEST — eliminar después de verificar el webhook
+  plink_1TMIajEy1gF0PaKE8L0dOj8p: {
+    fileKey: "silent-success",
+    title: "Silent Success",
+    lang: "en",
+  },
 };
 
 // Mapeo suscripciones Premium
