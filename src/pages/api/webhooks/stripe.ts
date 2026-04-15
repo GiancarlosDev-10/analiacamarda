@@ -253,11 +253,21 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const rawBody = await request.text();
 
-    const event = stripe.webhooks.constructEvent(
-      rawBody,
-      signature,
-      import.meta.env.STRIPE_WEBHOOK_SECRET as string,
-    );
+    // Intenta verificar con el secret de prod, si falla intenta con el de test
+    let event: Stripe.Event;
+    try {
+      event = stripe.webhooks.constructEvent(
+        rawBody,
+        signature,
+        import.meta.env.STRIPE_WEBHOOK_SECRET as string,
+      );
+    } catch {
+      event = stripe.webhooks.constructEvent(
+        rawBody,
+        signature,
+        import.meta.env.STRIPE_WEBHOOK_SECRET_TEST as string,
+      );
+    }
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object as Stripe.Checkout.Session;
