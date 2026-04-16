@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import logoVerde from '../../../assets/images/logo_verde.png';
 
 const schema = JSON.stringify({
   "@context": "https://schema.org",
@@ -45,6 +47,11 @@ const schema = JSON.stringify({
   <!-- PRICING SECTION -->
   <section class="bg-background py-16">
     <div class="max-w-lg mx-auto px-4">
+
+      <!-- Logo -->
+      <div class="flex justify-center mb-4 mt-[-4rem]">
+        <Image src={logoVerde} alt="Digital Academy Logo" class="w-36 h-auto" loading="lazy" />
+      </div>
 
       <!-- PREMIUM CARD -->
       <div class="group relative bg-card rounded-2xl border border-primary/15 p-8 md:p-12 flex flex-col shadow-xl hover:scale-103 transition-all duration-500 hover:bg-primary">
