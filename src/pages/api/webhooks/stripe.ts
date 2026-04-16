@@ -56,6 +56,12 @@ const SUBSCRIPTION_MAP: {
     fileKeys: ["exito", "plan-30-es"],
     titles: ["Éxito Silencioso", "Descubre la Última Guía de Ingresos Pasivos"],
   },
+  // TEST — eliminar después de verificar el webhook
+  plink_1TMhPcEy1gF0PaKEvQoxpoWo: {
+    lang: "en",
+    fileKeys: ["silent-success", "plan-30-en"],
+    titles: ["Silent Success", "The Ultimate Passive Income Blueprint"],
+  },
 };
 
 // Email libro individual
