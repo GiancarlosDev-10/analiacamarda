@@ -9,8 +9,8 @@ const isSpanish = pathname.startsWith('/es');
 
 const dic = {
   about: isSpanish 
-    ? "Emprendedora, experta en ingresos pasivos y creadora de la Academia Digital. Ayudando a la comunidad sorda e hispana." 
-    : "Entrepreneur, passive income expert, and creator of the Digital Academy. Empowering the deaf and hispanic community.",
+    ? "Emprendedora, graduada en Ciberseguridad y creadora de la Academia Digital. Ayudo a empoderar a la comunidad Sorda mediante educación digital, estrategias de marketing  y proteccion de datos accesibles para todos." 
+    : "Entrepreneur, Cybersecurity graduate, and creator of the Digital Academy. I help empower the Deaf community with digital education, marketing strategies, and data protection that everyone can access.",
   linksTitle: isSpanish ? "Enlaces Rápidos" : "Quick Links",
   books: isSpanish ? "Libros" : "Books",
   booksHref: isSpanish ? "/es/libros" : "/en/books",
@@ -29,9 +29,9 @@ const dic = {
 <footer class="bg-background text-dark py-6 border-t border-primary/20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-3 gap-3 md:gap-12 text-left">
-      <div class="space-y-3 md:space-y-6">
+      <div class="space-y-3 md:space-y-6 text-left">
         <a href={isSpanish ? "/es" : "/"} class="inline-block transition-transform hover:scale-105" aria-label="Analía Camarda Home">
-          <Image src={logoImg} alt="Analía Camarda" loading="lazy" class="w-full max-w-[120px] sm:max-w-[100px] md:max-w-[200px] lg:max-w-xs h-auto object-contain scale-100 md:scale-[1.2] origin-left" />
+          <Image src={logoImg} alt="Analía Camarda" loading="lazy" class="w-full max-w-[80px] md:max-w-[160px] lg:max-w-[200px] h-auto object-contain"/>
         </a>
         <p class="hidden md:block text-dark/80 font-medium text-justify text-[10px] sm:text-xs md:text-base leading-tight md:leading-normal">{dic.about}</p>
       </div>
