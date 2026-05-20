@@ -1,4 +1,3 @@
-// Slug mappings EN ↔ ES for books, blog posts, and static pages
 export const slugMap: Record<string, string> = {
   // Books
   'silent-success': 'exito-silencioso',
