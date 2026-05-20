@@ -1,4 +1,6 @@
 ---
+import { slugMap, getTranslatedSlug } from '../utils/slugMaps';
+
 export interface Props {
   title: string;
   description: string;
@@ -32,11 +34,6 @@ const routeMap: Record<string, string> = {
   '/es/sobre-mi/':  '/en/aboutme/',
 };
 
-const blogSlugMap: Record<string, string> = {
-  'reasons-cybersecurity': 'razones-ciberseguridad',
-  'accesible-entrepreneurship': 'emprendimiento-accesible',
-  // agrega más pares aquí
-};
 
 // Función para obtener la URL alternativa correcta
 const getAlternateUrl = (url: string, currentLang: string): string => {
@@ -46,15 +43,18 @@ const getAlternateUrl = (url: string, currentLang: string): string => {
 
   if (currentLang === 'en') {
     const match = url.match(/\/en\/blog\/([^\/]+)\//);
-    if (match?.[1] && blogSlugMap[match[1]]) {
-      return url.replace(`/en/blog/${match[1]}/`, `/es/blog/${blogSlugMap[match[1]]}/`);
+    if (match?.[1]) {
+      const translated = getTranslatedSlug(match[1]);
+      if (translated) {
+        return url.replace(`/en/blog/${match[1]}/`, `/es/blog/${translated}/`);
+      }
     }
   } else {
     const match = url.match(/\/es\/blog\/([^\/]+)\//);
     if (match?.[1]) {
-      const reverse = Object.entries(blogSlugMap).find(([, es]) => es === match[1]);
-      if (reverse) {
-        return url.replace(`/es/blog/${match[1]}/`, `/en/blog/${reverse[0]}/`);
+      const translated = getTranslatedSlug(match[1]);
+      if (translated) {
+        return url.replace(`/es/blog/${match[1]}/`, `/en/blog/${translated}/`);
       }
     }
   }
