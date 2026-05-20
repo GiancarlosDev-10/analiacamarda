@@ -9,7 +9,7 @@ draft: false
 relatedBookSlug: "silent-success"
 ---
 
-<br>I graduated whith a degree in Cibersecurity and Data Analytics as a Deaf professional. And what I discovered that this field — almost accidentally —  is one of the most accessible, barrier-free career paths available to the Deaf and Hard of Hearing community. <br>
+<br>I graduated whith a degree in Cibersecurity and Data Analytics as a Deaf professional. And what I discovered that this field — almost accidentally — is one of the most accessible, barrier-free career paths available to the Deaf and Hard of Hearing community. <br>
 
 <br>Here are 5 reasons why, backed by both research and lived experience.<br><br>
 
@@ -17,11 +17,9 @@ relatedBookSlug: "silent-success"
 
 Cibersecurity professionals spend their time reading logs, analyzing code, writing reports, monitoring dashboards, and communicating through written channels. The work is inherently visual. No phone calls needed to catch a security breach. <br><br>
 
-
 ## 2. Remote work is the default - not the exception<br><br>
 
 The Cibersecurity industry was remote-first before remote work became mainstream. Threat analysts, securtiy engineers, and digital forensics specialists have always worked from anywhere in the world. This eliminates many of the in-office communication barriers Deaf professionals tipically face. <br><br>
-
 
 ## 3. Logic over language<br><br>
 
