@@ -32,11 +32,30 @@ const routeMap: Record<string, string> = {
   '/es/sobre-mi/':  '/en/aboutme/',
 };
 
+const blogSlugMap: Record<string, string> = {
+  'reasons-cybersecurity': 'razones-ciberseguridad',
+  'accesible-entrepreneurship': 'emprendimiento-accesible',
+  // agrega más pares aquí
+};
+
 // Función para obtener la URL alternativa correcta
 const getAlternateUrl = (url: string, currentLang: string): string => {
   for (const [from, to] of Object.entries(routeMap)) {
-    if (url.includes(from)) {
-      return url.replace(from, to);
+    if (url.includes(from)) return url.replace(from, to);
+  }
+
+  if (currentLang === 'en') {
+    const match = url.match(/\/en\/blog\/([^\/]+)\//);
+    if (match?.[1] && blogSlugMap[match[1]]) {
+      return url.replace(`/en/blog/${match[1]}/`, `/es/blog/${blogSlugMap[match[1]]}/`);
+    }
+  } else {
+    const match = url.match(/\/es\/blog\/([^\/]+)\//);
+    if (match?.[1]) {
+      const reverse = Object.entries(blogSlugMap).find(([, es]) => es === match[1]);
+      if (reverse) {
+        return url.replace(`/es/blog/${match[1]}/`, `/en/blog/${reverse[0]}/`);
+      }
     }
   }
   // Fallback para rutas con mismo slug (blog posts, home, etc.)
