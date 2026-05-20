@@ -1,0 +1,105 @@
+---
+export interface Props {
+  lang: 'en' | 'es';
+}
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    title: 'Testimonials',
+    eyebrow: 'Real students. Real results.',
+    testimonials: [
+      {
+        quote: "Reignited my drive to build something of my own. I signed up still unsure if the timing was right. This workshop made me realize — the timing is always now. The mindfulness and motivation modules blend the emotional with the practical in a way very few communities ever manage to pull off.",
+        name: "Cely S.",
+        location: "Argentina",
+        initials: "CS",
+      },
+      {
+        quote: "Worth every minute, no matter where you're from. I joined from outside Argentina and was immediately welcomed. The Sunday schedule worked perfectly across time zones. If you're thinking about joining, don't hesitate — this community delivers on everything it promises.",
+        name: "Tanya V.",
+        location: "Ukraine",
+        initials: "TV",
+      },
+      {
+        quote: "The community I needed to finally launch. Within weeks I built my website, set up my e-commerce store, and started creating Canva content that actually converts. The real win? Feeling supported at every step.",
+        name: "Marina P.",
+        location: "USA",
+        initials: "MP",
+      },
+    ],
+  },
+  es: {
+    title: 'Testimonios',
+    eyebrow: 'Estudiantes reales. Resultados reales.',
+    testimonials: [
+      {
+        quote: "Volví a sentir el impulso de construir algo propio. Me inscribí sin estar segura del momento. Este taller me hizo darme cuenta — el momento siempre es ahora. Los módulos de mindfulness y motivación combinan lo emocional con lo práctico de una manera que muy pocas comunidades logran.",
+        name: "Cely S.",
+        location: "Argentina",
+        initials: "CS",
+      },
+      {
+        quote: "Vale cada minuto, sin importar de dónde seas. Me uní desde fuera de Argentina y me recibieron de inmediato. El horario dominical funcionó perfectamente entre zonas horarias. Si estás pensando en unirte, no dudes — esta comunidad cumple todo lo que promete.",
+        name: "Tanya V.",
+        location: "Ucrania",
+        initials: "TV",
+      },
+      {
+        quote: "La comunidad que necesitaba para finalmente lanzarme. En pocas semanas construí mi sitio web, configuré mi tienda y empecé a crear contenido en Canva que realmente convierte. ¿El verdadero logro? Sentirme apoyada en cada paso.",
+        name: "Marina P.",
+        location: "EE.UU.",
+        initials: "MP",
+      },
+    ],
+  },
+};
+
+const t = content[lang];
+---
+
+<section id="testimonials" class="bg-card text-primary py-16 md:py-24 border-t border-primary/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-12 md:mb-16">
+      <div class="font-outfit flex justify-center items-center gap-2 text-cta text-sm tracking-widest uppercase mb-4">
+        <span>✦</span> {t.eyebrow}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary">
+        {t.title}
+      </h2>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      {t.testimonials.map((item) => (
+        <div class="bg-background rounded-2xl border border-primary/10 p-6 md:p-8 flex flex-col gap-6">
+
+          <!-- Stars -->
+          <div class="flex gap-1 text-cta text-base">
+            {Array(5).fill(null).map(() => <span>★</span>)}
+          </div>
+
+          <!-- Quote -->
+          <p class="font-outfit text-base text-dark/80 leading-relaxed flex-1">
+            "{item.quote}"
+          </p>
+
+          <!-- Author -->
+          <div class="flex items-center gap-3 border-t border-primary/10 pt-5">
+            <div class="w-10 h-10 rounded-full bg-card border border-primary/20 flex items-center justify-center text-cta font-bold text-sm flex-shrink-0">
+              {item.initials}
+            </div>
+            <div>
+              <p class="font-heading font-bold text-sm text-primary">{item.name}</p>
+              <p class="font-outfit text-xs text-dark/60">{item.location}</p>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

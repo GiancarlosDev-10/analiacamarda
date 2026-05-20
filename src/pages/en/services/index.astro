@@ -1,0 +1,131 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const services = [
+    {
+        title: "Web & E-Commerce",
+        description:
+            "Design and development of websites and online stores optimized to convert visitors into customers.",
+        image: "/images/ecommerce.png",
+        alt: "Web and E-Commerce service",
+    },
+    {
+        title: "Social Media",
+        description:
+            "Content strategy, visual design, and community management to build an engaged audience.",
+        image: "/images/contenido.png",
+        alt: "Social Media service",
+    },
+    {
+        title: "Digital Products",
+        description:
+            "Design of ebooks, workbooks, guides, planners, flyers, invitation cards (and more).",
+        image: "/images/ebook.png",
+        alt: "Digital Products service",
+    },
+    {
+        title: "AI Tools",
+        description:
+            "Implementation of AI tools to automate processes and scale your business smarter.",
+        image: "/images/ai-tools.png",
+        alt: "AI Tools service",
+    },
+];
+---
+
+<BaseLayout
+    title="Services | Analía Camarda"
+    description="Web design, social media, digital products and AI tools services to grow your online business."
+    image="/images/og-default.png"
+    lang="en"
+>
+    <!-- HERO HEADER -->
+    <section
+        class="relative bg-background pt-16 pb-10 border-b border-primary/10 overflow-hidden"
+    >
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
+        >
+            <p
+                class="text-[14vw] font-heading font-black text-primary/5 tracking-widest whitespace-nowrap select-none"
+            >
+                SERVICES
+            </p>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-4">
+            <div
+                class="font-outfit flex justify-center items-center gap-2 text-cta text-sm tracking-widest uppercase"
+            >
+                <span>✦</span> Website Optimization
+            </div>
+            <h1
+                class="text-5xl md:text-6xl font-heading font-extrabold text-primary leading-tight"
+            >
+                Services
+            </h1>
+            <p
+                class="font-outfit text-base md:text-lg text-dark/70 max-w-2xl mx-auto leading-relaxed"
+            >
+                It's ideal if your website <span class="font-bold text-primary"
+                    >TODAY</span
+                > doesn't look or feel right, if you got stuck halfway, if it still
+                doesn't look professional, and/or if you're tired of it not working.
+                Don't worry, <span class="font-bold text-primary"
+                    >I'll fix it.</span
+                >
+            </p>
+        </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="bg-card py-24">
+        <div class="max-w-7xl mx-auto px-4">
+            <div
+                class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto"
+            >
+                {
+                    services.map((service) => (
+                        <div class="bg-background rounded-3xl border border-primary/10 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group hover:-translate-y-3 flex flex-col">
+                            <div class="w-full h-56 overflow-hidden bg-primary/5">
+                                <img
+                                    src={service.image}
+                                    alt={service.alt}
+                                    loading="lazy"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                />
+                            </div>
+                            <div class="p-6 flex flex-col gap-3 flex-1">
+                                <h3 class="font-heading font-bold text-xl text-primary leading-tight">
+                                    {service.title}
+                                </h3>
+                                <p class="font-outfit text-sm text-dark/70 leading-relaxed flex-1">
+                                    {service.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <!-- Closing text -->
+            <div class="max-w-2xl mx-auto text-center mt-20 space-y-4">
+                <span
+                    class="font-outfit flex justify-center items-center gap-2 text-cta text-sm tracking-widest uppercase"
+                >
+                    <span>✦</span> Is it for you?
+                </span>
+                <p
+                    class="font-outfit text-base md:text-lg text-dark/70 leading-relaxed"
+                >
+                    If you're looking for something <span
+                        class="font-bold text-primary"
+                        >fast, beautiful, and strategically structured</span
+                    > and prefer to do it yourself, or if you're not yet ready for
+                    something custom, <span class="font-bold text-primary"
+                        >this is for you.</span
+                    >
+                </p>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

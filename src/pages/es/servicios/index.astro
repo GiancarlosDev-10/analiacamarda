@@ -1,0 +1,130 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const services = [
+    {
+        title: "Web & E-Commerce",
+        description:
+            "Diseño y desarrollo de sitios web y tiendas online optimizadas para convertir visitantes en clientes.",
+        image: "/images/ecommerce.png",
+        alt: "Servicio de Web y E-Commerce",
+    },
+    {
+        title: "Social Media",
+        description:
+            "Estrategia de contenido, diseño visual y gestión de comunidad para construir una audiencia comprometida.",
+        image: "/images/contenido.png",
+        alt: "Servicio de Social Media",
+    },
+    {
+        title: "Productos Digitales",
+        description:
+            "Diseño desde ebooks, workbooks, guías, planners, flyers, tarjeta de invitación (y más).",
+        image: "/images/ebook.png",
+        alt: "Servicio de Productos Digitales",
+    },
+    {
+        title: "Herramientas IA",
+        description:
+            "Implementación de herramientas de IA para automatizar procesos y escalar tu negocio de forma inteligente.",
+        image: "/images/ai-tools.png",
+        alt: "Servicio de Herramientas AI",
+    },
+];
+---
+
+<BaseLayout
+    title="Servicios | Analía Camarda"
+    description="Servicios de diseño web, redes sociales, productos digitales y herramientas AI para hacer crecer tu negocio online."
+    image="/images/og-default.png"
+    lang="es"
+>
+    <!-- HERO HEADER -->
+    <section
+        class="relative bg-background pt-16 pb-10 border-b border-primary/10 overflow-hidden"
+    >
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
+        >
+            <p
+                class="text-[14vw] font-heading font-black text-primary/5 tracking-widest whitespace-nowrap select-none"
+            >
+                SERVICIOS
+            </p>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-4">
+            <div
+                class="font-outfit flex justify-center items-center gap-2 text-cta text-sm tracking-widest uppercase"
+            >
+                <span>✦</span> Optimización de Sitio Web
+            </div>
+            <h1
+                class="text-5xl md:text-6xl font-heading font-extrabold text-primary leading-tight"
+            >
+                Servicios
+            </h1>
+            <p
+                class="font-outfit text-base md:text-lg text-dark/70 max-w-2xl mx-auto leading-relaxed"
+            >
+                Es ideal si tu sitio web <span class="font-bold text-primary"
+                    >HOY</span
+                > no se ve o no se siente bien, si te quedaste a mitad de camino,
+                si aún no se ve profesional, y/o si estás cansado de que no funcione.
+                No te preocupes, <span class="font-bold text-primary"
+                    >yo lo arreglo.</span
+                >
+            </p>
+        </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="bg-card py-24">
+        <div class="max-w-7xl mx-auto px-4">
+            <div
+                class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto"
+            >
+                {
+                    services.map((service) => (
+                        <div class="bg-background rounded-3xl border border-primary/10 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group hover:-translate-y-3 flex flex-col">
+                            <div class="w-full h-56 overflow-hidden bg-primary/5">
+                                <img
+                                    src={service.image}
+                                    alt={service.alt}
+                                    loading="lazy"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                />
+                            </div>
+                            <div class="p-6 flex flex-col gap-3 flex-1">
+                                <h3 class="font-heading font-bold text-xl text-primary leading-tight">
+                                    {service.title}
+                                </h3>
+                                <p class="font-outfit text-sm text-dark/70 leading-relaxed flex-1">
+                                    {service.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <!-- Closing text -->
+            <div class="max-w-2xl mx-auto text-center mt-20 space-y-4">
+                <span
+                    class="font-outfit flex justify-center items-center gap-2 text-cta text-sm tracking-widest uppercase"
+                >
+                    <span>✦</span> ¿Es para ti?
+                </span>
+                <p
+                    class="font-outfit text-base md:text-lg text-dark/70 leading-relaxed"
+                >
+                    Si buscas algo <span class="font-bold text-primary"
+                        >rápido, hermoso y estratégicamente estructurado</span
+                    > y prefieres hacerlo tú mismo, o si aún no estás listo para
+                    algo personalizado, <span class="font-bold text-primary"
+                        >esto es para ti.</span
+                    >
+                </p>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

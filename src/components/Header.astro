@@ -1,62 +1,65 @@
 ---
-import { Image } from 'astro:assets';
-import logoImg from '../assets/images/analia-camarda.png';
-import linkedinIcon from '../assets/images/linkedin.svg';
-import instagramIcon from '../assets/images/instagram.svg';
-import tiktokIcon from '../assets/images/tiktok.svg';
+import { Image } from "astro:assets";
+import logoImg from "../assets/images/analia-camarda.png";
+import linkedinIcon from "../assets/images/linkedin.svg";
+import instagramIcon from "../assets/images/instagram.svg";
+import tiktokIcon from "../assets/images/tiktok.svg";
 
 const pathname = Astro.url.pathname;
-const isSpanish = pathname.startsWith('/es');
+const isSpanish = pathname.startsWith("/es");
 
 // Intelligent Language Switcher Logic
 const getLangHref = (path: string): string => {
-  const cleanPath = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
-  
+  const cleanPath =
+    path.endsWith("/") && path.length > 1 ? path.slice(0, -1) : path;
+
   // Slug mappings for books and blog posts
   const slugsMap: Record<string, string> = {
-    'silent-success': 'exito-silencioso',
-    'ultimate-passive-income-blueprint': 'descubre-ingresos-pasivos',
-    'exito-silencioso': 'silent-success',
-    'descubre-ingresos-pasivos': 'ultimate-passive-income-blueprint',
-    'why-passive-income': 'por-que-ingresos-pasivos',
-    'por-que-ingresos-pasivos': 'why-passive-income',
+    "silent-success": "exito-silencioso",
+    "ultimate-passive-income-blueprint": "descubre-ingresos-pasivos",
+    "exito-silencioso": "silent-success",
+    "descubre-ingresos-pasivos": "ultimate-passive-income-blueprint",
+    "why-passive-income": "por-que-ingresos-pasivos",
+    "por-que-ingresos-pasivos": "why-passive-income",
     // Static Pages
-    'aboutme': 'sobre-mi',
-    'sobre-mi': 'aboutme',
-    'academy': 'academia',
-    'academia': 'academy',
-    'gallery': 'galeria',
-    'galeria': 'gallery',
-    'thank-you': 'exito',
-    'exito': 'thank-you',
+    aboutme: "sobre-mi",
+    "sobre-mi": "aboutme",
+    academy: "academia",
+    academia: "academy",
+    gallery: "galeria",
+    galeria: "gallery",
+    "thank-you": "exito",
+    exito: "thank-you",
   };
 
-  let newPath = '';
+  let newPath = "";
 
   if (isSpanish) {
     // ES -> EN: Replace leading /es with /en
-    newPath = cleanPath.replace(/^\/es($|\/)/, '/en$1');
+    newPath = cleanPath.replace(/^\/es($|\/)/, "/en$1");
     // Translate specific directory names
-    newPath = newPath.replace(/\/libros($|\/)/, '/books$1');
+    newPath = newPath.replace(/\/libros($|\/)/, "/books$1");
+    newPath = newPath.replace(/\/servicios($|\/)/, "/services$1");
   } else {
     // EN -> ES: Replace leading /en with /es, or handle root /
-    if (cleanPath === '/') {
-      newPath = '/es/';
+    if (cleanPath === "/") {
+      newPath = "/es/";
     } else {
-      newPath = cleanPath.replace(/^\/en($|\/)/, '/es$1');
+      newPath = cleanPath.replace(/^\/en($|\/)/, "/es$1");
       // If the path didn't have an /en prefix but was root-relative, prepend /es
-      if (!cleanPath.startsWith('/en')) {
-        newPath = `/es${cleanPath.startsWith('/') ? '' : '/'}${cleanPath}`;
+      if (!cleanPath.startsWith("/en")) {
+        newPath = `/es${cleanPath.startsWith("/") ? "" : "/"}${cleanPath}`;
       }
     }
     // Translate specific directory names
-    newPath = newPath.replace(/\/books($|\/)/, '/libros$1');
+    newPath = newPath.replace(/\/books($|\/)/, "/libros$1");
+    newPath = newPath.replace(/\/services($|\/)/, "/servicios$1");
   }
 
   // Apply slug translations at the end of the path (handles books, blog posts, and static pages)
   for (const s of Object.keys(slugsMap)) {
     if (newPath.endsWith(`/${s}`) || newPath.endsWith(s)) {
-      const lastSlashIndex = newPath.lastIndexOf('/');
+      const lastSlashIndex = newPath.lastIndexOf("/");
       if (lastSlashIndex !== -1) {
         newPath = newPath.substring(0, lastSlashIndex + 1) + slugsMap[s];
         break; // Stop once we've found and applied a translation
@@ -64,68 +67,159 @@ const getLangHref = (path: string): string => {
     }
   }
 
-  return newPath || (isSpanish ? '/en/' : '/es/');
+  return newPath || (isSpanish ? "/en/" : "/es/");
 };
 
 const langHref = getLangHref(pathname);
 
-const homeHref = isSpanish ? '/es/' : '/en/';
-const booksHref = isSpanish ? '/es/libros' : '/en/books';
-const academiaHref = isSpanish ? '/es/academia' : '/en/academy';
-const aboutHref = isSpanish ? '/es/sobre-mi' : '/en/aboutme';
-const galleryHref = isSpanish ? '/es/galeria' : '/en/gallery';
-const blogHref = isSpanish ? '/es/blog' : '/en/blog';
-const langMode = isSpanish ? 'English' : 'Spanish';
+const homeHref = isSpanish ? "/es/" : "/en/";
+const booksHref = isSpanish ? "/es/libros" : "/en/books";
+const servicesHref = isSpanish ? "/es/servicios" : "/en/services";
+const academiaHref = isSpanish ? "/es/academia" : "/en/academy";
+const aboutHref = isSpanish ? "/es/sobre-mi" : "/en/aboutme";
+const galleryHref = isSpanish ? "/es/galeria" : "/en/gallery";
+const blogHref = isSpanish ? "/es/blog" : "/en/blog";
+const langMode = isSpanish ? "English" : "Spanish";
 
 const translations = {
-  about: isSpanish ? 'Sobre mí' : 'About Me',
-  books: isSpanish ? 'Libros' : 'Books',
-  blog: isSpanish ? 'Blog' : 'Blog',
-  academy: isSpanish ? 'Academia' : 'Academy',
-  gallery: isSpanish ? 'Galería' : 'Gallery',
+  about: isSpanish ? "Sobre mí" : "About Me",
+  books: isSpanish ? "Libros" : "Books",
+  blog: isSpanish ? "Blog" : "Blog",
+  services: isSpanish ? "Servicios" : "Services",
+  academy: isSpanish ? "Academia" : "Academy",
+  gallery: isSpanish ? "Galería" : "Gallery",
 };
 ---
-<header class="bg-background/90 backdrop-blur-md w-full border-b border-primary/20 sticky top-0 z-50 transition-colors">
+
+<header
+  class="bg-background/90 backdrop-blur-md w-full border-b border-primary/20 sticky top-0 z-50 transition-colors"
+>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-14 md:h-24">
       <div class="flex-shrink-0 flex items-center">
-        <a href={homeHref} class="inline-block transition-transform hover:scale-103" aria-label="Analía Camarda Home">
-          <Image src={logoImg} alt="Analía Camarda" class="h-10 sm:h-12 md:h-20 lg:h-23 w-auto object-contain md:scale-[1.1] transform origin-left" loading="eager" />
+        <a
+          href={homeHref}
+          class="inline-block transition-transform hover:scale-103"
+          aria-label="Analía Camarda Home"
+        >
+          <Image
+            src={logoImg}
+            alt="Analía Camarda"
+            class="h-10 sm:h-12 md:h-20 lg:h-23 w-auto object-contain md:scale-[1.1] transform origin-left"
+            loading="eager"
+          />
         </a>
       </div>
-      <nav class="font-outfit hidden lg:flex space-x-4 xl:space-x-8 items-center">
-        <a href={aboutHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_about','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.about}</a>
-        <a href={booksHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_books','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.books}</a>
-        <a href={blogHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_blog','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.blog}</a>
-        <a href={academiaHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_academy','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.academy}</a>
-        <a href={galleryHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_gallery','navigation','header',1)" class="text-primary hover:text-dark transition-colors text-lg xl:text-2xl capitalize whitespace-nowrap">{translations.gallery}</a>
+      <nav
+        class="font-outfit hidden xl:flex space-x-3 xl:space-x-6 items-center"
+      >
+        <a
+          href={aboutHref}
+          onclick="if(window.trackEvent)window.trackEvent('click_nav_about','navigation','header',1)"
+          class="text-primary hover:text-dark transition-colors text-base xl:text-lg capitalize whitespace-nowrap"
+          >{translations.about}
+        </a>
+        <a
+          href={booksHref}
+          onclick="if(window.trackEvent)window.trackEvent('click_nav_books','navigation','header',1)"
+          class="text-primary hover:text-dark transition-colors text-base xl:text-lg capitalize whitespace-nowrap"
+          >{translations.books}
+        </a>
+        <a
+          href={servicesHref}
+          onclick="if(window.trackEvent)window.trackEvent('click_nav_services','navigation','header',1)"
+          class="text-primary hover:text-dark transition-colors text-base xl:text-lg capitalize whitespace-nowrap"
+          >{translations.services}
+        </a>
+        <a
+          href={blogHref}
+          onclick="if(window.trackEvent)window.trackEvent('click_nav_blog','navigation','header',1)"
+          class="text-primary hover:text-dark transition-colors text-base xl:text-lg capitalize whitespace-nowrap"
+          >{translations.blog}
+        </a>
+        <a
+          href={academiaHref}
+          onclick="if(window.trackEvent)window.trackEvent('click_nav_academy','navigation','header',1)"
+          class="text-primary hover:text-dark transition-colors text-base xl:text-lg capitalize whitespace-nowrap"
+          >{translations.academy}
+        </a>
+        <a
+          href={galleryHref}
+          onclick="if(window.trackEvent)window.trackEvent('click_nav_gallery','navigation','header',1)"
+          class="text-primary hover:text-dark transition-colors text-base xl:text-lg capitalize whitespace-nowrap"
+          >{translations.gallery}
+        </a>
       </nav>
       <div class="font-outfit flex items-center gap-2 sm:gap-4 md:gap-8">
         <!-- Social Icons - Always visible but smaller on mobile -->
         <div class="flex items-center gap-2 sm:gap-3 md:gap-6">
           <!-- LinkedIn -->
-          <a href="https://linkedin.com/in/analia-camarda-2b4152102/" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','header',1)" class="transition-transform hover:scale-110" aria-label="LinkedIn">
-            <Image src={linkedinIcon} alt="LinkedIn" class="w-6 h-6 md:w-8 md:h-8" />
+          <a
+            href="https://linkedin.com/in/analia-camarda-2b4152102/"
+            target="_blank"
+            onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','header',1)"
+            class="transition-transform hover:scale-110"
+            aria-label="LinkedIn"
+          >
+            <Image
+              src={linkedinIcon}
+              alt="LinkedIn"
+              class="w-6 h-6 md:w-8 md:h-8"
+            />
           </a>
           <!-- Instagram -->
-          <a href="https://instagram.com/analia_camarda/" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_instagram','social','header',1)" class="transition-transform hover:scale-110" aria-label="Instagram">
-            <Image src={instagramIcon} alt="Instagram" class="w-6 h-6 md:w-8 md:h-8" />
+          <a
+            href="https://instagram.com/analia_camarda/"
+            target="_blank"
+            onclick="if(window.trackEvent)window.trackEvent('click_social_instagram','social','header',1)"
+            class="transition-transform hover:scale-110"
+            aria-label="Instagram"
+          >
+            <Image
+              src={instagramIcon}
+              alt="Instagram"
+              class="w-6 h-6 md:w-8 md:h-8"
+            />
           </a>
           <!-- TikTok -->
-          <a href="https://tiktok.com/@academydigital1" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_tiktok','social','header',1)" class="transition-transform hover:scale-110" aria-label="TikTok">
+          <a
+            href="https://tiktok.com/@academydigital1"
+            target="_blank"
+            onclick="if(window.trackEvent)window.trackEvent('click_social_tiktok','social','header',1)"
+            class="transition-transform hover:scale-110"
+            aria-label="TikTok"
+          >
             <Image src={tiktokIcon} alt="TikTok" class="h-6 w-auto md:h-8" />
           </a>
         </div>
 
         <!-- Language Switcher Button -->
-        <a id="lang-toggle" href={langHref} class="bg-primary hover:bg-dark text-card px-4 md:px-8 py-2 md:py-2.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg text-sm md:text-lg">
+        <a
+          id="lang-toggle"
+          href={langHref}
+          class="bg-primary hover:bg-dark text-card px-4 md:px-8 py-2 md:py-2.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg text-sm md:text-lg"
+        >
           {langMode}
         </a>
 
         <!-- Mobile Menu Button (Hamburger) -->
-        <button id="mobile-menu-btn" class="lg:hidden p-2 text-primary hover:text-dark transition-colors" aria-label="Open menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <button
+          id="mobile-menu-btn"
+          class="xl:hidden p-2 text-primary hover:text-dark transition-colors"
+          aria-label="Open menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
       </div>
@@ -135,40 +229,115 @@ const translations = {
 
 <!-- Mobile Menu Drawer with Overlay -->
 <!-- Overlay backdrop -->
-<div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+<div
+  id="mobile-menu-overlay"
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+>
+</div>
 
 <!-- Drawer panel -->
-<div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-background z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out lg:hidden">
+<div
+  id="mobile-menu"
+  class="fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-background z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out lg:hidden"
+>
   <div class="flex flex-col h-full">
     <!-- Close button header -->
     <div class="flex justify-end items-center p-4 border-b border-primary/10">
-      <button id="mobile-menu-close" class="p-2 text-primary hover:text-dark transition-colors" aria-label="Close menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <button
+        id="mobile-menu-close"
+        class="p-2 text-primary hover:text-dark transition-colors"
+        aria-label="Close menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
-    
+
     <!-- Navigation links -->
     <nav class="font-outfit flex flex-col py-4 px-4 flex-1 overflow-y-auto">
-      <a href={homeHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_home','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10">{isSpanish ? 'Inicio' : 'Home'}</a>
-      <a href={aboutHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_about','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10">{translations.about}</a>
-      <a href={booksHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_books','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10">{translations.books}</a>
-      <a href={blogHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_blog','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10">{translations.blog}</a>
-      <a href={academiaHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_academy','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10">{translations.academy}</a>
-      <a href={galleryHref} onclick="if(window.trackEvent)window.trackEvent('click_nav_gallery','navigation','mobile_menu',1)" class="text-primary hover:text-dark transition-colors py-3 text-lg">{translations.gallery}</a>
+      <a
+        href={homeHref}
+        onclick="if(window.trackEvent)window.trackEvent('click_nav_home','navigation','mobile_menu',1)"
+        class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10"
+        >{isSpanish ? "Inicio" : "Home"}
+      </a>
+      <a
+        href={aboutHref}
+        onclick="if(window.trackEvent)window.trackEvent('click_nav_about','navigation','mobile_menu',1)"
+        class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10"
+        >{translations.about}
+      </a>
+      <a
+        href={booksHref}
+        onclick="if(window.trackEvent)window.trackEvent('click_nav_books','navigation','mobile_menu',1)"
+        class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10"
+        >{translations.books}
+      </a>
+      <a
+        href={servicesHref}
+        onclick="if(window.trackEvent)window.trackEvent('click_nav_services','navigation','mobile_menu',1)"
+        class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10"
+        >{translations.services}
+      </a>
+      <a
+        href={blogHref}
+        onclick="if(window.trackEvent)window.trackEvent('click_nav_blog','navigation','mobile_menu',1)"
+        class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10"
+        >{translations.blog}
+      </a>
+      <a
+        href={academiaHref}
+        onclick="if(window.trackEvent)window.trackEvent('click_nav_academy','navigation','mobile_menu',1)"
+        class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10"
+        >{translations.academy}
+      </a>
+      <a
+        href={galleryHref}
+        onclick="if(window.trackEvent)window.trackEvent('click_nav_gallery','navigation','mobile_menu',1)"
+        class="text-primary hover:text-dark transition-colors py-3 text-lg"
+        >{translations.gallery}
+      </a>
     </nav>
-    
+
     <!-- Social icons at bottom -->
     <div class="p-4 border-t border-primary/10">
       <div class="flex items-center justify-center gap-6">
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','mobile_menu',1)" class="transition-transform hover:scale-110" aria-label="LinkedIn">
+        <a
+          href="https://linkedin.com/in/yourprofile"
+          target="_blank"
+          onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','mobile_menu',1)"
+          class="transition-transform hover:scale-110"
+          aria-label="LinkedIn"
+        >
           <Image src={linkedinIcon} alt="LinkedIn" class="w-6 h-6" />
         </a>
-        <a href="https://instagram.com/yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_instagram','social','mobile_menu',1)" class="transition-transform hover:scale-110" aria-label="Instagram">
+        <a
+          href="https://instagram.com/yourprofile"
+          target="_blank"
+          onclick="if(window.trackEvent)window.trackEvent('click_social_instagram','social','mobile_menu',1)"
+          class="transition-transform hover:scale-110"
+          aria-label="Instagram"
+        >
           <Image src={instagramIcon} alt="Instagram" class="w-6 h-6" />
         </a>
-        <a href="https://tiktok.com/@yourprofile" target="_blank" onclick="if(window.trackEvent)window.trackEvent('click_social_tiktok','social','mobile_menu',1)" class="transition-transform hover:scale-110" aria-label="TikTok">
+        <a
+          href="https://tiktok.com/@yourprofile"
+          target="_blank"
+          onclick="if(window.trackEvent)window.trackEvent('click_social_tiktok','social','mobile_menu',1)"
+          class="transition-transform hover:scale-110"
+          aria-label="TikTok"
+        >
           <Image src={tiktokIcon} alt="TikTok" class="h-6 w-auto" />
         </a>
       </div>
@@ -179,49 +348,52 @@ const translations = {
 <script>
   // Mobile Menu Toggle
   const setupMobileMenu = () => {
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const menuClose = document.getElementById('mobile-menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuOverlay = document.getElementById('mobile-menu-overlay');
-    
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const menuClose = document.getElementById("mobile-menu-close");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuOverlay = document.getElementById("mobile-menu-overlay");
+
     if (!menuBtn || !mobileMenu || !menuOverlay) return;
 
     const openMenu = () => {
-      mobileMenu.classList.remove('translate-x-full');
-      mobileMenu.classList.add('translate-x-0');
-      menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
-      menuOverlay.classList.add('opacity-100', 'pointer-events-auto');
-      document.body.style.overflow = 'hidden';
+      mobileMenu.classList.remove("translate-x-full");
+      mobileMenu.classList.add("translate-x-0");
+      menuOverlay.classList.remove("opacity-0", "pointer-events-none");
+      menuOverlay.classList.add("opacity-100", "pointer-events-auto");
+      document.body.style.overflow = "hidden";
     };
 
     const closeMenu = () => {
-      mobileMenu.classList.remove('translate-x-0');
-      mobileMenu.classList.add('translate-x-full');
-      menuOverlay.classList.remove('opacity-100', 'pointer-events-auto');
-      menuOverlay.classList.add('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = '';
+      mobileMenu.classList.remove("translate-x-0");
+      mobileMenu.classList.add("translate-x-full");
+      menuOverlay.classList.remove("opacity-100", "pointer-events-auto");
+      menuOverlay.classList.add("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "";
     };
 
     // Open menu on hamburger click
-    menuBtn.addEventListener('click', openMenu);
-    
+    menuBtn.addEventListener("click", openMenu);
+
     // Close menu on X button click
     if (menuClose) {
-      menuClose.addEventListener('click', closeMenu);
+      menuClose.addEventListener("click", closeMenu);
     }
 
     // Close menu when clicking overlay
-    menuOverlay.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener("click", closeMenu);
 
     // Close menu when clicking any link
-    const menuLinks = mobileMenu.querySelectorAll('a');
-    menuLinks.forEach(link => {
-      link.addEventListener('click', closeMenu);
+    const menuLinks = mobileMenu.querySelectorAll("a");
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
     });
 
     // Close menu on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        !mobileMenu.classList.contains("translate-x-full")
+      ) {
         closeMenu();
       }
     });
@@ -229,13 +401,19 @@ const translations = {
 
   // Script to preserve scroll position across language switches
   const setupLangToggle = () => {
-    const langToggle = document.getElementById('lang-toggle');
+    const langToggle = document.getElementById("lang-toggle");
     if (!langToggle) return;
 
-    langToggle.addEventListener('click', (e) => {
+    langToggle.addEventListener("click", (e) => {
       // List of sections to track
-      const sections = ['mentor', 'books', 'why-digital', 'academy', 'newsletter'];
-      let activeSection = '';
+      const sections = [
+        "mentor",
+        "books",
+        "why-digital",
+        "academy",
+        "newsletter",
+      ];
+      let activeSection = "";
 
       // Find the section currently most visible in the viewport
       for (const id of sections) {
@@ -249,10 +427,10 @@ const translations = {
       }
 
       if (activeSection) {
-        const currentHref = langToggle.getAttribute('href') || '';
+        const currentHref = langToggle.getAttribute("href") || "";
         // Only append hash if not already present or different
-        const baseHref = currentHref.split('#')[0];
-        langToggle.setAttribute('href', `${baseHref}#${activeSection}`);
+        const baseHref = currentHref.split("#")[0];
+        langToggle.setAttribute("href", `${baseHref}#${activeSection}`);
       }
     });
   };
@@ -261,5 +439,5 @@ const translations = {
   setupLangToggle();
   setupMobileMenu();
   // Support Astro View Transitions if the user decides to enable them later
-  document.addEventListener('astro:after-swap', setupLangToggle);
+  document.addEventListener("astro:after-swap", setupLangToggle);
 </script>

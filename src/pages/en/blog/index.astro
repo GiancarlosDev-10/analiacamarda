@@ -1,10 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const blogEntries = await getCollection('blog', ({ data }) => !data.draft);
+const blogEntries = await getCollection("blog", ({ data }) => !data.draft);
 // Sort by date (desc)
-const sortedEntries = [...blogEntries].sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const sortedEntries = [...blogEntries].sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
 ---
 
 <BaseLayout
@@ -14,21 +16,34 @@ const sortedEntries = [...blogEntries].sort((a, b) => b.data.date.getTime() - a.
   image="/images/og-default.png"
 >
   <!-- HERO HEADER -->
-  <section class="relative bg-background pt-16 pb-10 border-b border-primary/10 overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
-      <p class="text-[18vw] font-heading font-black text-primary/5 tracking-widest whitespace-nowrap select-none">
+  <section
+    class="relative bg-background pt-16 pb-10 border-b border-primary/10 overflow-hidden"
+  >
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
+    >
+      <p
+        class="text-[18vw] font-heading font-black text-primary/5 tracking-widest whitespace-nowrap select-none"
+      >
         BLOG
       </p>
     </div>
     <div class="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-4">
-      <div class="font-outfit flex justify-center items-center gap-2 text-cta text-md tracking-widest uppercase">
+      <div
+        class="font-outfit flex justify-center items-center gap-2 text-cta text-md tracking-widest uppercase"
+      >
         <span>✦</span> Knowledge Hub
       </div>
-      <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-primary leading-tight">
+      <h1
+        class="text-5xl md:text-6xl font-heading font-extrabold text-primary leading-tight"
+      >
         Insights & Strategies
       </h1>
-      <p class="font-outfit text-base md:text-lg text-dark/70 max-w-2xl mx-auto leading-relaxed">
-        Weekly deep-dives into passive income, digital systems, and financial independence for the Deaf.
+      <p
+        class="font-outfit text-base md:text-lg text-dark/70 max-w-2xl mx-auto leading-relaxed"
+      >
+        Weekly deep-dives into passive income, digital systems, and financial
+        independence for the Deaf.
       </p>
     </div>
   </section>
@@ -37,33 +52,52 @@ const sortedEntries = [...blogEntries].sort((a, b) => b.data.date.getTime() - a.
   <section class="bg-card pt-10 pb-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {sortedEntries.map(post => (
-          <a href={`/en/blog/${post.id}`} onclick={`if(window.trackEvent)window.trackEvent('click_read_article','blog','${post.id}',1)`} class="group bg-background rounded-2xl border border-primary/10 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col hover:-translate-y-2">
-            <div class="p-6 flex flex-col flex-grow">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="text-cta text-xs font-bold font-outfit uppercase tracking-widest">✦ {post.data.category}</span>
-                <span class="text-dark/30 text-xs font-bold">•</span>
-                <time class="text-dark/40 text-xs font-bold font-outfit uppercase tracking-widest" datetime={post.data.date.toISOString()}>
-                   {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                </time>
-              </div>
-              <h2 class="text-2xl font-heading font-bold text-primary mb-4 group-hover:text-cta transition-colors">
-                {post.data.title}
-              </h2>
-              <p class="text-dark/70 font-outfit text-lg leading-relaxed mb-6 line-clamp-3">
-                {post.data.description}
-              </p>
-              
-              <div class="mt-auto pt-6 border-t border-primary/5 flex items-center justify-between">
-                <span class="text-cta font-bold text-sm group-hover:underline underline-offset-4">Read Article &rarr;</span>
-                <div class="flex items-center gap-2 text-dark/30">
-                  {/* Stats placeholder */}
-                  <span class="text-[10px] uppercase font-bold tracking-widest italic">New Post</span>
+        {
+          sortedEntries.map((post) => (
+            <a
+              href={`/en/blog/${post.id}`}
+              onclick={`if(window.trackEvent)window.trackEvent('click_read_article','blog','${post.id}',1)`}
+              class="group bg-background rounded-2xl border border-primary/10 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col hover:-translate-y-2"
+            >
+              <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-cta text-xs font-bold font-outfit uppercase tracking-widest">
+                    ✦ {post.data.category}
+                  </span>
+                  <span class="text-dark/30 text-xs font-bold">•</span>
+                  <time
+                    class="text-dark/40 text-xs font-bold font-outfit uppercase tracking-widest"
+                    datetime={post.data.date.toISOString()}
+                  >
+                    {post.data.date.toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </time>
+                </div>
+                <h2 class="text-2xl font-heading font-bold text-primary mb-4 group-hover:text-cta transition-colors">
+                  {post.data.title}
+                </h2>
+                <p class="text-dark/70 font-outfit text-lg leading-relaxed mb-6 line-clamp-3">
+                  {post.data.description}
+                </p>
+
+                <div class="mt-auto pt-6 border-t border-primary/5 flex items-center justify-between">
+                  <span class="text-cta font-bold text-sm group-hover:underline underline-offset-4">
+                    Read Article &rarr;
+                  </span>
+                  <div class="flex items-center gap-2 text-dark/30">
+                    {/* Stats placeholder */}
+                    <span class="text-[10px] uppercase font-bold tracking-widest italic">
+                      New Post
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-        ))}
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>

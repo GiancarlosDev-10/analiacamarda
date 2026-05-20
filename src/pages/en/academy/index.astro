@@ -1,45 +1,60 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
-import logoVerde from '../../../assets/images/logo_verde.png';
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import logoVerde from "../../../assets/images/logo_verde.png";
 
 const schema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Course",
-  "name": "Deaf Digital Pro Academy",
-  "description": "An interactive Skool community designed to teach passive income generation through dedicated blueprints, and weekly mentoring.",
-  "provider": {
+  name: "Deaf Digital Pro Academy",
+  description:
+    "An interactive Skool community designed to teach passive income generation through dedicated blueprints, and weekly mentoring.",
+  provider: {
     "@type": "Person",
-    "name": "Analía Camarda",
-    "url": "https://www.analiacamarda.com"
-  }
+    name: "Analía Camarda",
+    url: "https://www.analiacamarda.com",
+  },
 });
 ---
 
-<BaseLayout 
-  title="Digital Academy | Analía Camarda" 
+<BaseLayout
+  title="Digital Academy | Analía Camarda"
   description="Join the Deaf Digital Pro Academy on Skool. Access unlimited classes, e-books, live sessions and personalized mentorship for $9/month."
   schema={schema}
   lang="en"
   image="/images/og-default.png"
 >
   <!-- HERO HEADER -->
-  <section class="relative bg-background pt-16 pb-10 border-b border-primary/10 overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
-      <p class="text-[16vw] font-heading font-black text-primary/5 tracking-widest whitespace-nowrap select-none">
+  <section
+    class="relative bg-background pt-16 pb-10 border-b border-primary/10 overflow-hidden"
+  >
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
+    >
+      <p
+        class="text-[16vw] font-heading font-black text-primary/5 tracking-widest whitespace-nowrap select-none"
+      >
         ACADEMY
       </p>
     </div>
-    
+
     <div class="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-4">
-      <div class="font-outfit flex justify-center items-center gap-2 text-cta text-md tracking-widest uppercase">
+      <div
+        class="font-outfit flex justify-center items-center gap-2 text-cta text-md tracking-widest uppercase"
+      >
         <span>✦</span> The Community
       </div>
-      <h1 class="text-4xl md:text-6xl font-heading font-extrabold text-primary leading-tight">
+      <h1
+        class="text-4xl md:text-6xl font-heading font-extrabold text-primary leading-tight"
+      >
         Digital Academy
       </h1>
-      <p class="font-outfit text-base md:text-lg text-dark/70 max-w-2xl mx-auto leading-relaxed">
-        Where entrepreneurs come together to achieve automated financial independence. Get full access to all classes, e-books, live sessions and personalized mentorship.
+      <p
+        class="font-outfit text-base md:text-lg text-dark/70 max-w-2xl mx-auto leading-relaxed"
+      >
+        Where entrepreneurs come together to achieve automated financial
+        independence. Get full access to all classes, e-books, live sessions and
+        personalized mentorship.
       </p>
     </div>
   </section>
@@ -47,90 +62,171 @@ const schema = JSON.stringify({
   <!-- PRICING SECTION -->
   <section class="bg-background py-16">
     <div class="max-w-5xl mx-auto px-4">
-
       <!-- Logo -->
       <div class="flex justify-center mb-4 mt-[-4rem]">
-        <Image src={logoVerde} alt="Digital Academy Logo" class="w-36 h-auto" loading="lazy" />
+        <Image
+          src={logoVerde}
+          alt="Digital Academy Logo"
+          class="w-36 h-auto"
+          loading="lazy"
+        />
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <!-- SPECIAL OFFER CARD -->
-        <div class="group relative bg-card rounded-2xl border border-primary/15 px-8 pt-5 pb-8 md:px-12 md:pt-8 md:pb-12 flex flex-col shadow-xl hover:scale-103 transition-all duration-500 hover:bg-primary overflow-hidden">
-          <div class="absolute -top-1 -left-1 overflow-hidden w-40 h-40 pointer-events-none z-20">
-            <div class="absolute top-9 -left-12 w-52 py-3 bg-[#D4AF37] text-black text-[11px] font-bold text-center transform -rotate-45 shadow-lg uppercase tracking-widest border-y border-white/20">
+        <div
+          class="group relative bg-card rounded-2xl border border-primary/15 px-8 pt-5 pb-8 md:px-12 md:pt-8 md:pb-12 flex flex-col shadow-xl hover:scale-103 transition-all duration-500 hover:bg-primary overflow-hidden"
+        >
+          <div
+            class="absolute -top-1 -left-1 overflow-hidden w-40 h-40 pointer-events-none z-20"
+          >
+            <div
+              class="absolute top-9 -left-12 w-52 py-3 bg-[#D4AF37] text-black text-[11px] font-bold text-center transform -rotate-45 shadow-lg uppercase tracking-widest border-y border-white/20"
+            >
               Special Offer
             </div>
           </div>
 
-            <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-2 group-hover:text-white transition-colors">
-              <span>✦</span> Premium
-            </div>
-          <div class="mb-8">
-            <div class="text-5xl md:text-6xl font-heading font-extrabold text-primary group-hover:text-white transition-colors">
-              $9<span class="text-2xl md:text-3xl font-normal text-dark/60 group-hover:text-white/80 transition-colors">/month</span>
-            </div>
-            <p class="font-outfit text-sm text-dark/50 mt-3 mb-[-16px] group-hover:text-white/70 transition-colors">Everything you need to build a real digital income.</p>
+          <div
+            class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-2 group-hover:text-white transition-colors"
+          >
+            <span>✦</span> Premium
           </div>
-        
-          <ul class="space-y-4 mb-6 font-outfit text-dark/90 text-justify group-hover:text-white transition-colors">
-            Access every business course, both e-Books, and the complete Digital Freedom system — all in English and Spanish, fully Deaf-accessible. New courses are always included.
+          <div class="mb-8">
+            <div
+              class="text-5xl md:text-6xl font-heading font-extrabold text-primary group-hover:text-white transition-colors"
+            >
+              $9<span
+                class="text-2xl md:text-3xl font-normal text-dark/60 group-hover:text-white/80 transition-colors"
+                >/month</span
+              >
+            </div>
+            <p
+              class="font-outfit text-sm text-dark/50 mt-3 mb-[-16px] group-hover:text-white/70 transition-colors"
+            >
+              Everything you need to build a real digital income.
+            </p>
+          </div>
+
+          <ul
+            class="space-y-4 mb-6 font-outfit text-dark/90 text-justify group-hover:text-white transition-colors"
+          >
+            Access every business course, both e-Books, and the complete Digital
+            Freedom system — all in English and Spanish, fully Deaf-accessible.
+            New courses are always included.
           </ul>
-          <ul class="space-y-4 mb-8 font-outfit text-dark/90 group-hover:text-white transition-colors">
-             <li class="flex items-start mb-1 gap-3">
-              <div class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-cta">
-                  <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+          <ul
+            class="space-y-4 mb-8 font-outfit text-dark/90 group-hover:text-white transition-colors"
+          >
+            <li class="flex items-start mb-1 gap-3">
+              <div
+                class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-4 h-4 text-cta"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"></path>
                 </svg>
               </div>
               <span class="text-base">Digital Freedom — complete system</span>
             </li>
-             <li class="flex items-start mb-1 gap-3">
-              <div class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-cta">
-                  <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+            <li class="flex items-start mb-1 gap-3">
+              <div
+                class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-4 h-4 text-cta"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"></path>
                 </svg>
               </div>
               <span class="text-base"> 2 e-Books included</span>
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
               <span class="text-base">From zero to Passive Income</span>
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
               <span class="text-base">E-commerce from Scratch</span>
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
               <span class="text-base">Mega Digital Marketing</span>
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
               <span class="text-base">AI for Entrepreneurs</span>
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
               <span class="text-base">Private community Access</span>
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
-              <span class="text-base">All recorded classes · replay anytime</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
+              <span class="text-base"
+                >All recorded classes · replay anytime</span
+              >
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
               <span class="text-base">New courses added · always included</span>
             </li>
-             <li class="flex items-start mb-1 gap-3">
-              <div class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-cta">
-                  <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3v6.75a3 3 0 003 3h10.5a3 3 0 003-3v-6.75a3 3 0 00-3-3v-3c0-2.9-2.35-5.25-5.25-5.25zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z" clip-rule="evenodd" />
+            <li class="flex items-start mb-1 gap-3">
+              <div
+                class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-4 h-4 text-cta"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3v6.75a3 3 0 003 3h10.5a3 3 0 003-3v-6.75a3 3 0 00-3-3v-3c0-2.9-2.35-5.25-5.25-5.25zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z"
+                    clip-rule="evenodd"></path>
                 </svg>
               </div>
-              <span class="text-base">VIP CYBERSECURITY AND DATA ANALYST bootcamps locked</span>
+              <span class="text-base"
+                >VIP CYBERSECURITY AND DATA ANALYST bootcamps locked</span
+              >
             </li>
           </ul>
-  
-          
+
           <a
             href="https://buy.stripe.com/aFafZhd4i0H10Xlfm13ZK05"
             target="_blank"
@@ -138,93 +234,173 @@ const schema = JSON.stringify({
             onclick={`if(window.trackEvent)window.trackEvent('click_academy_premium','purchase','academy-en',9)`}
             class="w-full bg-cta hover:bg-cta-hover text-white text-center px-6 py-4 rounded-xl font-bold font-outfit text-lg transition-all shadow-lg hover:shadow-xl transform active:scale-95"
           >
-            Start $9 / Month  
+            Start $9 / Month
           </a>
-  
-          <p class="font-outfit text-xs text-dark/40 text-center mt-4 group-hover:text-white/60 transition-colors">
+
+          <p
+            class="font-outfit text-xs text-dark/40 text-center mt-4 group-hover:text-white/60 transition-colors"
+          >
             Secure payment via Stripe · SSL Encrypted
           </p>
         </div>
 
         <!-- EXCLUSIVE FOR VIP MEMBERS CARD -->
-        <div class="group relative bg-card rounded-2xl border border-primary/15 px-8 pt-5 pb-8 md:px-12 md:pt-8 md:pb-12 flex flex-col shadow-xl hover:scale-103 transition-all duration-500 hover:bg-primary overflow-hidden">
-          <div class="absolute -top-1 -left-1 overflow-hidden w-40 h-40 pointer-events-none z-20">
-            <div class="absolute top-9 -left-12 w-52 py-3 bg-[#D4AF37] text-black text-[11px] font-bold text-center transform -rotate-45 shadow-lg uppercase tracking-widest border-y border-white/20">
-              Exclusive for <p>VIP Members
+        <div
+          class="group relative bg-card rounded-2xl border border-primary/15 px-8 pt-5 pb-8 md:px-12 md:pt-8 md:pb-12 flex flex-col shadow-xl hover:scale-103 transition-all duration-500 hover:bg-primary overflow-hidden"
+        >
+          <div
+            class="absolute -top-1 -left-1 overflow-hidden w-40 h-40 pointer-events-none z-20"
+          >
+            <div
+              class="absolute top-9 -left-12 w-52 py-3 bg-[#D4AF37] text-black text-[11px] font-bold text-center transform -rotate-45 shadow-lg uppercase tracking-widest border-y border-white/20"
+            >
+              Exclusive for <p>VIP Members</p>
             </div>
           </div>
 
-            <div class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-2 group-hover:text-white transition-colors">
-              <span>✦</span> CyberSecurity and Data Analyst
-            </div>
-          <div class="mb-8">
-            <div class="text-5xl md:text-6xl font-heading font-extrabold text-primary group-hover:text-white transition-colors">
-              $29<span class="text-2xl md:text-3xl font-normal text-dark/60 group-hover:text-white/80 transition-colors">/month</span>
-            </div>
-            <p class="font-outfit text-sm text-dark/50 mt-3 mb-[-16px] group-hover:text-white/70 transition-colors">Everything in Premium, plus:</p>
+          <div
+            class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-2 group-hover:text-white transition-colors"
+          >
+            <span>✦</span> CyberSecurity and Data Analyst
           </div>
-        
-          <ul class="space-y-4 mb-6 font-outfit text-dark/90 text-justify group-hover:text-white transition-colors">
-            VIP Cybersecurity — Exclusive. Learn Cybersecurity from someone who actually graduated in it. Includes everything in Premium, plus the full Cybersecurity Bootcamp.
+          <div class="mb-8">
+            <div
+              class="text-5xl md:text-6xl font-heading font-extrabold text-primary group-hover:text-white transition-colors"
+            >
+              $29<span
+                class="text-2xl md:text-3xl font-normal text-dark/60 group-hover:text-white/80 transition-colors"
+                >/month</span
+              >
+            </div>
+            <p
+              class="font-outfit text-sm text-dark/50 mt-3 mb-[-16px] group-hover:text-white/70 transition-colors"
+            >
+              Everything in Premium, plus:
+            </p>
+          </div>
+
+          <ul
+            class="space-y-4 mb-6 font-outfit text-dark/90 text-justify group-hover:text-white transition-colors"
+          >
+            VIP Cybersecurity — Exclusive. Learn Cybersecurity from someone who
+            actually graduated in it. Includes everything in Premium, plus the
+            full Cybersecurity Bootcamp.
           </ul>
-          <ul class="space-y-4 mb-8 font-outfit text-dark/90 group-hover:text-white transition-colors">
-             <li class="flex items-start mb-1 gap-3">
-              <div class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-cta">
-                  <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+          <ul
+            class="space-y-4 mb-8 font-outfit text-dark/90 group-hover:text-white transition-colors"
+          >
+            <li class="flex items-start mb-1 gap-3">
+              <div
+                class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-4 h-4 text-cta"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"></path>
                 </svg>
               </div>
               <span class="text-base">Cybersecurity Bootcamp modules</span>
             </li>
-            </li>
-             <li class="flex items-start mb-1 gap-3">
-              <div class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-cta">
-                  <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+
+            <li class="flex items-start mb-1 gap-3">
+              <div
+                class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-4 h-4 text-cta"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"></path>
                 </svg>
               </div>
               <span class="text-base">Live Class — Analía + expert guests</span>
             </li>
-            </li>
-             <li class="flex items-start mb-1 gap-3">
-              <div class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-cta">
-                  <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+
+            <li class="flex items-start mb-1 gap-3">
+              <div
+                class="flex gap-1 mt-1 group-hover:text-white/90 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-4 h-4 text-cta"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                    clip-rule="evenodd"></path>
                 </svg>
               </div>
               <span class="text-base">Certificate of completion</span>
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
               <span class="text-base">Ethical hacking basics</span>
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
               <span class="text-base">Network security fundamentals</span>
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
               <span class="text-base">Data protection strategies</span>
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
-              <span class="text-base">Complete SQL Coding — Data Analyst job-ready</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
+              <span class="text-base"
+                >Complete SQL Coding — Data Analyst job-ready</span
+              >
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
-              <span class="text-base">Digital Freedom — advanced guide to living & earning fully online</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
+              <span class="text-base"
+                >Digital Freedom — advanced guide to living & earning fully
+                online</span
+              >
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
               <span class="text-base">Private community channel</span>
             </li>
             <li class="flex items-start mb-1 gap-3">
-              <span class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors">✓</span>
+              <span
+                class="text-green-500 mt-0.5 group-hover:text-green-300 transition-colors"
+                >✓</span
+              >
               <span class="text-base">New courses added · always included</span>
             </li>
           </ul>
-  
-          
+
           <a
             href="https://buy.stripe.com/aFafZhd4i0H10Xlfm13ZK05"
             target="_blank"
@@ -232,10 +408,12 @@ const schema = JSON.stringify({
             onclick={`if(window.trackEvent)window.trackEvent('click_academy_premium','purchase','academy-en',9)`}
             class="w-full bg-cta hover:bg-cta-hover text-white text-center px-6 py-4 rounded-xl font-bold font-outfit text-lg transition-all shadow-lg hover:shadow-xl transform active:scale-95"
           >
-            Join VIP Cybersecurity 
+            Join VIP Cybersecurity
           </a>
-  
-          <p class="font-outfit text-xs text-dark/40 text-center mt-4 group-hover:text-white/60 transition-colors">
+
+          <p
+            class="font-outfit text-xs text-dark/40 text-center mt-4 group-hover:text-white/60 transition-colors"
+          >
             Secure payment via Stripe · SSL Encrypted
           </p>
         </div>
@@ -246,12 +424,21 @@ const schema = JSON.stringify({
   <!-- STILL HAVE QUESTIONS -->
   <section class="bg-card border-t border-primary/20 py-24 text-center">
     <div class="max-w-3xl mx-auto px-4 space-y-8">
-      <h2 class="text-4xl font-heading font-bold text-primary">Still have questions?</h2>
+      <h2 class="text-4xl font-heading font-bold text-primary">
+        Still have questions?
+      </h2>
       <p class="font-outfit text-xl text-dark/70 leading-relaxed">
-        Our academy is a community learning platform that unites courses, discussions, and calendars in one single, accessible place. It's incredibly easy to use.
+        Our academy is a community learning platform that unites courses,
+        discussions, and calendars in one single, accessible place. It's
+        incredibly easy to use.
       </p>
       <div class="pt-4">
-        <a href="https://wa.me/12393316702" target="_blank" rel="noopener noreferrer" class="text-cta hover:text-dark font-bold font-outfit text-lg flex items-center justify-center gap-2 transition-colors">
+        <a
+          href="https://wa.me/12393316702"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-cta hover:text-dark font-bold font-outfit text-lg flex items-center justify-center gap-2 transition-colors"
+        >
           Contact Me Directly ↗
         </a>
       </div>
