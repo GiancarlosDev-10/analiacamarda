@@ -1,4 +1,6 @@
 ---
+import { slugMap, getTranslatedSlug } from '../utils/slugMaps';
+
 export interface Props {
   title: string;
   description: string;
@@ -11,7 +13,7 @@ export interface Props {
 const {
   title,
   description,
-  image     = "/images/og-default.png",
+  image     = "/images/logo-stripe.png",
   schema,
   canonical = Astro.url.href,
   lang      = "es"
@@ -32,11 +34,28 @@ const routeMap: Record<string, string> = {
   '/es/sobre-mi/':  '/en/aboutme/',
 };
 
+
 // Función para obtener la URL alternativa correcta
 const getAlternateUrl = (url: string, currentLang: string): string => {
   for (const [from, to] of Object.entries(routeMap)) {
-    if (url.includes(from)) {
-      return url.replace(from, to);
+    if (url.includes(from)) return url.replace(from, to);
+  }
+
+  if (currentLang === 'en') {
+    const match = url.match(/\/en\/blog\/([^\/]+)\//);
+    if (match?.[1]) {
+      const translated = getTranslatedSlug(match[1]);
+      if (translated) {
+        return url.replace(`/en/blog/${match[1]}/`, `/es/blog/${translated}/`);
+      }
+    }
+  } else {
+    const match = url.match(/\/es\/blog\/([^\/]+)\//);
+    if (match?.[1]) {
+      const translated = getTranslatedSlug(match[1]);
+      if (translated) {
+        return url.replace(`/es/blog/${match[1]}/`, `/en/blog/${translated}/`);
+      }
     }
   }
   // Fallback para rutas con mismo slug (blog posts, home, etc.)

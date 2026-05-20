@@ -1,36 +1,17 @@
 ---
-import { Image } from "astro:assets";
-import logoImg from "../assets/images/analia-camarda.png";
-import linkedinIcon from "../assets/images/linkedin.svg";
-import instagramIcon from "../assets/images/instagram.svg";
-import tiktokIcon from "../assets/images/tiktok.svg";
+import { Image } from 'astro:assets';
+import logoImg from '../assets/images/logo-stripe.png';
+import linkedinIcon from '../assets/images/linkedin.svg';
+import instagramIcon from '../assets/images/instagram.svg';
+import tiktokIcon from '../assets/images/tiktok.svg';
+import { getTranslatedSlug } from '../utils/slugMaps';
 
 const pathname = Astro.url.pathname;
 const isSpanish = pathname.startsWith("/es");
 
 // Intelligent Language Switcher Logic
 const getLangHref = (path: string): string => {
-  const cleanPath =
-    path.endsWith("/") && path.length > 1 ? path.slice(0, -1) : path;
-
-  // Slug mappings for books and blog posts
-  const slugsMap: Record<string, string> = {
-    "silent-success": "exito-silencioso",
-    "ultimate-passive-income-blueprint": "descubre-ingresos-pasivos",
-    "exito-silencioso": "silent-success",
-    "descubre-ingresos-pasivos": "ultimate-passive-income-blueprint",
-    "why-passive-income": "por-que-ingresos-pasivos",
-    "por-que-ingresos-pasivos": "why-passive-income",
-    // Static Pages
-    aboutme: "sobre-mi",
-    "sobre-mi": "aboutme",
-    academy: "academia",
-    academia: "academy",
-    gallery: "galeria",
-    galeria: "gallery",
-    "thank-you": "exito",
-    exito: "thank-you",
-  };
+  const cleanPath = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
 
   let newPath = "";
 
@@ -57,13 +38,12 @@ const getLangHref = (path: string): string => {
   }
 
   // Apply slug translations at the end of the path (handles books, blog posts, and static pages)
-  for (const s of Object.keys(slugsMap)) {
-    if (newPath.endsWith(`/${s}`) || newPath.endsWith(s)) {
-      const lastSlashIndex = newPath.lastIndexOf("/");
-      if (lastSlashIndex !== -1) {
-        newPath = newPath.substring(0, lastSlashIndex + 1) + slugsMap[s];
-        break; // Stop once we've found and applied a translation
-      }
+  const lastSegment = cleanPath.split('/').pop() || '';
+  const translated = getTranslatedSlug(lastSegment);
+  if (translated) {
+    const lastSlashIndex = newPath.lastIndexOf('/');
+    if (lastSlashIndex !== -1) {
+      newPath = newPath.substring(0, lastSlashIndex + 1) + translated;
     }
   }
 
@@ -97,17 +77,8 @@ const translations = {
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-14 md:h-24">
       <div class="flex-shrink-0 flex items-center">
-        <a
-          href={homeHref}
-          class="inline-block transition-transform hover:scale-103"
-          aria-label="Analía Camarda Home"
-        >
-          <Image
-            src={logoImg}
-            alt="Analía Camarda"
-            class="h-10 sm:h-12 md:h-20 lg:h-23 w-auto object-contain md:scale-[1.1] transform origin-left"
-            loading="eager"
-          />
+        <a href={homeHref} class="inline-block transition-transform hover:scale-103" aria-label="Analía Camarda Home">
+          <Image src={logoImg} alt="Analía Camarda" class="h-8 sm:h-10 md:h-17 lg:h-20 w-auto object-contain md:scale-[1.1] transform origin-left" loading="eager" />
         </a>
       </div>
       <nav

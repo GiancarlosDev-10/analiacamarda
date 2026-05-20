@@ -33,15 +33,9 @@ const spanishBooks = await Promise.all(
       </p>
     </div>
     <div class="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-4">
-      <div class="font-outfit flex justify-center items-center gap-2 text-cta text-md tracking-widest uppercase">
-        <span>✦</span> Librería Digital
-      </div>
       <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-primary leading-tight">
-        La Colección <span class="italic text-cta">Digital</span>
+        Librería Digital
       </h1>
-      <p class="font-outfit text-base md:text-lg text-dark/70 max-w-2xl mx-auto leading-relaxed">
-        Mi colección completa de guías prácticas diseñadas para ayudar a la comunidad sorda e hispana a alcanzar la independencia financiera.
-      </p>
     </div>
   </section>
 
@@ -79,8 +73,7 @@ const spanishBooks = await Promise.all(
               
               <div class="w-full flex items-center justify-between mt-8 md:mt-10 pt-6 md:pt-8 border-t border-primary/10 relative z-10">
                 <div class="flex flex-col">
-                  <span class="text-[10px] md:text-xs font-bold font-outfit text-dark/40 uppercase tracking-widest mb-1">Inversión</span>
-                  <span class="text-2xl md:text-3xl font-bold font-outfit text-cta">${book.price.toFixed(2)}</span>
+                  <span class="text-2xl md:text-3xl font-bold font-outfit text-cta">$ {book.price.toFixed(2)} USD</span>
                 </div>
                 <div onclick={`if(window.trackEvent)window.trackEvent('click_get_it_now','purchase','${book.slug}',${book.price})`} class="bg-primary text-white px-5 py-3 md:px-8 md:py-4 rounded-xl font-outfit text-sm md:text-lg group-hover:bg-cta transition-all shadow-lg flex items-center gap-2">
                   Obtener <span class="hidden sm:inline">Ahora</span> <svg class="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
