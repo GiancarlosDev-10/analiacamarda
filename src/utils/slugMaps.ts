@@ -7,6 +7,7 @@ export const slugMap: Record<string, string> = {
   // Blog
   "reasons-cybersecurity": "razones-ciberseguridad",
   "accesible-entrepreneurship": "emprendimiento-accesible",
+  "first-digital-product-7-days": "tu-primer-producto-digital-7-dias",
 
   // Static Pages
   aboutme: "sobre-mi",
