@@ -5,6 +5,7 @@ export const slugMap: Record<string, string> = {
   "why-passive-income": "por-que-ingresos-pasivos",
 
   // Blog
+  "digital-security-guide-entrepreneurs": "guia-seguridad-digital-emprendedores",
   "reasons-cybersecurity": "razones-ciberseguridad",
   "accesible-entrepreneurship": "emprendimiento-accesible",
   "first-digital-product-7-days": "tu-primer-producto-digital-7-dias",
