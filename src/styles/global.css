@@ -30,7 +30,13 @@
     color: var(--color-dark);
     font-family: var(--font-body);
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
   }
 }
@@ -40,28 +46,27 @@
   display: none;
 }
 
-html, body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+html,
+body {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* Carousel Testimonios */
 .carousel-mask {
   overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 6%,
-    black 94%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 6%,
-    black 94%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 6%,
+      black 94%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 6%,
+      black 94%,
+      transparent 100%);
 }
 
 .carousel-track {
@@ -91,6 +96,7 @@ html, body {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(calc(-50% - 0.75rem));
   }
@@ -106,6 +112,7 @@ html, body {
     margin: 0 auto;
     padding: 0 1.5rem;
   }
+
   .carousel-card {
     width: clamp(280px, 30%, 360px);
   }
