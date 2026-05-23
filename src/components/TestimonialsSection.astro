@@ -65,7 +65,7 @@ const t = content[lang];
 
 <section
   id="testimonials"
-  class="bg-card text-primary py-16 md:py-24 border-t border-primary/10 overflow-hidden"
+  class="bg-background text-primary py-16 md:py-24 border-t border-primary/10 overflow-hidden"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12 md:mb-16">
@@ -75,7 +75,7 @@ const t = content[lang];
         <span>✦</span>
         {t.eyebrow}
       </div>
-      <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary">
+      <h2 class="text-5xl md:text-5xl font-heading font-bold text-primary">
         {t.title}
       </h2>
     </div>
@@ -86,7 +86,7 @@ const t = content[lang];
     <div class="carousel-track">
       {
         [...testimonials, ...testimonials].map((item) => (
-          <div class="carousel-card bg-background border border-primary/10 rounded-2xl p-7 flex flex-col">
+          <div class="carousel-card bg-card border border-primary/10 rounded-2xl p-7 flex flex-col">
             <div class="flex gap-1 text-cta text-base mb-4">
               {Array(5)
                 .fill(null)
@@ -116,70 +116,3 @@ const t = content[lang];
     </div>
   </div>
 </section>
-
-<style>
-  .carousel-mask {
-    overflow: hidden;
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 6%,
-      black 94%,
-      transparent 100%
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 6%,
-      black 94%,
-      transparent 100%
-    );
-  }
-
-  .carousel-track {
-    display: flex;
-    gap: 1.5rem;
-    width: max-content;
-    animation: carousel-scroll 40s linear infinite;
-    cursor: default;
-    user-select: none;
-  }
-
-  .carousel-track:hover {
-    animation-play-state: paused;
-  }
-
-  .carousel-card {
-    width: 360px;
-    flex-shrink: 0;
-    transition: box-shadow 0.2s ease;
-  }
-
-  .carousel-card:hover {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  }
-
-  @keyframes carousel-scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-50% - 0.75rem));
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .carousel-track {
-      animation: none;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    .carousel-card {
-      width: clamp(280px, 30%, 360px);
-    }
-  }
-</style>
