@@ -30,7 +30,7 @@ Ejemplos:<br><br>
 
 Pregúntate: si alguien pagara $10 por la respuesta a esta pregunta, ¿sentiría que valió la pena?<br><br>
 
-Si no estás seguro por dónde empezar, aquí hay algunos promotores de ideas para ayudarte a lluvia de ideas:<br><br>
+Si no estás segura por dónde empezar, aquí hay algunos disparadores de ideas para ayudarte a generar ideas:<br><br>
 
 - ¿Cuál es un atajo que deseas que alguien te hubiera dicho antes en tu carrera?<br><br>
 - ¿Hay un error común que ves que cometen las personas en tu campo?<br><br>
@@ -43,12 +43,9 @@ Nichos populares fáciles de empezar incluyen:<br><br>
 - Plantillas de gráficos de redes sociales<br><br>
 - Guías de estudio u hojas de trucos para habilidades específicas<br><br>
 - Mini-cursos para dominar una aplicación o herramienta<br><br>
-
 - Rastreadores simples de presupuesto o hábitos<br><br>
 
-Elige la idea que te entusiasme y resuelva un problema real. De esta manera, crearás algo que la gente realmente quiera y tendrás un camino claro hacia tu primera venta.<br><br>
-
-Si es así, ese es tu producto.<br><br>
+Elige la idea que te entusiasme y resuelva un problema real. Ese es tu producto.<br><br>
 
 ## Día 2: Escribe tu esquema (1 hora)<br><br>
 
@@ -62,7 +59,7 @@ Intenta tener de 8 a 15 capítulos o secciones. Cada uno debe tener aproximadame
 
 ## Días 3 y 4: Escribe el contenido (2 a 3 horas en total)<br><br>
 
-Escribe una sección a la vez. No te preocupes por editar o pensar demasiado. Solo pon tus ideas en papel.<br><br>
+Escribe una sección a la vez. No te preocupes por editar ni por la perfección. Solo pon tus ideas en papel.<br><br>
 
 Imagina que le estás explicando esto a un amigo que es nuevo en el tema. Mantén tu lenguaje simple, comparte ejemplos e incluye tu propia historia.<br><br>
 
@@ -80,15 +77,13 @@ Eso es todo: tu producto está listo. Empieza a vender hoy y comparte lo que sab
 
 ## Día 6: Configura tu página de ventas (1 hora)<br><br>
 
-Crea una cuenta gratuita en Gumroad (gumroad.com), carga tu PDF y establece tu precio. Si Gumroad no es adecuado para ti, prueba Payhip (payhip.com), Ko-fi (ko-fi.com) o Hotmart (Hotmart.com). Ambos son gratuitos y simples de usar. Elige la plataforma que mejor se adapte a ti.<br><br>
+Crea una cuenta gratuita en Gumroad (gumroad.com), carga tu PDF y establece tu precio. Si Gumroad no es adecuado para ti, prueba Payhip (payhip.com), Ko-fi (ko-fi.com) o Hotmart (hotmart.com). Todos son gratuitos y simples de usar. Elige la plataforma que mejor se adapte a ti.<br><br>
 
 Escribe una descripción de tres oraciones:<br><br>
 
-Para quién es<br><br>
-
-Qué aprenderán<br><br>
-
-Qué resultado obtendrán<br><br>
+- Para quién es<br><br>
+- Qué aprenderán<br><br>
+- Qué resultado obtendrán<br><br>
 
 Eso es todo. Publica tu página de ventas e invita a tu red a echar un vistazo.<br><br>
 
@@ -106,10 +101,10 @@ Podrías hacer tu primera venta hoy. Toma acción y ve por ello.<br><br>
 
 ## Lo que tu primer producto no será:<br><br>
 
-No será perfecto. No será largo. No te hará rico de la noche a la mañana.<br><br>
+No será perfecto. No será largo. No te hará rica de la noche a la mañana.<br><br>
 
-Pero será prueba de que tomaste acción, una estrategia de lanzamiento que puedes usar nuevamente y tu primer paso real hacia ganancias de ingresos pasivos.<br><br>
+Pero será prueba de que tomaste acción, una estrategia de lanzamiento que puedes usar nuevamente y tu primer paso real hacia los ingresos pasivos.<br><br>
 
 Cada producto que vendo hoy comenzó exactamente así.<br><br>
 
-Construye tu producto digital con nosotros. Únete a Academia Digital<br><br>
+Construye tu producto digital con nosotros. Únete a Academia Digital.<br><br>
