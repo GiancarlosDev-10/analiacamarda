@@ -107,23 +107,100 @@ const services = [
                 }
             </div>
 
-            <!-- Closing text -->
-            <div class="max-w-2xl mx-auto text-center mt-20 space-y-4">
-                <span
-                    class="font-outfit flex justify-center items-center gap-2 text-cta text-sm tracking-widest uppercase"
+            <!-- Contact Form -->
+            <div class="max-w-4xl mx-auto mt-24">
+                <div
+                    class="flex flex-col md:flex-row gap-12 items-start text-left"
                 >
-                    <span>✦</span> ¿Es para ti?
-                </span>
-                <p
-                    class="font-outfit text-base md:text-lg text-dark/70 leading-relaxed"
-                >
-                    Si buscas algo <span class="font-bold text-primary"
-                        >rápido, hermoso y estratégicamente estructurado</span
-                    > y prefieres hacerlo tú mismo, o si aún no estás listo para
-                    algo personalizado, <span class="font-bold text-primary"
-                        >esto es para ti.</span
+                    <div class="md:w-1/2 space-y-4">
+                        <h2
+                            class="text-5xl md:text-6xl font-heading font-bold text-primary"
+                        >
+                            Obtener una <span class="text-cta">cotización</span>
+                        </h2>
+                        <p class="font-outfit text-dark/70 text-lg">
+                            Completa el formulario y nuestro equipo se pondrá en
+                            contacto contigo.
+                        </p>
+                    </div>
+
+                    <div
+                        class="md:w-1/2 w-full bg-white p-6 md:p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-primary/5"
                     >
-                </p>
+                        <form
+                            action="https://formsubmit.co/admin@analiacamarda.com"
+                            method="POST"
+                            class="space-y-5"
+                        >
+                            <!-- Anti-spam & Redirect -->
+                            <input
+                                type="hidden"
+                                name="_captcha"
+                                value="false"
+                            />
+                            <input
+                                type="hidden"
+                                name="_next"
+                                value="https://www.analiacamarda.com/es/servicios"
+                            />
+
+                            <div>
+                                <label
+                                    for="name"
+                                    class="block font-outfit text-sm text-dark mb-1"
+                                    >Nombre</label
+                                >
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    required
+                                    class="w-full px-4 py-2.5 rounded-lg border border-primary/20 bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-outfit text-dark transition-all"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    for="email"
+                                    class="block font-outfit text-sm text-dark mb-1"
+                                    >Correo electrónico</label
+                                >
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    required
+                                    class="w-full px-4 py-2.5 rounded-lg border border-primary/20 bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-outfit text-dark transition-all"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    for="message"
+                                    class="block font-outfit text-sm text-dark mb-1"
+                                    >Cuéntanos sobre el trabajo</label
+                                >
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="4"
+                                    required
+                                    class="w-full px-4 py-2.5 rounded-lg border border-primary/20 bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-outfit text-dark resize-none transition-all"
+                                ></textarea>
+                            </div>
+                            <button
+                                type="submit"
+                                class="w-full bg-[#B26E2E] hover:bg-[#925A25] text-dark font-bold font-outfit py-3 rounded-xl transition-colors shadow-md hover:shadow-lg mt-2"
+                            >
+                                Enviar
+                            </button>
+                            <p
+                                class="text-[10px] text-center text-dark/50 font-outfit mt-4"
+                            >
+                                Nunca compartas contraseñas u otra información
+                                confidencial.
+                            </p>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -107,24 +107,45 @@ const services = [
                 }
             </div>
 
-            <!-- Closing text -->
-            <div class="max-w-2xl mx-auto text-center mt-20 space-y-4">
-                <span
-                    class="font-outfit flex justify-center items-center gap-2 text-cta text-sm tracking-widest uppercase"
-                >
-                    <span>✦</span> Is it for you?
-                </span>
-                <p
-                    class="font-outfit text-base md:text-lg text-dark/70 leading-relaxed"
-                >
-                    If you're looking for something <span
-                        class="font-bold text-primary"
-                        >fast, beautiful, and strategically structured</span
-                    > and prefer to do it yourself, or if you're not yet ready for
-                    something custom, <span class="font-bold text-primary"
-                        >this is for you.</span
-                    >
-                </p>
+            <!-- Contact Form -->
+            <div class="max-w-4xl mx-auto mt-24">
+                <div class="flex flex-col md:flex-row gap-12 items-start text-left">
+                    <div class="md:w-1/2 space-y-4">
+                        <h2 class="text-5xl md:text-6xl font-heading font-bold text-primary">
+                            Get a <span class="text-cta">quote</span>
+                        </h2>
+                        <p class="font-outfit text-dark/70 text-lg">
+                            Complete the form and our team will get back to you.
+                        </p>
+                    </div>
+                    
+                    <div class="md:w-1/2 w-full bg-white p-6 md:p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-primary/5">
+                        <form action="https://formsubmit.co/admin@analiacamarda.com" method="POST" class="space-y-5">
+                            <!-- Anti-spam & Redirect -->
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://www.analiacamarda.com/en/services">
+
+                            <div>
+                                <label for="name" class="block font-outfit text-sm text-dark mb-1">Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2.5 rounded-lg border border-primary/20 bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-outfit text-dark transition-all">
+                            </div>
+                            <div>
+                                <label for="email" class="block font-outfit text-sm text-dark mb-1">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2.5 rounded-lg border border-primary/20 bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-outfit text-dark transition-all">
+                            </div>
+                            <div>
+                                <label for="message" class="block font-outfit text-sm text-dark mb-1">Tell us about the job</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2.5 rounded-lg border border-primary/20 bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-outfit text-dark resize-none transition-all"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-[#B26E2E] hover:bg-[#925A25] text-dark font-bold font-outfit py-3 rounded-xl transition-colors shadow-md hover:shadow-lg mt-2">
+                                Submit
+                            </button>
+                            <p class="text-[10px] text-center text-dark/50 font-outfit mt-4">
+                                Your Canva profile name will be shared. Never submit passwords.
+                            </p>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
