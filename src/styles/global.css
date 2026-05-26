@@ -117,3 +117,10 @@ body {
     width: clamp(280px, 30%, 360px);
   }
 }
+
+#cusdis_thread iframe {
+  overflow: hidden !important;
+  width: 100% !important;
+  min-height: 325px !important;
+  border: none !important;
+}

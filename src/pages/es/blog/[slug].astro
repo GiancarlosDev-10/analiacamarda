@@ -203,26 +203,25 @@ const imageAsset = relatedBook
               Comparte tus ideas • Únete al diálogo
             </p>
           </div>
+          <div class="bg-card rounded-3xl p-1 shadow-sm border border-primary/10">
           <div
-            class="bg-card rounded-3xl p-1 shadow-sm border border-primary/10"
-          >
-            <div
-              id="cusdis_thread"
-              class="px-4 py-8"
-              data-host="https://cusdis.com"
-              data-app-id="1843284f-085e-430f-ae54-93ad4b12b2a3"
-              data-page-id={entry.id}
-              data-page-url={`https://analiacamarda.com/es/blog/${entry.id}`}
-              data-page-title={entry.data.title}
-            >
-            </div>
+          id="cusdis_thread"
+          class="px-4 py-8"
+          data-host="https://cusdis.com"
+          data-app-id="1843284f-085e-430f-ae54-93ad4b12b2a3"
+          data-page-id={entry.id}
+          data-page-url={`https://analiacamarda.com/es/blog/${entry.id}`}
+          data-page-title={entry.data.title}>
+      </div>
           </div>
+          <script is:inline>
+  window["CUSDIS_LOCALE"] = {
+    nickname: "Nombre",
+    email: "Correo",
+    reply_placeholder: "Escribe tu comentario...",
+  }
+</script>
           <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-          <p
-            class="text-center text-dark/20 text-[10px] mt-8 italic uppercase tracking-tighter"
-          >
-            Nota para dev: El App ID se configurará al desplegar.
-          </p>
         </div>
 
         <hr class="my-16 border-primary/20" />

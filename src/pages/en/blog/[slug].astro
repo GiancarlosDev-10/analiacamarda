@@ -212,7 +212,14 @@ const relatedBookImage = relatedBook
             >
             </div>
           </div>
-          <!-- Pendiente: reemplazar data-app-id con el ID real de Cusdis al configurar la cuenta -->
+          <script is:inline>
+window["CUSDIS_LOCALE"] = {
+  nickname: "Name",
+  email: "Email",
+  reply_placeholder: "Write your comment...",
+  post_comment: "Post Comment",
+}
+</script>
           <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
         </div>
       </div>

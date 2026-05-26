@@ -1,6 +1,6 @@
 ---
 title: "Tu Primer Producto Digital en 7 Días: Una Guía Paso a Paso"
-description: "La pregunta más común que recibo de personas que quieren empezar a ganar ingresos pasivos en línea es: 'Quiero crear un producto digital, pero no sé por dónde empezar.' Este es el proceso exacto que usé para crear mi primer e-book."
+description: "Sigue estos pasos y puedes lanzar tu propio producto digital esta semana y empezar a ganar ingresos pasivos."
 date: 2026-05-21
 image: "/images/blog/first-digital-product.jpg"
 category: "Productos Digitales"
@@ -10,9 +10,7 @@ draft: false
 
 <br>La pregunta más común que recibo de personas que quieren empezar a ganar ingresos pasivos en línea es: "Quiero crear un producto digital, pero no sé por dónde empezar."<br><br>
 
-Este es el proceso exacto que usé para crear mi primer e-book. Sigue estos pasos y puedes lanzar tu propio producto digital esta semana y empezar a ganar ingresos pasivos.<br><br>
-
-No necesitas invertir dinero ni tener experiencia en diseño. No hay llamadas involucradas. Todas las herramientas que menciono son gratuitas, aunque algunas, como Canva, ofrecen opciones de pago. Puedes crear tu producto sin gastar un centavo.<br><br>
+No necesitas invertir dinero ni tener experiencia en diseño. No hay llamadas involucradas. Todas las herramientas que menciono son gratuitas, aunque algunas, como Canva, ofrecen opciones de pago. Puedes crear tu producto sin gastar un centavo. Este es el proceso exacto que usé para crear mi primer e-book.<br><br>
 
 ## Día 1: Elige tu tema (30 minutos)<br><br>
 
