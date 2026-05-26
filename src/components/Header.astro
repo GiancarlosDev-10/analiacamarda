@@ -58,7 +58,6 @@ const booksHref = isSpanish ? "/es/libros" : "/en/books";
 const servicesHref = isSpanish ? "/es/servicios" : "/en/services";
 const academiaHref = isSpanish ? "/es/academia" : "/en/academy";
 const aboutHref = isSpanish ? "/es/sobre-mi" : "/en/aboutme";
-const galleryHref = isSpanish ? "/es/galeria" : "/en/gallery";
 const blogHref = isSpanish ? "/es/blog" : "/en/blog";
 const langMode = isSpanish ? "English" : "Spanish";
 
@@ -123,12 +122,6 @@ const translations = {
           onclick="if(window.trackEvent)window.trackEvent('click_nav_academy','navigation','header',1)"
           class="text-primary hover:text-dark transition-colors text-base xl:text-lg capitalize whitespace-nowrap"
           >{translations.academy}
-        </a>
-        <a
-          href={galleryHref}
-          onclick="if(window.trackEvent)window.trackEvent('click_nav_gallery','navigation','header',1)"
-          class="text-primary hover:text-dark transition-colors text-base xl:text-lg capitalize whitespace-nowrap"
-          >{translations.gallery}
         </a>
       </nav>
       <div class="font-outfit flex items-center gap-2 sm:gap-4 md:gap-8">
@@ -282,12 +275,6 @@ const translations = {
         onclick="if(window.trackEvent)window.trackEvent('click_nav_academy','navigation','mobile_menu',1)"
         class="text-primary hover:text-dark transition-colors py-3 text-lg border-b border-primary/10"
         >{translations.academy}
-      </a>
-      <a
-        href={galleryHref}
-        onclick="if(window.trackEvent)window.trackEvent('click_nav_gallery','navigation','mobile_menu',1)"
-        class="text-primary hover:text-dark transition-colors py-3 text-lg"
-        >{translations.gallery}
       </a>
     </nav>
 
