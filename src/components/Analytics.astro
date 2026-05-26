@@ -1,13 +1,15 @@
 ---
-const MEASUREMENT_ID  = import.meta.env.GA_MEASUREMENT_ID  || 'G-XXXXXXXXXX';
-const GOOGLE_ADS_ID   = import.meta.env.GOOGLE_ADS_ID      || 'AW-XXXXXXXXXX';
-
-// Descomentar cuando se activen campañas de Meta Ads:
-// const PIXEL_ID = import.meta.env.META_PIXEL_ID || '000000000000000';
+// @ts-ignore
+const MEASUREMENT_ID = import.meta.env.GA_MEASUREMENT_ID;
+// @ts-ignore
+const GOOGLE_ADS_ID = import.meta.env.GOOGLE_ADS_ID;
 ---
 
 <!-- Google Analytics + Google Ads -->
-<script async src={`https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`}></script>
+<script
+  async
+  src={`https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`}
+></script>
 <script define:vars={{ MEASUREMENT_ID, GOOGLE_ADS_ID }}>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
@@ -32,29 +34,3 @@ const GOOGLE_ADS_ID   = import.meta.env.GOOGLE_ADS_ID      || 'AW-XXXXXXXXXX';
     }
   };
 </script>
-
-<!-- =====================================================
-     Meta Pixel — Descomentar cuando se activen Meta Ads
-     =====================================================
-
-<script define:vars={{ PIXEL_ID }}>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-
-  if (PIXEL_ID && !PIXEL_ID.includes('000000000000000')) {
-    fbq('init', PIXEL_ID);
-    fbq('track', 'PageView');
-  }
-</script>
-<noscript>
-  <img height="1" width="1" style="display:none" alt=""
-    src={`https://www.facebook.com/tr?id=${PIXEL_ID}&ev=PageView&noscript=1`} />
-</noscript>
-
-===================================================== -->
