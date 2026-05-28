@@ -6,9 +6,6 @@ export interface Props {
   posterPhone?: string;
   videoLaptop?: string;
   videoPhone?: string;
-  laptopWidth?: string;
-  imageWidth?: string;
-  imageBottom?: string;
 }
 
 const {
@@ -17,65 +14,89 @@ const {
   posterPhone = "/images/video-poster-phone.jpeg",
   videoLaptop = "/videos/laptop-demo.mp4",
   videoPhone = "/videos/phone-demo.mp4",
-  laptopWidth = "w-[85%] md:w-[70%]",
-  imageWidth = "w-[45%] md:w-[35%]",
-  imageBottom = "bottom-14",
 } = Astro.props;
 ---
-<section class="relative max-w-6xl mx-auto py-16 px-4 showcase-section">
-  <!-- Imagen de la clienta (PNG transparente) -->
-  <img 
-    src={mainImage} 
-    alt="Analía con sus libros"
-    class={`absolute z-20 left-0 pointer-events-none ${imageWidth} ${imageBottom}`}
-  />
 
-  <!-- Mockup laptop -->
-  <div class={`relative z-10 mx-auto aspect-[16/10] bg-gray-900 rounded-t-xl md:rounded-t-2xl p-2 md:p-3 shadow-2xl ${laptopWidth}`}>
-    <div class="w-full h-full overflow-hidden rounded-md md:rounded-lg bg-black relative">
-      <img src={posterLaptop} alt="Laptop demo" class="w-full h-full object-cover absolute inset-0 poster-fallback hidden" />
-      <video 
-        autoplay 
-        muted 
-        loop 
-        playsinline 
-        preload="metadata"
-        poster={posterLaptop}
-        class="w-full h-full object-cover"
-      >
-        <source src={videoLaptop} type="video/mp4" />
-      </video>
-    </div>
-    <!-- Base del laptop -->
-    <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[110%] h-3 bg-gray-700 rounded-b-xl shadow-lg"></div>
-  </div>
+<section class="py-16 px-4 bg-background">
+  <div class="mx-auto w-full max-w-6xl">
+    
+    <!-- CANVAS CONTAINER: Aspect-ratio fijo 18:9 -->
+    <div class="relative w-full" style="aspect-ratio: 18 / 9; min-height: 500px;">
+      
+      <!-- Imagen cliente: posicionada absolutamente -->
+      <img 
+        src={mainImage} 
+        alt="Analía Camarda con sus libros"
+        class="absolute z-20 left-0 bottom-0 h-full object-contain object-bottom pointer-events-none"
+        style="width: clamp(150px, 40%, 500px);"
+      />
 
-  <!-- Mockup phone -->
-  <div class="absolute z-30 right-0 md:right-4 top-1/2 -translate-y-1/2 w-[22%] md:w-[18%] aspect-[9/19] bg-gray-900 rounded-[1.5rem] md:rounded-[2rem] p-1.5 md:p-2 shadow-2xl border border-gray-800">
-    <div class="w-full h-full overflow-hidden rounded-[1.2rem] md:rounded-[1.5rem] bg-black relative">
-      <img src={posterPhone} alt="Phone demo" class="w-full h-full object-cover absolute inset-0 poster-fallback hidden" />
-      <video 
-        autoplay 
-        muted 
-        loop 
-        playsinline 
-        preload="metadata"
-        poster={posterPhone}
-        class="w-full h-full object-cover"
+      <!-- LAPTOP MOCKUP: Fuerza aspect-ratio 16:9 -->
+      <div 
+        class="absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        style="width: clamp(300px, 70%, 900px); aspect-ratio: 16 / 9;"
       >
-        <source src={videoPhone} type="video/mp4" />
-      </video>
+        <!-- Frame del laptop -->
+        <div class="w-full h-full bg-gray-900 rounded-t-2xl p-3 shadow-2xl overflow-hidden flex flex-col">
+          
+          <!-- Pantalla con video -->
+          <div class="flex-1 w-full overflow-hidden rounded-lg bg-black">
+            <video 
+              autoplay 
+              muted 
+              loop 
+              playsinline 
+              preload="metadata"
+              poster={posterLaptop}
+              class="w-full h-full object-cover"
+            >
+              <source src={videoLaptop} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+        
+        <!-- Base del laptop -->
+        <div class="flex justify-center -mt-1">
+          <div class="w-[105%] h-3 bg-gray-700 rounded-b-2xl shadow-lg"></div>
+        </div>
+      </div>
+
+      <!-- PHONE MOCKUP: Fuerza aspect-ratio 9:19 -->
+      <div 
+        class="absolute z-30 right-0 md:right-4 top-1/2 -translate-y-1/2"
+        style="width: clamp(70px, 18%, 250px); aspect-ratio: 9 / 19;"
+      >
+        <!-- Frame del phone -->
+        <div class="w-full h-full bg-gray-900 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-800 flex flex-col overflow-hidden">
+          
+          <!-- Notch simulado -->
+          <div class="h-5 bg-black rounded-b-3xl mx-auto w-1/3 flex-shrink-0 mb-1"></div>
+          
+          <!-- Pantalla con video -->
+          <div class="flex-1 w-full overflow-hidden rounded-[2rem] bg-black">
+            <video 
+              autoplay 
+              muted 
+              loop 
+              playsinline 
+              preload="metadata"
+              poster={posterPhone}
+              class="w-full h-full object-cover"
+            >
+              <source src={videoPhone} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <style>
   @media (prefers-reduced-motion: reduce) {
-    .showcase-section video { 
+    section video { 
       display: none !important; 
-    }
-    .showcase-section .poster-fallback { 
-      display: block !important; 
     }
   }
 </style>
