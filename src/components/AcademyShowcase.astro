@@ -1,0 +1,81 @@
+---
+// src/components/AcademyShowcase.astro
+export interface Props {
+  mainImage?: string;
+  posterLaptop?: string;
+  posterPhone?: string;
+  videoLaptop?: string;
+  videoPhone?: string;
+  laptopWidth?: string;
+  imageWidth?: string;
+  imageBottom?: string;
+}
+
+const {
+  mainImage = "/images/analia-libros.png",
+  posterLaptop = "/images/video-poster-laptop.jpeg",
+  posterPhone = "/images/video-poster-phone.jpeg",
+  videoLaptop = "/videos/laptop-demo.mp4",
+  videoPhone = "/videos/phone-demo.mp4",
+  laptopWidth = "w-[85%] md:w-[70%]",
+  imageWidth = "w-[45%] md:w-[35%]",
+  imageBottom = "bottom-14",
+} = Astro.props;
+---
+<section class="relative max-w-6xl mx-auto py-16 px-4 showcase-section">
+  <!-- Imagen de la clienta (PNG transparente) -->
+  <img 
+    src={mainImage} 
+    alt="Analía con sus libros"
+    class={`absolute z-20 left-0 pointer-events-none ${imageWidth} ${imageBottom}`}
+  />
+
+  <!-- Mockup laptop -->
+  <div class={`relative z-10 mx-auto aspect-[16/10] bg-gray-900 rounded-t-xl md:rounded-t-2xl p-2 md:p-3 shadow-2xl ${laptopWidth}`}>
+    <div class="w-full h-full overflow-hidden rounded-md md:rounded-lg bg-black relative">
+      <img src={posterLaptop} alt="Laptop demo" class="w-full h-full object-cover absolute inset-0 poster-fallback hidden" />
+      <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        preload="metadata"
+        poster={posterLaptop}
+        class="w-full h-full object-cover"
+      >
+        <source src={videoLaptop} type="video/mp4" />
+      </video>
+    </div>
+    <!-- Base del laptop -->
+    <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[110%] h-3 bg-gray-700 rounded-b-xl shadow-lg"></div>
+  </div>
+
+  <!-- Mockup phone -->
+  <div class="absolute z-30 right-0 md:right-4 top-1/2 -translate-y-1/2 w-[22%] md:w-[18%] aspect-[9/19] bg-gray-900 rounded-[1.5rem] md:rounded-[2rem] p-1.5 md:p-2 shadow-2xl border border-gray-800">
+    <div class="w-full h-full overflow-hidden rounded-[1.2rem] md:rounded-[1.5rem] bg-black relative">
+      <img src={posterPhone} alt="Phone demo" class="w-full h-full object-cover absolute inset-0 poster-fallback hidden" />
+      <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        preload="metadata"
+        poster={posterPhone}
+        class="w-full h-full object-cover"
+      >
+        <source src={videoPhone} type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    .showcase-section video { 
+      display: none !important; 
+    }
+    .showcase-section .poster-fallback { 
+      display: block !important; 
+    }
+  }
+</style>

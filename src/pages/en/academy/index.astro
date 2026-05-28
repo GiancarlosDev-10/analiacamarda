@@ -1,8 +1,6 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
-import logoVerde from "../../../assets/images/logo_verde.png";
-import teamworkIcon from "../../../assets/images/teamwork.svg?url";
+import AcademyShowcase from "../../../components/AcademyShowcase.astro";
 
 const schema = JSON.stringify({
   "@context": "https://schema.org",
@@ -59,6 +57,12 @@ const schema = JSON.stringify({
       </p>
     </div>
   </section>
+
+  <AcademyShowcase 
+    laptopWidth="w-[85%] md:w-[70%]"
+    imageWidth="w-[45%] md:w-[35%]"
+    imageBottom="bottom-14"
+  />
 
   <!-- PRICING SECTION -->
   <section class="bg-background py-16">
