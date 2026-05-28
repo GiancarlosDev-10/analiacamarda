@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'BrittanySignature';
-  src: url('/fonts/BrittanySignature.ttf') format('truetype');
+  font-family: "BrittanySignature";
+  src: url("/fonts/BrittanySignature.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -11,12 +11,12 @@
 @theme {
   --color-background: #f2eee8;
   --color-primary: #a35c33;
-  --color-dark: #2C1810;
-  --color-card: #FFFAF5;
-  --color-cta: #8B4513;
-  --color-cta-hover: #6B3410;
-  --color-border: #DDD0C0;
-  --color-muted: #7A6055;
+  --color-dark: #2c1810;
+  --color-card: #fffaf5;
+  --color-cta: #8b4513;
+  --color-cta-hover: #6b3410;
+  --color-border: #ddd0c0;
+  --color-muted: #7a6055;
 
   --font-heading: "Playfair Display", serif;
   --font-body: "Roboto", sans-serif;
@@ -57,16 +57,20 @@ body {
 /* Carousel Testimonios */
 .carousel-mask {
   overflow: hidden;
-  mask-image: linear-gradient(to right,
-      transparent 0%,
-      black 6%,
-      black 94%,
-      transparent 100%);
-  -webkit-mask-image: linear-gradient(to right,
-      transparent 0%,
-      black 6%,
-      black 94%,
-      transparent 100%);
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
 }
 
 .carousel-track {

@@ -17,11 +17,11 @@ const {
 } = Astro.props;
 ---
 
-<section class="py-16 px-4 bg-background">
+<section class="py-8 md:py-8 px-4 bg-background">
   <div class="mx-auto w-full max-w-6xl">
     
     <!-- CANVAS CONTAINER: Aspect-ratio fijo 18:9 -->
-    <div class="relative w-full" style="aspect-ratio: 18 / 9; min-height: 500px;">
+    <div class="relative w-full min-h-[50px] md:min-h-[500px] aspect-[16/9] md:aspect-[18/9]">
       
       <!-- Imagen cliente: posicionada absolutamente -->
       <img 
@@ -64,16 +64,17 @@ const {
       <!-- PHONE MOCKUP: Fuerza aspect-ratio 9:19 -->
       <div 
         class="absolute z-30 right-0 md:right-4 top-1/2 -translate-y-1/2"
-        style="width: clamp(70px, 18%, 250px); aspect-ratio: 9 / 19;"
+        style="width: clamp(80px, 22%, 250px); aspect-ratio: 9 / 19;"
       >
         <!-- Frame del phone -->
-        <div class="w-full h-full bg-gray-900 rounded-[2.5rem] p-2 shadow-2xl border-4 border-gray-800 flex flex-col overflow-hidden">
+        <div class="w-full h-full bg-gray-900 rounded-[1.5rem] md:rounded-[2.5rem] p-1 md:p-2 shadow-2xl border-2 md:border-4 border-gray-800 flex flex-col overflow-hidden">
           
           <!-- Notch simulado -->
-          <div class="h-5 bg-black rounded-b-3xl mx-auto w-1/3 flex-shrink-0 mb-1"></div>
+          <div class="h-3 md:h-5 bg-black rounded-b-2xl md:rounded-b-3xl mx-auto w-1/3 flex-shrink-0 mb-0.5 md:mb-1">
+          </div>
           
           <!-- Pantalla con video -->
-          <div class="flex-1 w-full overflow-hidden rounded-[2rem] bg-black">
+          <div class="flex-1 w-full overflow-hidden rounded-[1rem] md:rounded-[2rem] bg-black">
             <video 
               autoplay 
               muted 
