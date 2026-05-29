@@ -36,17 +36,17 @@ const dic = {
         <p class="hidden md:block text-dark/80 font-medium text-justify text-[10px] sm:text-xs md:text-base leading-tight md:leading-normal">{dic.about}</p>
       </div>
       <div>
-        <h3 class="font-bold font-heading text-xs sm:text-sm md:text-xl mb-3 md:mb-6 text-primary">{dic.linksTitle}</h3>
+        <h3 class="font-bold font-heading text-xs sm:text-sm md:text-xl mb-3 md:mb-6 text-dark">{dic.linksTitle}</h3>
         <ul class="space-y-2 md:space-y-4 text-[10px] sm:text-xs md:text-base">
-          <li><a href={dic.booksHref} onclick="if(window.trackEvent)window.trackEvent('click_footer_books','footer','navigation',1)" class="text-dark/80 font-medium hover:text-cta transition-colors">{dic.books}</a></li>
-          <li><a href={dic.academiaHref} onclick="if(window.trackEvent)window.trackEvent('click_footer_academy','footer','navigation',1)" class="text-dark/80 font-medium hover:text-cta transition-colors">{dic.academia}</a></li>
-          <li><a href={dic.storyHref} onclick="if(window.trackEvent)window.trackEvent('click_footer_about','footer','navigation',1)" class="text-dark/80 font-medium hover:text-cta transition-colors">{dic.story}</a></li>
-          <li><a href="https://wa.me/12393316702" target="_blank" rel="noopener noreferrer" onclick="if(window.trackEvent)window.trackEvent('click_footer_whatsapp','footer','contact',1)" class="text-dark/80 font-medium hover:text-cta transition-colors">{dic.contact}</a></li>
+          <li><a href={dic.booksHref} onclick="if(window.trackEvent)window.trackEvent('click_footer_books','footer','navigation',1)" class="block py-2 md:py-0 text-dark/80 font-medium hover:text-cta transition-colors">{dic.books}</a></li>
+          <li><a href={dic.academiaHref} onclick="if(window.trackEvent)window.trackEvent('click_footer_academy','footer','navigation',1)" class="block py-2 md:py-0 text-dark/80 font-medium hover:text-cta transition-colors">{dic.academia}</a></li>
+          <li><a href={dic.storyHref} onclick="if(window.trackEvent)window.trackEvent('click_footer_about','footer','navigation',1)" class="block py-2 md:py-0 text-dark/80 font-medium hover:text-cta transition-colors">{dic.story}</a></li>
+          <li><a href="https://wa.me/12393316702" target="_blank" rel="noopener noreferrer" onclick="if(window.trackEvent)window.trackEvent('click_footer_whatsapp','footer','contact',1)" class="block py-2 md:py-0 text-dark/80 font-medium hover:text-cta transition-colors">{dic.contact}</a></li>
         </ul>
       </div>
       <div class="space-y-6 md:space-y-10">
         <div>
-          <h3 class="font-bold font-heading text-xs sm:text-sm md:text-xl mb-3 md:mb-6 text-primary">{dic.langTitle}</h3>
+          <h3 class="font-bold font-heading text-xs sm:text-sm md:text-xl mb-3 md:mb-6 text-dark">{dic.langTitle}</h3>
           <ul class="space-y-2 md:space-y-4 text-[10px] sm:text-xs md:text-base">
             <li>
               <a href={dic.langOppositeHref} class="text-dark/80 font-medium hover:text-cta transition-colors flex items-start md:items-center gap-1 md:gap-2">
@@ -57,7 +57,7 @@ const dic = {
           </ul>
         </div>
         <div>
-          <h3 class="font-bold font-heading text-xs sm:text-sm md:text-xl mb-3 md:mb-6 text-primary">{dic.partnerTitle}</h3>
+          <h3 class="font-bold font-heading text-xs sm:text-sm md:text-xl mb-3 md:mb-6 text-dark">{dic.partnerTitle}</h3>
           <a 
             href="https://www.wicys.org/wicys-deaf-affiliate/" 
             target="_blank"
@@ -76,7 +76,7 @@ const dic = {
         </div>
       </div>
     </div>
-    <div class="border-t border-primary/10 mt-16 pt-8 flex items-center justify-center md:justify-between text-sm font-medium text-dark/60">
+    <div class="border-t border-primary/10 mt-16 pt-8 flex items-center justify-center md:justify-between text-sm font-medium text-dark/80">
       <p>{dic.rights}</p>
     </div>
   </div>

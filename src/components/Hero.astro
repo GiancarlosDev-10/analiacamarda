@@ -68,7 +68,7 @@ const { lang } = Astro.props;
       </div>
       
       <div class="relative z-10 w-full max-w-[300px] md:max-w-md aspect-[3/4] rounded-t-full bg-gradient-to-b from-card to-transparent border-t border-x border-primary/20 overflow-hidden flex items-end justify-center shadow-2xl">
-          <Image src={heroImg} alt="Analía Camarda" class="w-full h-auto object-contain transition-all duration-700 hover:scale-105" loading="eager" />
+          <Image src={heroImg} alt="Analía Camarda" widths={[300, 500, 1000]} sizes="(max-width: 768px) 300px, (max-width: 1024px) 500px, 1000px" class="w-full h-auto object-contain transition-all duration-700 hover:scale-105" loading="eager" fetchpriority="high" />
       </div>
     </div>
   </div>
