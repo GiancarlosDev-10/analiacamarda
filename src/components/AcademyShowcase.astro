@@ -2,93 +2,42 @@
 // src/components/AcademyShowcase.astro
 export interface Props {
   mainImage?: string;
-  posterLaptop?: string;
-  posterPhone?: string;
-  videoLaptop?: string;
-  videoPhone?: string;
+  videoUrl?: string;
 }
 
 const {
   mainImage = "/images/analia-libros.png",
-  posterLaptop = "/images/video-poster-laptop.jpeg",
-  posterPhone = "/images/video-poster-phone.jpeg",
-  videoLaptop = "/videos/laptop-demo.mp4",
-  videoPhone = "/videos/phone-demo.mp4",
+  videoUrl = "/videos/videoespanol.mp4",
 } = Astro.props;
 ---
 
-<section class="py-8 md:py-8 px-4 bg-background">
+<section class="py-8 md:py-8 px-4 bg-white">
   <div class="mx-auto w-full max-w-6xl">
     
     <!-- CANVAS CONTAINER: Aspect-ratio fijo 18:9 -->
     <div class="relative w-full min-h-[50px] md:min-h-[500px] aspect-[16/9] md:aspect-[18/9]">
       
-      <!-- Imagen cliente: posicionada absolutamente -->
+      <!-- VIDEO COMPLETO (que ya incluye los mockups) -->
+      <div class="absolute z-10 top-0 left-0 w-full h-full flex items-center justify-center">
+        <video 
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          preload="metadata"
+          class="w-full h-full object-contain"
+        >
+          <source src={videoUrl} type="video/mp4" />
+        </video>
+      </div>
+
+      <!-- Imagen cliente: posicionada absolutamente encima del video -->
       <img 
         src={mainImage} 
         alt="Analía Camarda con sus libros"
-        class="absolute z-20 left-0 bottom-0 h-full object-contain object-bottom pointer-events-none"
+        class="absolute z-20 left-0 bottom-4 md:bottom-12 h-full object-contain object-bottom pointer-events-none"
         style="width: clamp(150px, 40%, 500px);"
       />
-
-      <!-- LAPTOP MOCKUP: Fuerza aspect-ratio 16:9 -->
-      <div 
-        class="absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        style="width: clamp(300px, 70%, 900px); aspect-ratio: 16 / 9;"
-      >
-        <!-- Frame del laptop -->
-        <div class="w-full h-full bg-gray-900 rounded-t-2xl p-3 shadow-2xl overflow-hidden flex flex-col">
-          
-          <!-- Pantalla con video -->
-          <div class="flex-1 w-full overflow-hidden rounded-lg bg-black">
-            <video 
-              autoplay 
-              muted 
-              loop 
-              playsinline 
-              preload="metadata"
-              poster={posterLaptop}
-              class="w-full h-full object-cover"
-            >
-              <source src={videoLaptop} type="video/mp4" />
-            </video>
-          </div>
-        </div>
-        
-        <!-- Base del laptop -->
-        <div class="flex justify-center -mt-1">
-          <div class="w-[105%] h-3 bg-gray-700 rounded-b-2xl shadow-lg"></div>
-        </div>
-      </div>
-
-      <!-- PHONE MOCKUP: Fuerza aspect-ratio 9:19 -->
-      <div 
-        class="absolute z-30 right-0 md:right-4 top-1/2 -translate-y-1/2"
-        style="width: clamp(80px, 22%, 250px); aspect-ratio: 9 / 19;"
-      >
-        <!-- Frame del phone -->
-        <div class="w-full h-full bg-gray-900 rounded-[1.5rem] md:rounded-[2.5rem] p-1 md:p-2 shadow-2xl border-2 md:border-4 border-gray-800 flex flex-col overflow-hidden">
-          
-          <!-- Notch simulado -->
-          <div class="h-3 md:h-5 bg-black rounded-b-2xl md:rounded-b-3xl mx-auto w-1/3 flex-shrink-0 mb-0.5 md:mb-1">
-          </div>
-          
-          <!-- Pantalla con video -->
-          <div class="flex-1 w-full overflow-hidden rounded-[1rem] md:rounded-[2rem] bg-black">
-            <video 
-              autoplay 
-              muted 
-              loop 
-              playsinline 
-              preload="metadata"
-              poster={posterPhone}
-              class="w-full h-full object-cover"
-            >
-              <source src={videoPhone} type="video/mp4" />
-            </video>
-          </div>
-        </div>
-      </div>
 
     </div>
   </div>
