@@ -25,10 +25,9 @@ const currentPath = Astro.url.pathname;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Playfair+Display:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    {/* Google Fonts CSS is now inlined in global.css */}
     
     {/* hero image preload removed - caused duplicate downloads */}
     <SEO title={title} description={description} image={image} schema={schema} lang={lang} canonical={Astro.url.href}/>
