@@ -20,11 +20,16 @@ export interface Props {
 const { title, description, image, schema, lang = "en", preloadHero = false } = Astro.props;
 const currentPath = Astro.url.pathname;
 
-// Generate optimized hero URL for preload hint (only when needed)
-let heroPreloadSrc: string | undefined;
+// Generate optimized hero URLs for preload hint (only when needed)
+let heroSrcset: string | undefined;
+let heroSizes: string | undefined;
 if (preloadHero) {
-  const optimized = await getImage({ src: heroImg, width: 520, format: 'webp' });
-  heroPreloadSrc = optimized.src;
+  const [hero300, hero520] = await Promise.all([
+    getImage({ src: heroImg, width: 300, format: 'webp' }),
+    getImage({ src: heroImg, width: 520, format: 'webp' }),
+  ]);
+  heroSrcset = `${hero300.src} 300w, ${hero520.src} 520w`;
+  heroSizes = "(max-width: 768px) 300px, 520px";
 }
 ---
 <!DOCTYPE html>
@@ -41,8 +46,8 @@ if (preloadHero) {
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Playfair+Display:wght@700;800&family=Roboto:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Playfair+Display:wght@700;800&family=Roboto:wght@400;500&display=swap"></noscript>
     
-    {heroPreloadSrc && (
-      <link rel="preload" as="image" href={heroPreloadSrc} fetchpriority="high" type="image/webp" />
+    {heroSrcset && (
+      <link rel="preload" as="image" imagesrcset={heroSrcset} imagesizes={heroSizes} fetchpriority="high" />
     )}
     <SEO title={title} description={description} image={image} schema={schema} lang={lang} canonical={Astro.url.href}/>
     <Analytics />
