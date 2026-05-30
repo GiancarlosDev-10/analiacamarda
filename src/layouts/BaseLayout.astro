@@ -5,6 +5,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import heroImg from '../assets/images/foto-hero.png';
 
 export interface Props {
   title: string;
@@ -12,10 +14,20 @@ export interface Props {
   image?: string;
   schema?: string;
   lang?: "en" | "es";
+  preloadHero?: boolean;
 }
 
-const { title, description, image, schema, lang = "en" } = Astro.props;
+const { title, description, image, schema, lang = "en", preloadHero = false } = Astro.props;
 const currentPath = Astro.url.pathname;
+
+let heroSrcset: string | undefined;
+if (preloadHero) {
+  const [hero300, hero520] = await Promise.all([
+    getImage({ src: heroImg, width: 300, format: 'webp' }),
+    getImage({ src: heroImg, width: 520, format: 'webp' }),
+  ]);
+  heroSrcset = `${hero300.src} 300w, ${hero520.src} 520w`;
+}
 ---
 <!DOCTYPE html>
 <html lang={lang}>
@@ -25,11 +37,12 @@ const currentPath = Astro.url.pathname;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     {/* Google Fonts CSS is now inlined in global.css */}
     
-    {/* hero image preload removed - caused duplicate downloads */}
+    {heroSrcset && (
+      <link rel="preload" as="image" imagesrcset={heroSrcset} imagesizes="(max-width: 768px) 300px, 520px" fetchpriority="high" />
+    )}
     <SEO title={title} description={description} image={image} schema={schema} lang={lang} canonical={Astro.url.href}/>
     <Analytics />
   </head>
