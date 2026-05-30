@@ -12,27 +12,38 @@ const GOOGLE_ADS_ID = import.meta.env.GOOGLE_ADS_ID;
     src={`https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`}
   ></script>
 )}
-<script define:vars={{ MEASUREMENT_ID, GOOGLE_ADS_ID }}>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
+<script define:vars={{ MEASUREMENT_ID, GOOGLE_ADS_ID }} is:inline>
+  // Non-blocking: initialize after first paint so it doesn't delay FCP
+  function initAnalytics() {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
 
-  if (MEASUREMENT_ID && !MEASUREMENT_ID.includes('XXXXXXXXXX')) {
-    gtag('config', MEASUREMENT_ID);
-  }
-
-  if (GOOGLE_ADS_ID && !GOOGLE_ADS_ID.includes('XXXXXXXXXX')) {
-    gtag('config', GOOGLE_ADS_ID);
-  }
-
-  // Helper global para rastreo de eventos (usado en todos los componentes)
-  window.trackEvent = function(action, category, label, value) {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', action, {
-        event_category: category,
-        event_label:    label,
-        value:          value,
-      });
+    if (MEASUREMENT_ID && !MEASUREMENT_ID.includes('XXXXXXXXXX')) {
+      gtag('config', MEASUREMENT_ID);
     }
-  };
+
+    if (GOOGLE_ADS_ID && !GOOGLE_ADS_ID.includes('XXXXXXXXXX')) {
+      gtag('config', GOOGLE_ADS_ID);
+    }
+
+    // Helper global para rastreo de eventos (usado en todos los componentes)
+    window.trackEvent = function(action, category, label, value) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+          event_category: category,
+          event_label:    label,
+          value:          value,
+        });
+      }
+    };
+  }
+
+  // Run after browser has painted the first frame
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnalytics);
+  } else {
+    initAnalytics();
+  }
 </script>
