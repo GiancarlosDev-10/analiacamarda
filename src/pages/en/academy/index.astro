@@ -65,26 +65,26 @@ const schema = JSON.stringify({
   <section class="bg-background py-8 md:py-16">
     <div class="max-w-5xl mx-auto px-4">
       <div
-        class="flex md:grid md:grid-cols-2 gap-8 items-start overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-pl-4 md:scroll-pl-0 pb-6 md:pb-0"
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start pb-6 md:pb-0"
       >
         <!-- SPECIAL OFFER CARD -->
         <div
-          class="group relative bg-card rounded-2xl border border-primary/15 px-6 pt-5 pb-8 md:px-12 md:pt-8 md:pb-12 flex flex-col shadow-xl hover:scale-103 transition-all duration-500 hover:bg-primary overflow-hidden w-[calc(100%-2rem)] snap-center md:min-w-0 flex-shrink-0 mx-2"
+          class="group relative bg-card rounded-2xl border border-primary/15 px-6 pt-5 pb-8 md:px-12 md:pt-8 md:pb-12 flex flex-col shadow-xl hover:scale-103 transition-all duration-500 hover:bg-primary overflow-hidden w-full"
         >
           <div
             class="absolute -top-1 -left-1 overflow-hidden w-40 h-40 pointer-events-none z-20"
           >
             <div
-              class="absolute top-7 -left-18 w-58 py-2 bg-[#D4AF37] text-black text-[11px] font-bold text-center transform -rotate-45 shadow-lg uppercase tracking-widest border-y border-white/20"
+              class="absolute top-5 -left-17 w-53 md:top-7 md:-left-16 md:w-58 py-1.5 md:py-2 bg-[#D4AF37] text-black text-[9px] md:text-[11px] font-bold text-center transform -rotate-45 shadow-lg uppercase tracking-widest border-y border-white/20"
             >
-              Special Offer
+            Special Offer
             </div>
           </div>
 
           <div
             class="font-outfit flex items-center gap-2 text-cta text-sm tracking-widest uppercase mb-2 group-hover:text-white transition-colors"
           >
-            <span>✦</span> Premium
+            <span>✦✦</span> Premium
           </div>
           <div class="mb-8">
             <div
@@ -224,13 +224,13 @@ const schema = JSON.stringify({
 
         <!-- EXCLUSIVE FOR VIP MEMBERS CARD -->
         <div
-          class="group relative bg-card rounded-2xl border border-primary/15 px-6 pt-5 pb-8 md:px-12 md:pt-8 md:pb-12 flex flex-col shadow-xl hover:scale-103 transition-all duration-500 hover:bg-primary overflow-hidden w-[calc(100%-2rem)] snap-center md:min-w-0 flex-shrink-0 mx-2"
+          class="group relative bg-card rounded-2xl border border-primary/15 px-6 pt-5 pb-8 md:px-12 md:pt-8 md:pb-12 flex flex-col shadow-xl hover:scale-103 transition-all duration-500 hover:bg-primary overflow-hidden w-full"
         >
           <div
             class="absolute -top-1 -left-1 overflow-hidden w-40 h-40 pointer-events-none z-20"
           >
             <div
-              class="absolute top-6 -left-14 w-50 py-2 bg-[#D4AF37] text-black text-[10px] font-bold text-center transform -rotate-45 shadow-lg uppercase tracking-widest border-y border-white/20"
+              class="absolute top-4 -left-15 w-48 md:top-6 md:-left-14 md:w-50 py-1 md:py-2 bg-[#D4AF37] text-black text-[7.5px] md:text-[10px] font-bold text-center transform -rotate-45 shadow-lg uppercase tracking-widest border-y border-white/20"
             >
               Exclusive for <br />VIP Members
             </div>
@@ -362,7 +362,7 @@ const schema = JSON.stringify({
           </ul>
 
           <a
-            href="https://buy.stripe.com/aFafZhd4i0H10Xlfm13ZK05"
+            href="https://www.skool.com/deafdigitalpro/plans"
             target="_blank"
             rel="noopener noreferrer"
             onclick={`if(window.trackEvent)window.trackEvent('click_academy_premium','purchase','academy-en',9)`}
