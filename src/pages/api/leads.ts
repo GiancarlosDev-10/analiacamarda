@@ -51,15 +51,15 @@ export const POST: APIRoute = async ({ request }) => {
 
                   <tr>
                     <td style="padding:40px;">
-                      <p style="color:#2C1810;font-size:16px;line-height:1.7;margin:0 0 20px 0;">
+                      <p style="color:#2C1810;font-size:16px;line-height:1.7;margin:0 0 20px 0; text-align:center;">
                         ${
                           lang === "en"
-                            ? 'Thank you for your interest! Your free guide <strong>"5 Passive Income Streams You Can Start Today"</strong> is ready for you.'
-                            : '¡Gracias por tu interés! Tu guía gratuita <strong>"5 Fuentes de Ingresos Pasivos que Puedes Iniciar Hoy"</strong> está lista para ti.'
+                            ? 'Thank you for your interest! Your <strong>"Digital Security Guide for Entrepreneurs"</strong> is ready for you.'
+                            : '¡Gracias por tu interés! Tu <strong>"Guía de seguridad digital para emprendedores"</strong> está lista para ti.'
                         }
                       </p>
 
-                      <p style="color:#7A6055;font-size:14px;line-height:1.7;margin:0 0 32px 0;">
+                      <p style="color:#7A6055;font-size:14px;line-height:1.7;margin:0 0 32px 0;text-align:center;">
                         ${
                           lang === "en"
                             ? "Click the button below to download your PDF. <strong>The link is valid for 1 hour</strong>, so please save it to your device right away."
