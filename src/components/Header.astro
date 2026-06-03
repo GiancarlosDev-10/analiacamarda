@@ -4,6 +4,7 @@ import logoImg from "../assets/images/logo-stripe.png";
 import linkedinIcon from "../assets/images/linkedin.svg";
 import instagramIcon from "../assets/images/instagram.svg";
 import tiktokIcon from "../assets/images/tiktok.svg";
+import youtubeIcon from "../assets/images/youtube-icon.svg";
 import { getTranslatedSlug } from "../utils/slugMaps";
 
 const pathname = Astro.url.pathname;
@@ -129,18 +130,18 @@ const translations = {
       <div class="font-outfit flex items-center gap-2 sm:gap-4 md:gap-8">
         <!-- Social Icons - Always visible but smaller on mobile -->
         <div class="flex items-center gap-2 sm:gap-3 md:gap-6">
-          <!-- LinkedIn -->
+          <!-- YouTube -->
           <a
-            href="https://linkedin.com/in/analia-camarda-2b4152102/"
+            href="https://youtube.com/@analia_camarda?si=jD1oNdsbuBmC-t9Z"
             target="_blank"
-            onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','header',1)"
+            onclick="if(window.trackEvent)window.trackEvent('click_social_youtube','social','header',1)"
             class="transition-transform hover:scale-110"
-            aria-label="LinkedIn"
+            aria-label="YouTube"
           >
             <Image
-              src={linkedinIcon}
-              alt="LinkedIn"
-              class="w-6 h-6 md:w-8 md:h-8"
+              src={youtubeIcon}
+              alt="YouTube"
+              class="w-7 h-auto md:w-9 md:h-auto"
             />
           </a>
           <!-- Instagram -->
@@ -166,6 +167,20 @@ const translations = {
             aria-label="TikTok"
           >
             <Image src={tiktokIcon} alt="TikTok" class="h-6 w-auto md:h-8" />
+          </a>
+          <!-- LinkedIn -->
+          <a
+            href="https://linkedin.com/in/analia-camarda-2b4152102/"
+            target="_blank"
+            onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','header',1)"
+            class="transition-transform hover:scale-110"
+            aria-label="LinkedIn"
+          >
+            <Image
+              src={linkedinIcon}
+              alt="LinkedIn"
+              class="w-6 h-6 md:w-8 md:h-8"
+            />
           </a>
         </div>
 
@@ -284,13 +299,13 @@ const translations = {
     <div class="p-4 border-t border-primary/10">
       <div class="flex items-center justify-center gap-6">
         <a
-          href="https://linkedin.com/in/yourprofile"
+          href="https://youtube.com/"
           target="_blank"
-          onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','mobile_menu',1)"
+          onclick="if(window.trackEvent)window.trackEvent('click_social_youtube','social','mobile_menu',1)"
           class="transition-transform hover:scale-110"
-          aria-label="LinkedIn"
+          aria-label="YouTube"
         >
-          <Image src={linkedinIcon} alt="LinkedIn" class="w-6 h-6" />
+          <Image src={youtubeIcon} alt="YouTube" class="w-7 h-auto" />
         </a>
         <a
           href="https://instagram.com/yourprofile"
@@ -309,6 +324,15 @@ const translations = {
           aria-label="TikTok"
         >
           <Image src={tiktokIcon} alt="TikTok" class="h-6 w-auto" />
+        </a>
+        <a
+          href="https://linkedin.com/in/yourprofile"
+          target="_blank"
+          onclick="if(window.trackEvent)window.trackEvent('click_social_linkedin','social','mobile_menu',1)"
+          class="transition-transform hover:scale-110"
+          aria-label="LinkedIn"
+        >
+          <Image src={linkedinIcon} alt="LinkedIn" class="w-6 h-6" />
         </a>
       </div>
     </div>
