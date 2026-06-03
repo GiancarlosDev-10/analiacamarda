@@ -8,19 +8,19 @@ const { lang } = Astro.props;
 <!-- LEAD MAGNET / PRE-FOOTER CTA -->
 <section id="newsletter" class="bg-background text-primary py-12 md:py-24 border-y border-primary/20">
   <div class="max-w-3xl mx-auto px-4 text-center space-y-8">
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold leading-tight text-primary">
+    <h2 class="text-2xl md:text-4xl lg:text-5xl font-heading font-bold leading-tight text-primary">
       {lang === 'en'
-        ? 'Free Guide: Protect Your Business in 7 Steps. What hackers hope you never learn.'
-        : 'Guía Gratis: Protege Tu Negocio en 7 Pasos. Lo que los hackers esperan que nunca aprendas.'}
+        ? 'Protect your business from digital attacks today'
+        : 'Protégete tu negocio de los ataques digitales hoy mismo'}
     </h2>
-    <p class="font-outfit text-base md:text-lg text-dark/80 leading-relaxed">
+    <p class="font-outfit text-sm md:text-4x1 text-dark/80 leading-relaxed">
       {lang === 'en'
-        ? 'Enter your email to instantly receive a PDF with my personal blueprint for designing an independent life.'
-        : 'Ingresa tu email y recibe al instante un PDF con mi blueprint personal para diseñar una vida independiente.'}
+        ? 'Cyberattacks affect small entrepreneurs, too. Download this free guide with simple actions to protect your data, your clients, and your sales.'
+        : 'Los ciberataques también afectan a los pequeños emprendedores. Descarga gratis esta guía con acciones simples para proteger tus datos, tus clientes y tus ventas.'}
     </p>
 
     <!-- Integración con Fetch API -->
-    <div class="bg-card p-2 rounded-xl max-w-lg mx-auto flex shadow-xl border border-primary/20 focus-within:ring-4 focus-within:ring-primary/20 transition-all" id="lead-container">
+    <div class="bg-card p-2 rounded-xl max-w-lg text-sm md:text-4x1 mx-auto flex shadow-xl border border-primary/20 focus-within:ring-4 focus-within:ring-primary/20 transition-all" id="lead-container">
       <form id="lead-form" class="flex w-full relative" data-lang={lang}>
         <label for={lang === 'en' ? 'email-en' : 'email-es'} class="sr-only">
           {lang === 'en' ? 'Email address' : 'Correo electrónico'}
@@ -35,11 +35,30 @@ const { lang } = Astro.props;
           required
         />
         <button type="submit" id="lead-submit-btn" class="bg-primary hover:bg-dark text-white px-6 py-4 rounded-lg font-bold transition-colors whitespace-nowrap">
-          <span id="btn-text">{lang === 'en' ? 'Get PDF' : 'Obtener PDF'}</span>
+          <span id="btn-text">{lang === 'en' ? 'Yes, I want the free checklist' : 'Sí, quiero la checklist gratis'}</span>
           <span id="btn-loader" class="hidden">↻</span>
         </button>
       </form>
     </div>
+
+    <!-- Trust indicators -->
+    <ul class="trust-list">
+      {lang === 'en' ? (
+        <>
+          <li>💸 100% Free. No spam.</li>
+          <li>🔒 Your data is safe and protected.</li>
+          <li>📩 Instant download (PDF format).</li>
+          <li>✅ Over 1,000 entrepreneurs are already protecting their businesses.</li>
+        </>
+      ) : (
+        <>
+          <li>💸 100% Gratis. Sin spam.</li>
+          <li>🔒 Tus datos están seguros y protegidos.</li>
+          <li>📩 Descarga inmediata (Formato PDF).</li>
+          <li>✅ Más de 1,000 emprendedores ya protegen su negocio.</li>
+        </>
+      )}
+    </ul>
 
     <!-- Mensaje de éxito (oculto por defecto) -->
     <div id="lead-success" class="hidden items-center justify-center space-y-2 mt-4 text-primary">
