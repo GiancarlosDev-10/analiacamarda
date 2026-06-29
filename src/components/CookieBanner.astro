@@ -1,0 +1,86 @@
+---
+export interface Props {
+  lang: 'en' | 'es';
+}
+const { lang } = Astro.props;
+
+const dic = {
+  text: lang === 'en'
+    ? 'We use cookies to improve your experience and analyze site traffic.'
+    : 'Usamos cookies para mejorar tu experiencia y analizar el tráfico del sitio.',
+  accept: lang === 'en' ? 'Accept' : 'Aceptar',
+  reject: lang === 'en' ? 'Reject' : 'Rechazar',
+};
+---
+
+<!-- Banner de cookies — aparece si el usuario no ha elegido -->
+<div id="cookie-banner" class="hidden fixed bottom-0 left-0 right-0 z-50 p-4 md:p-0">
+  <div class="max-w-3xl mx-auto md:mb-6 bg-primary text-white rounded-xl shadow-2xl p-5 flex flex-col sm:flex-row items-center gap-4">
+    <p class="font-outfit text-sm leading-relaxed text-center sm:text-left flex-1">
+      🍪 {dic.text}
+    </p>
+    <div class="flex gap-3 shrink-0">
+      <button
+        id="cookie-reject"
+        class="font-outfit text-sm px-5 py-2 rounded-lg border border-white/30 hover:bg-white/10 transition-colors"
+      >
+        {dic.reject}
+      </button>
+      <button
+        id="cookie-accept"
+        class="font-outfit text-sm px-5 py-2 rounded-lg bg-cta hover:bg-cta-hover text-white font-bold transition-colors"
+      >
+        {dic.accept}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    // Si ya eligió, no mostrar el banner
+    var consent = localStorage.getItem('cookie_consent');
+    if (consent) {
+      // Si aceptó previamente, actualizar el consent de Google
+      if (consent === 'granted' && typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted'
+        });
+      }
+      return;
+    }
+
+    // Mostrar el banner
+    var banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.remove('hidden');
+
+    // Botón Aceptar
+    var acceptBtn = document.getElementById('cookie-accept');
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'granted');
+        if (typeof gtag !== 'undefined') {
+          gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+          });
+        }
+        banner.classList.add('hidden');
+      });
+    }
+
+    // Botón Rechazar
+    var rejectBtn = document.getElementById('cookie-reject');
+    if (rejectBtn) {
+      rejectBtn.addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'denied');
+        banner.classList.add('hidden');
+      });
+    }
+  })();
+</script>

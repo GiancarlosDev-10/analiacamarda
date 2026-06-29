@@ -4,6 +4,7 @@ import Analytics from '../components/Analytics.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import '../styles/global.css';
 import { getImage } from 'astro:assets';
 import heroImg from '../assets/images/foto-hero.png';
@@ -38,7 +39,6 @@ if (preloadHero) {
     <meta name="generator" content={Astro.generator} />
     
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    {/* Google Fonts CSS is now inlined in global.css */}
     
     {heroSrcset && (
       <link rel="preload" as="image" imagesrcset={heroSrcset} imagesizes="(max-width: 768px) 300px, 520px" fetchpriority="high" />
@@ -53,5 +53,6 @@ if (preloadHero) {
     </main>
     <Footer />
     <WhatsAppButton lang={lang} />
+    <CookieBanner lang={lang} />
   </body>
 </html>
