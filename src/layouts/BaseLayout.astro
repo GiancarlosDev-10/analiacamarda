@@ -4,7 +4,6 @@ import Analytics from '../components/Analytics.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-import CookieBanner from '../components/CookieBanner.astro';
 import '../styles/global.css';
 import { getImage } from 'astro:assets';
 import heroImg from '../assets/images/foto-hero.png';
@@ -53,6 +52,5 @@ if (preloadHero) {
     </main>
     <Footer />
     <WhatsAppButton lang={lang} />
-    <CookieBanner lang={lang} />
   </body>
 </html>
