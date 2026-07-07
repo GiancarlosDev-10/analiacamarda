@@ -122,12 +122,6 @@ body {
   }
 }
 
-#cusdis_thread iframe {
-  overflow: hidden !important;
-  width: 100% !important;
-  min-height: 325px !important;
-  border: none !important;
-}
 /* latin-ext */
 @font-face {
   font-family: 'Outfit';

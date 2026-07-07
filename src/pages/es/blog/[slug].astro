@@ -190,44 +190,8 @@ const imageAsset = relatedBook
 
       <hr class="my-16 border-primary/20" />
 
-      <!-- Sección de Comentarios -->
-      <div id="comments" class="pt-16 border-t border-primary/20">
-        <div class="max-w-2xl mx-auto">
-          <div class="text-center space-y-2 mb-10">
-            <h3 class="text-3xl font-heading font-bold text-primary">
-              Conversación
-            </h3>
-            <p
-              class="font-outfit text-dark/50 text-sm tracking-wider uppercase"
-            >
-              Comparte tus ideas • Únete al diálogo
-            </p>
-          </div>
-          <div class="bg-card rounded-3xl p-1 shadow-sm border border-primary/10">
-          <div
-          id="cusdis_thread"
-          class="px-4 py-8"
-          data-host="https://cusdis.com"
-          data-app-id="1843284f-085e-430f-ae54-93ad4b12b2a3"
-          data-page-id={entry.id}
-          data-page-url={`https://analiacamarda.com/es/blog/${entry.id}`}
-          data-page-title={entry.data.title}>
-      </div>
-          </div>
-          <script is:inline>
-  window["CUSDIS_LOCALE"] = {
-    nickname: "Nombre",
-    email: "Correo",
-    reply_placeholder: "Escribe tu comentario...",
-  }
-</script>
-          <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-        </div>
-
-        <hr class="my-16 border-primary/20" />
-
-        <!-- CTA Academia & Related Book -->
-        <div
+      <!-- CTA Academia & Related Book -->
+      <div
           class="bg-card border border-primary/20 rounded-2xl p-8 shadow-xl flex flex-col md:flex-row items-center gap-8"
         >
           {
@@ -273,8 +237,7 @@ const imageAsset = relatedBook
           </div>
         </div>
       </div>
-    </div>
-  </article>
+    </article>
 
   <script>
     const setupRating = () => {
